@@ -1,5 +1,7 @@
 package mySQLDAO;
 
-public class MySQLUserDAO {
+import abstractDAO.AbstractUserDAO;
+
+public class MySQLUserDAO extends AbstractUserDAO {
 
 }

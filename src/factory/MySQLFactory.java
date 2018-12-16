@@ -1,5 +1,13 @@
 package factory;
 
-public class MySQLFactory {
+import abstractDAO.AbstractUserDAO;
+import mySQLDAO.MySQLUserDAO;
+
+public class MySQLFactory extends AbstractFactory {
+
+	@Override
+	public AbstractUserDAO createUserDAO() {
+		return new MySQLUserDAO();	
+	}
 
 }
