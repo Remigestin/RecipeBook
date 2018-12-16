@@ -1,5 +1,10 @@
 package abstractDAO;
 
-public class AbstractUserDAO {
+import businessLogic.User;
+
+public abstract class AbstractUserDAO {
+	
+	public abstract User login(String username, String password);
+
 
 }
