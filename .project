@@ -14,4 +14,11 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>src/views/HomePage.fxml</name>
+			<type>1</type>
+			<locationURI>PARENT-1-PROJECT_LOC/RecipeBook2/UI/src/HomePage.fxml</locationURI>
+		</link>
+	</linkedResources>
 </projectDescription>
