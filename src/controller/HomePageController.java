@@ -1,15 +1,23 @@
 package controller;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
 
-public class HomePageController {
+public class HomePageController implements Initializable {
 	@FXML
-	private TextField username;
+	private Label username;
 	
-	public HomePageController() {
-
+	public void setUsername(String username) {
+		this.username.setText(username);
+	}
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		
 	}
 }

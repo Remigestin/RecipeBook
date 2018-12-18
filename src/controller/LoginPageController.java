@@ -14,6 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 
 import abstractDAO.AbstractUserDAO;
@@ -53,12 +55,12 @@ public class LoginPageController {
 			Parent root;
 			try {
 				
-				FXMLLoader loader = new
-				FXMLLoader(getClass().getResource("/views/HomePage.fxml"));
-				//loader.setController(new HomePageController());
-				root = loader.load();
+				FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/HomePage.fxml"));
 				
-				//root = FXMLLoader.load(getClass().getResource("/views/HomePage.fxml"));
+				root = loader.load();
+				HomePageController controller = loader.getController();
+				controller.setUsername(username.getText());
+				
 				Scene scene = new Scene(root, 1920, 1080);
 
 				Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
