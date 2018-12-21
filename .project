@@ -14,11 +14,5 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/views/HomePage.fxml</name>
-			<type>1</type>
-			<location>C:/Users/Rémi Gestin/Desktop/workspace/RecipeBook/src/views/HomePage.fxml</location>
-		</link>
-	</linkedResources>
+
 </projectDescription>
