@@ -70,7 +70,7 @@
                         <Image url="@../../asset/image/lock.png" />
                      </image>
                   </ImageView>
-                  <PasswordField fx:id="password" onKeyPressed="#test" promptText="password" />
+                  <PasswordField fx:id="password" onKeyPressed="#loginWithEnterKey" promptText="password" />
                </children>
                <VBox.margin>
                   <Insets left="70.0" />
