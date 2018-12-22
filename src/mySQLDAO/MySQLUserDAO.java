@@ -12,9 +12,7 @@ import exception.DAOException;
 
 public class MySQLUserDAO extends AbstractUserDAO {
 
-	private static MySQLUserDAO userDAO = null;
-
-	// private constructor
+	/* Private constructor */
 	private MySQLUserDAO() {
 	}
 
@@ -63,12 +61,12 @@ public class MySQLUserDAO extends AbstractUserDAO {
 
 	}
 
+	/* Singleton Holder */
+	private static class MySQLUserDAOHolder {
+		private final static MySQLUserDAO userDAO = new MySQLUserDAO();
+	}
+
 	public static MySQLUserDAO getInstance() {
-
-		if (userDAO == null) {
-			userDAO = new MySQLUserDAO();
-		}
-
-		return userDAO;
+		return MySQLUserDAOHolder.userDAO;
 	}
 }

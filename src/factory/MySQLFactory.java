@@ -5,20 +5,19 @@ import mySQLDAO.MySQLUserDAO;
 
 public class MySQLFactory extends AbstractFactory {
 
-	
+	/* Private constructor */
 	private MySQLFactory() {
 	}
-	
-	private static MySQLFactory factory = null;
+
+	/* Singleton Holder */
+	private static class MySQLFactoryHolder {
+		private final static MySQLFactory factory = new MySQLFactory();
+	}
 
 	public static MySQLFactory getInstance() {
-
-		if (factory == null) {
-			factory = new MySQLFactory();
-		}
-		return factory;
+		return MySQLFactoryHolder.factory;
 	}
-	
+
 	@Override
 	public AbstractUserDAO createUserDAO() {
 		return MySQLUserDAO.getInstance();
