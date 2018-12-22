@@ -15,10 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-import abstractDAO.AbstractUserDAO;
 import businessLogic.User;
-import factory.AbstractFactory;
-import factory.MySQLFactory;
+import facade.LoginPageFacade;
 import javafx.event.Event;
 import javafx.scene.control.PasswordField;
 
@@ -31,11 +29,13 @@ public class LoginPageController {
 	@FXML
 	private Button login;
 
+	private LoginPageFacade facade = new LoginPageFacade();
+
 	// Event Listener on TextField[#password].HeyPressed
 	@FXML
 	void loginWithEnterKey(KeyEvent event) {
 
-		if (event.getCode() == KeyCode.ENTER) {
+		if (!username.getText().isEmpty() && event.getCode() == KeyCode.ENTER) {
 			this.login(event);
 		}
 	}
@@ -44,11 +44,7 @@ public class LoginPageController {
 	@FXML
 	public void login(Event event) {
 
-		AbstractFactory f = new MySQLFactory();
-
-		AbstractUserDAO userDAO = f.createUserDAO();
-
-		User user = userDAO.login(username.getText(), password.getText());
+		User user = facade.login(username.getText(), password.getText());
 
 		if (user == null) {
 
