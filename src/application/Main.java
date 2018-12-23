@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 
 
@@ -17,6 +18,8 @@ public class Main extends Application {
 			
 			Scene scene = new Scene(root,1920,1080);
 			primaryStage.setScene(scene);
+			//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../asset.image/user.png")));
+			primaryStage.setTitle("RecipeBook");
 			primaryStage.show();
 			
 		} catch(Exception e) {
