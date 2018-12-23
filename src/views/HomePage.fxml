@@ -165,7 +165,7 @@
             </SplitPane>
             <ImageView fitHeight="209.0" fitWidth="288.0" layoutX="28.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../../oose/RecipeBook%20Logo.png" />
+                  <Image url="@../../asset/image/logo.png" />
                </image>
             </ImageView>
             <TextField layoutX="362.0" layoutY="74.0" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">

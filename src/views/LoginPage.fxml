@@ -37,7 +37,7 @@
                <children>
                   <ImageView fitHeight="121.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../oose/RecipeBook%20Logo.png" />
+                        <Image url="@../../asset/image/logo.png" />
                      </image>
                   </ImageView>
                   <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login to RecipeBook">
