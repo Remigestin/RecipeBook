@@ -1,8 +1,6 @@
 # RecipeBook,    because Life Is food :yum:
 
-<img src="/asset/image/logo.png">
-
-<br />
+<img src="/asset/image/logo.png" width="300">
 
 ### Synopsis
 
@@ -38,7 +36,8 @@ As the project is only runnable locally, RecipeBook can be improved by making it
 
 ## Autors
 
- **CHAWAF Alia** _ **GARDEISEN Marine** _ **GESTIN Rémi** _ **MISSOUM-BENZIANE Inès**, Polytech' Montpellier, 3rd year Computer Science and Management
+ **CHAWAF Alia**  _  **GARDEISEN Marine**  _  **GESTIN Rémi**  _  **MISSOUM-BENZIANE Inès** , 
+ <br/>Polytech' Montpellier, 3rd year Computer Science and Management
 
 ###### *For any question or remark, do not hesitate to contact us by mail to the address recipebook@gmail.com .*
 
@@ -54,7 +53,7 @@ It is made available to everyone for a purely educational purpose so you can get
 
 ### Acknowledgments
 
-As students, we received a lot of help and support who were allowed to set up the project and finalize it. Thus, we would like to thank STRATULAT Tiberiu, our project tutor.
+As students, we received a lot of help and support who were allowed to set up the project and finalize it. Thus, we would like to thank **STRATULAT Tiberiu**, our project tutor.
 
 <br/>
 
@@ -63,6 +62,3 @@ As students, we received a lot of help and support who were allowed to set up th
 Version : 1.0.0
 
 Last update : 23/12/2018
-
-
-
