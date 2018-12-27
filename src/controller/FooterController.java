@@ -38,6 +38,7 @@ public class FooterController implements ControllerInterface {
 
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(newPage));
+			System.out.println(newPage);
 			root = loader.load();
 			Scene scene = new Scene(root, 1920, 1080);
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
