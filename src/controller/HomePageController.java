@@ -1,18 +1,23 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 
-public class HomePageController {
+public class HomePageController implements ControllerInterface {
+	
 	@FXML
-	private Label username;
+	private CommonThemeController commonThemeController;
+
+	@FXML
+	private FooterController footerController;
 	
+	@Override
 	public void setUsername(String username) {
-		this.username.setText(username);
+		commonThemeController.setUsername(username);
 	}
-	
+
+	@Override
+	public void switchToNewPage(Event event, String newPage) {
+		
+	}
 }

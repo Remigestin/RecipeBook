@@ -16,88 +16,75 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginPageController">
    <children>
-      <Text layoutX="64.0" layoutY="407.0" strokeType="OUTSIDE" strokeWidth="0.0" text="About us" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="50.0" />
-      <Text layoutX="104.0" layoutY="399.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Contact us" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="110.0" />
-      <ImageView fitHeight="16.0" fitWidth="22.0" layoutX="23.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="25.0">
-         <image>
-            <Image url="@../../asset/image/interrogation.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="16.0" fitWidth="22.0" layoutX="1833.0" layoutY="1053.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="71.0">
-         <image>
-            <Image url="@../../asset/image/copyright.png" />
-         </image>
-      </ImageView>
-      <Text layoutX="1854.5" layoutY="1063.8046875" strokeType="OUTSIDE" strokeWidth="0.0" text="2018" AnchorPane.bottomAnchor="12.1953125" AnchorPane.rightAnchor="39.625" />
       <Pane layoutX="50.0" layoutY="80.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: f5c92b;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="40.0" />
-      <Pane layoutX="388.0" layoutY="292.0" opacity="0.75" prefHeight="348.0" prefWidth="888.0" snapToPixel="false" style="-fx-background-color: white; -fx-background-radius: 10;" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="300.0" AnchorPane.rightAnchor="300.0" AnchorPane.topAnchor="100.0" />
-      <VBox alignment="CENTER" prefHeight="374.0" prefWidth="414.0" spacing="25.0" AnchorPane.leftAnchor="500.0" AnchorPane.topAnchor="130.0">
+      <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Pane layoutX="388.0" layoutY="292.0" opacity="0.75" prefHeight="348.0" prefWidth="888.0" snapToPixel="false" style="-fx-background-color: white; -fx-background-radius: 20;" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="400.0" AnchorPane.rightAnchor="400.0" AnchorPane.topAnchor="200.0">
          <children>
-            <HBox prefHeight="100.0" prefWidth="200.0">
+            <VBox alignment="CENTER" layoutX="330.0" layoutY="144.0" prefHeight="374.0" prefWidth="414.0" spacing="25.0">
                <children>
-                  <ImageView fitHeight="121.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../asset/image/logo.png" />
-                     </image>
-                  </ImageView>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login to RecipeBook">
-                     <HBox.margin>
-                        <Insets top="30.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Text>
+                  <HBox prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="121.0" fitWidth="157.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../asset/image/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Login to RecipeBook">
+                           <HBox.margin>
+                              <Insets top="30.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font name="System Bold" size="31.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="35.0" prefWidth="322.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../asset/image/user.png" />
+                           </image>
+                        </ImageView>
+                        <TextField fx:id="username" promptText="username" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER" prefHeight="39.0" prefWidth="48.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../asset/image/lock.png" />
+                           </image>
+                        </ImageView>
+                        <PasswordField fx:id="password" onKeyPressed="#loginWithEnterKey" promptText="password" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </HBox>
+                  <Button fx:id="login" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#login" text="Login" textFill="#cc0000">
+                     <padding>
+                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </Button>
+                  <HBox alignment="CENTER" prefHeight="30.0" prefWidth="225.0" spacing="7.0">
+                     <children>
+                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account ?">
+                           <HBox.margin>
+                              <Insets top="3.0" />
+                           </HBox.margin>
+                        </Text>
+                        <Hyperlink alignment="TOP_CENTER" contentDisplay="TOP" text="REGISTER HERE" />
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <HBox prefHeight="35.0" prefWidth="202.0" spacing="20.0">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../asset/image/user.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="username" promptText="username" />
-               </children>
-               <VBox.margin>
-                  <Insets left="70.0" />
-               </VBox.margin>
-            </HBox>
-            <HBox prefHeight="39.0" prefWidth="200.0" spacing="20.0">
-               <children>
-                  <ImageView fitHeight="30.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../asset/image/lock.png" />
-                     </image>
-                  </ImageView>
-                  <PasswordField fx:id="password" onKeyPressed="#loginWithEnterKey" promptText="password" />
-               </children>
-               <VBox.margin>
-                  <Insets left="70.0" />
-               </VBox.margin>
-            </HBox>
-            <Button fx:id="login" contentDisplay="CENTER" mnemonicParsing="false" onAction="#login" text="Login" textFill="#cc0000">
-               <padding>
-                  <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-               </padding>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Button>
-            <HBox prefHeight="30.0" prefWidth="225.0" spacing="7.0">
-               <children>
-                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Don't have an account ?">
-                     <HBox.margin>
-                        <Insets top="3.0" />
-                     </HBox.margin>
-                  </Text>
-                  <Hyperlink alignment="TOP_CENTER" contentDisplay="TOP" text="REGISTER HERE" />
-               </children>
-               <padding>
-                  <Insets left="60.0" />
-               </padding>
-            </HBox>
-         </children>
-      </VBox>
+            </VBox>
+         </children></Pane>
    </children>
 </AnchorPane>

@@ -20,7 +20,7 @@ import facade.LoginPageFacade;
 import javafx.event.Event;
 import javafx.scene.control.PasswordField;
 
-public class LoginPageController {
+public class LoginPageController implements ControllerInterface {
 
 	@FXML
 	private TextField username;
@@ -52,21 +52,30 @@ public class LoginPageController {
 			this.displayError();
 
 		} else {
-			this.switchToHomePage(event);
+			this.switchToNewPage(event, "/views/HomePage.fxml");
 		}
 	}
 
-	public void switchToHomePage(Event event) {
+	private void displayError() {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Error alert");
+		alert.setHeaderText("Username and password not matching !");
+		alert.showAndWait();
+	}
+
+	@Override
+	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
 
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/HomePage.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(newPage));
 
 			root = loader.load();
 
-			HomePageController controller = loader.getController();
+			ControllerInterface controller = loader.getController();
+
 			controller.setUsername(username.getText());
 
 			Scene scene = new Scene(root, 1920, 1080);
@@ -81,10 +90,7 @@ public class LoginPageController {
 		}
 	}
 
-	private void displayError() {
-		Alert alert = new Alert(AlertType.ERROR);
-		alert.setTitle("Error alert");
-		alert.setHeaderText("Username and password not matching !");
-		alert.showAndWait();
+	@Override
+	public void setUsername(String username) {
 	}
 }

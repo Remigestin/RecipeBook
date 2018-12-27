@@ -1,210 +1,156 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
+<ScrollPane prefHeight="3200.0" prefWidth="1922.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theme.css">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3180.0" prefWidth="1920.0">
          <children>
-            <SplitPane dividerPositions="0.17326732673267325" layoutX="24.0" layoutY="50.0" prefHeight="320.0" prefWidth="537.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="200.0">
-              <items>
-                  <VBox opacity="0.76" prefHeight="746.0" prefWidth="416.0" spacing="20.0" style="-fx-background-color: ffe68c;">
-                     <children>
-                        <HBox prefHeight="70.0" prefWidth="348.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../asset/image/home.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menuTabs" text="Home" wrappingWidth="134.93750762939453">
-                                 <font>
-                                    <Font size="41.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <Line endX="109.5" startX="-100.0">
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </Line>
-                        <HBox prefHeight="100.0" prefWidth="200.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="88.0" fitWidth="56.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../asset/image/search.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menuTabs" text="Advanced Search" wrappingWidth="210.93750762939453">
-                                 <font>
-                                    <Font size="41.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <Line endX="109.5" startX="-100.0">
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </Line>
-                        <HBox prefHeight="70.0" prefWidth="348.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../asset/image/cutlery.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menuTabs" text="My Recipes" wrappingWidth="202.93750762939453">
-                                 <font>
-                                    <Font size="41.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <Line endX="109.5" startX="-100.0">
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </Line>
-                        <HBox prefHeight="70.0" prefWidth="348.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../asset/image/favorite.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menuTabs" text="Favorites" wrappingWidth="168.93750762939453">
-                                 <font>
-                                    <Font size="41.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <Line endX="109.5" startX="-100.0">
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </Line>
-                        <HBox prefHeight="70.0" prefWidth="348.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../asset/image/randomMenu.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menuTabs" text="Random Menu" wrappingWidth="204.93750762939453">
-                                 <font>
-                                    <Font size="41.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <Line endX="109.5" startX="-100.0">
-                           <VBox.margin>
-                              <Insets left="30.0" />
-                           </VBox.margin>
-                        </Line>
-                        <HBox prefHeight="70.0" prefWidth="348.0" spacing="15.0">
-                           <children>
-                              <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../asset/image/shoppingCart.png" />
-                                 </image>
-                              </ImageView>
-                              <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="menuTabs" text="Shopping List" wrappingWidth="156.93750762939453">
-                                 <font>
-                                    <Font size="41.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </HBox>
-                        <ImageView fitHeight="108.0" fitWidth="124.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../asset/image/cooking.png" />
-                           </image>
-                           <VBox.margin>
-                              <Insets left="70.0" />
-                           </VBox.margin>
-                        </ImageView>
-                     </children>
-                     <padding>
-                        <Insets bottom="10.0" left="20.0" top="20.0" />
-                     </padding>
-                  </VBox>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
-                     <children>
-                        <Pane maxWidth="262.0" prefHeight="243.0" prefWidth="262.0" style="-fx-background-color: f5c92b;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <Separator layoutX="276.0" layoutY="129.0" prefHeight="0.0" prefWidth="888.0" />
-                              <Text layoutX="549.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home Page">
-                                 <font>
-                                    <Font size="69.0" />
-                                 </font>
-                              </Text>
-                           </children>
-                        </Pane>
-                     </children>
-                  </AnchorPane>
-              </items>
-            </SplitPane>
-            <ImageView fitHeight="209.0" fitWidth="288.0" layoutX="28.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../asset/image/logo.png" />
-               </image>
-            </ImageView>
-            <TextField layoutX="362.0" layoutY="74.0" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">
-               <font>
-                  <Font size="22.0" />
-               </font>
-            </TextField>
-            <Button layoutX="857.0" layoutY="78.0" mnemonicParsing="false" text="OK">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Button>
-            <ImageView fitHeight="29.0" fitWidth="42.0" layoutX="325.0" layoutY="84.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../asset/image/quickSearch.png" />
-               </image>
-            </ImageView>
-            <HBox alignment="TOP_CENTER" layoutX="1452.0" layoutY="47.0" prefHeight="72.0" prefWidth="382.0" spacing="10.0">
+            <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
+            <fx:include fx:id="commonTheme" source="CommonTheme.fxml" />
+            <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="2942.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
                <children>
-                  <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../asset/image/user.png" />
-                     </image>
-                  </ImageView>
-                  <Label fx:id="username" alignment="TOP_CENTER" prefHeight="58.0" prefWidth="193.0" text="username">
-                     <font>
-                        <Font size="40.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                  </Label>
-                  <ImageView fitHeight="46.0" fitWidth="42.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../asset/image/signOut.png" />
-                     </image>
-                  </ImageView>
+                  <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Home Page" />
+                  <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
+                  <Pane layoutX="325.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 1">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="838.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 2">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="325.0" layoutY="751.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 3">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="838.0" layoutY="751.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 4">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="324.0" layoutY="1285.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 5">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="837.0" layoutY="1285.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 6">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="324.0" layoutY="1819.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 7">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="837.0" layoutY="1819.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 8">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="324.0" layoutY="2351.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 9">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
+                  <Pane layoutX="837.0" layoutY="2351.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 10">
+                           <font>
+                              <Font size="30.0" />
+                           </font>
+                           <padding>
+                              <Insets left="10.0" right="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                  </Pane>
                </children>
-            </HBox>
+            </Pane>
          </children>
       </AnchorPane>
    </content>
