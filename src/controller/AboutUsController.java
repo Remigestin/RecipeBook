@@ -47,7 +47,6 @@ public class AboutUsController implements ControllerInterface {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(newPage));
 
 			root = loader.load();
-
 			Scene scene = new Scene(root, 1920, 1080);
 
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

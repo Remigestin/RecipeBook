@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 
 import javafx.scene.input.MouseEvent;
 
-public class CommonThemeController implements ControllerInterface {
+public class CommonThemeAdminController implements ControllerInterface {
 	@FXML
 	private Label username;
 	@FXML
@@ -29,6 +29,8 @@ public class CommonThemeController implements ControllerInterface {
 	private HBox randomMenu;
 	@FXML
 	private HBox shoppingList;
+	@FXML
+	private HBox admin;
 
 	// Event Listener on HBox[#home].onMousePressed
 	// Event Listener on HBox[#advancedSearch].onMousePressed
@@ -36,6 +38,7 @@ public class CommonThemeController implements ControllerInterface {
 	// Event Listener on HBox[#favorites].onMousePressed
 	// Event Listener on HBox[#randomMenu].onMousePressed
 	// Event Listener on HBox[#shoppingList].onMousePressed
+	// Event Listener on HBox[#admin].onMousePressed
 	@FXML
 	public void redirectToNewTab(MouseEvent event) {
 
@@ -66,9 +69,17 @@ public class CommonThemeController implements ControllerInterface {
 			case "shoppingList":
 				// newPage = "/views/ShoppingList.fxml";
 				break;
+				
+			case "admin":
+				newPage = "/views/admin/AdminMode.fxml";
+				break;
 		}
 
 		this.switchToNewPage(event, newPage);
+	}
+	
+	public String getUsername() {
+		return this.username.getText();
 	}
 
 	@Override
