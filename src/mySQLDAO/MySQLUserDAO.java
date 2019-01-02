@@ -38,6 +38,7 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
+		User.setSession(user);
 		return user;
 	}
 

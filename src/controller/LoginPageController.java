@@ -75,8 +75,9 @@ public class LoginPageController implements ControllerInterface {
 			root = loader.load();
 
 			ControllerInterface controller = loader.getController();
+			User user = User.getSession();
 
-			controller.setUsername(username.getText());
+			controller.setUsername(user.getUsername());
 
 			Scene scene = new Scene(root, 1920, 1080);
 

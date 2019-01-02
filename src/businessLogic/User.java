@@ -14,6 +14,7 @@ public class User {
     private String lastname;
     private String firstname;
     private boolean isAdmin;
+    private static User session; 
    
 	//Getters/setters
 	
@@ -64,5 +65,13 @@ public class User {
 	public void setAdmin(boolean isAdmin) {
 		this.isAdmin = isAdmin;
 	}
+	
+	public static User getSession() {
+        return session;
+    }
+
+    public static void setSession(User user) {
+        session = user;
+    }
 	
 }
