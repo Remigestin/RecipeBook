@@ -29,7 +29,7 @@ public class LoginPageController implements ControllerInterface {
 	@FXML
 	private Button login;
 
-	private LoginPageFacade facade = new LoginPageFacade();
+	private LoginPageFacade facade = LoginPageFacade.getInstance();
 
 	// Event Listener on TextField[#password].HeyPressed
 	@FXML
