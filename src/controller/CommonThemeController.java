@@ -26,7 +26,7 @@ public class CommonThemeController implements ControllerInterface {
 	@FXML
 	private HBox myRecipes;
 	@FXML
-	private HBox favorites;
+	private HBox favorite;
 	@FXML
 	private HBox randomMenu;
 	@FXML
@@ -57,7 +57,7 @@ public class CommonThemeController implements ControllerInterface {
 				// newPage = "/views/MyRecipes.fxml";
 				break;
 	
-			case "favorites":
+			case "favorite":
 				newPage = "/views/Favorites.fxml";
 				break;
 	
