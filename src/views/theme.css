@@ -9,4 +9,13 @@
 	-fx-background-radius: 20;
 	-fx-font-size: 40pt;
 	-fx-padding: 0 30 0 30;
+	-fx-text-fill: #93c47d;
+	-fx-font-weight: bold;
+}
+
+.recipeDetails
+{
+	-fx-background-color: #eeeeee;
+	-fx-background-radius: 20;
+	-fx-padding: 0 30 0 30;
 }	
