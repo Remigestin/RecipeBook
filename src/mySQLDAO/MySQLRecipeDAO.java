@@ -86,15 +86,5 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 		return recipe;
 	}
-	
-
-	@Override
-	public ArrayList<CookingStep> loadCookingStepsRecipe(int idRecipe) {
-
-		ArrayList<CookingStep> steps = new ArrayList<CookingStep>();
-
-
-		return steps;
-	}
 
 }
