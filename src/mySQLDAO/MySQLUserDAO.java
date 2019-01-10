@@ -49,6 +49,7 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		user.setFirstname(resultSet.getString("firstname"));
 		user.setLastname(resultSet.getString("lastname"));
 		user.setFavoriteList(MySQLRecipeDAO.getInstance().loadFavoriteRecipe(resultSet.getInt("id")));
+		user.setCreateList(MySQLRecipeDAO.getInstance().loadCreateRecipe(resultSet.getInt("id")));
 		if (resultSet.getInt("isAdmin") == 1) {
 			user.setAdmin(true);
 		}
