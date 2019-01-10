@@ -1,5 +1,7 @@
 package businessLogic;
 
+import java.util.ArrayList;
+
 /**
  * @author gesti
  *
@@ -14,7 +16,9 @@ public class User {
     private String lastname;
     private String firstname;
     private boolean isAdmin;
-    private static User session; 
+    private static User session;
+    private ArrayList<Recipe> createList;
+    private ArrayList<Recipe> favoriteList;
    
 	//Getters/setters
 	
@@ -73,5 +77,21 @@ public class User {
     public static void setSession(User user) {
         session = user;
     }
+
+	public ArrayList<Recipe> getCreateList() {
+		return createList;
+	}
+
+	public void setCreateList(ArrayList<Recipe> createList) {
+		this.createList = createList;
+	}
+
+	public ArrayList<Recipe> getFavoriteList() {
+		return favoriteList;
+	}
+
+	public void setFavoriteList(ArrayList<Recipe> favoriteList) {
+		this.favoriteList = favoriteList;
+	}
 	
 }
