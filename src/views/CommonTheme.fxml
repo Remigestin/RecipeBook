@@ -20,7 +20,7 @@
             <Image url="@../../asset/image/logo.png" />
          </image>
       </ImageView>
-      <TextField layoutX="406.0" layoutY="74.0" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">
+      <TextField focusTraversable="false" layoutX="406.0" layoutY="74.0" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">
          <font>
             <Font size="22.0" />
          </font>

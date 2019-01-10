@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
@@ -19,7 +20,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane stylesheets="@theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecipeController">
    <content>
       <AnchorPane prefHeight="1376.0" prefWidth="1920.0">
          <children>
@@ -27,8 +28,8 @@
             <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
             <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1176.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
                <children>
-                  <Label fx:id="nameRecipe" layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Name Recipe" />
-                  <Label fx:id="mainCourse" layoutX="108.0" layoutY="58.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 50; -fx-background-radius: 50;" text="Main Course">
+                  <Label fx:id="nameRecipe" layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="&lt;Name Recipe&gt;" />
+                  <Label fx:id="mainCourse" layoutX="108.0" layoutY="58.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 50; -fx-background-radius: 50;" text="&lt;Main Course&gt;">
                      <font>
                         <Font name="System Bold" size="27.0" />
                      </font>
@@ -42,7 +43,7 @@
                   <Group layoutX="1091.0" layoutY="207.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutY="23.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="343.0" />
-                        <Label layoutX="26.0" style="-fx-background-color: f5c92b; -fx-font-weight: bold;" text="Ingredients">
+                        <Label layoutX="26.0" layoutY="-8.0" styleClass="h2" text="Ingredients">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -52,7 +53,7 @@
                         </Label>
                         <ScrollPane layoutY="56.0">
                            <content>
-                              <TextArea editable="false" prefHeight="395.0" prefWidth="344.0" />
+                              <TextArea fx:id="ingredients" editable="false" prefHeight="395.0" prefWidth="344.0" />
                            </content>
                         </ScrollPane>
                      </children>
@@ -60,7 +61,7 @@
                   <Group layoutX="373.0" layoutY="206.0">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-75.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="759.0" />
-                        <Label layoutX="-51.0" style="-fx-background-color: f5c92b; -fx-font-weight: bold;" text="Cooking Steps">
+                        <Label layoutX="-51.0" layoutY="-7.0" styleClass="h2" text="Cooking Steps">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -68,11 +69,11 @@
                               <Insets left="10.0" right="10.0" />
                            </padding>
                         </Label>
-                        <ListView layoutX="-75.0" layoutY="56.0" prefHeight="396.0" prefWidth="761.0" />
+                        <ListView fx:id="cookingSteps" layoutX="-75.0" layoutY="56.0" prefHeight="396.0" prefWidth="761.0" />
                      </children>
                   </Group>
                   <Line endX="531.0" layoutX="900.0" layoutY="702.0" startX="-601.0" />
-                  <VBox layoutX="75.0" layoutY="251.0" prefHeight="270.0" prefWidth="179.0" spacing="20.0" styleClass="recipeDetails">
+                  <VBox layoutX="75.0" layoutY="251.0" prefHeight="270.0" prefWidth="179.0" spacing="20.0" styleClass="mainInformation">
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="141.0" spacing="20.0">
                            <children>
@@ -164,4 +165,8 @@
          </children>
       </AnchorPane>
    </content>
+   <stylesheets>
+      <URL value="@theme.css" />
+      <URL value="@recipePage.css" />
+   </stylesheets>
 </ScrollPane>

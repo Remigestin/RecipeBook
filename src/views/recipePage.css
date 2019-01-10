@@ -1,0 +1,13 @@
+.mainInformation
+{
+	-fx-background-color: #eeeeee;
+	-fx-background-radius: 20;
+	-fx-padding: 0 30 0 30;
+}
+
+.h2
+{
+	-fx-font-size: 30pt;
+	-fx-font-weight: bold;
+	-fx-background-color: #f5c92b;
+}	
