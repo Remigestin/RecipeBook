@@ -15,6 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 public class CommonThemeController implements ControllerInterface {
+	
+	
 	@FXML
 	private Label username;
 	@FXML
@@ -56,7 +58,7 @@ public class CommonThemeController implements ControllerInterface {
 				break;
 	
 			case "favorites":
-				// newPage = "/views/Favorites.fxml";
+				newPage = "/views/Favorites.fxml";
 				break;
 	
 			case "randomMenu":
@@ -87,7 +89,7 @@ public class CommonThemeController implements ControllerInterface {
 			root = loader.load();
 
 			ControllerInterface newController = loader.getController();
-			newController.setUsername(username.getText());
+			//newController.setUsername(username.getText());
 
 			Scene scene = new Scene(root, 1920, 1080);
 
