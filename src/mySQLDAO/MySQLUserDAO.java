@@ -17,7 +17,7 @@ public class MySQLUserDAO extends AbstractUserDAO {
 	}
 
 	// sql
-	private static final String SQL_FIND_BY_USERNAME_AND_PASSWORD = "Select * FROM User WHERE username = ? AND password = ?";
+	private static final String SQL_FIND_BY_USERNAME_AND_PASSWORD = "Select * FROM user WHERE username = ? AND password = ?";
 
 	// actions
 	@Override
