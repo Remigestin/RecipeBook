@@ -10,6 +10,7 @@ import facade.RecipeFacade;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.ListView;
@@ -17,6 +18,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 
 public class RecipeController implements Initializable {
 
@@ -41,6 +44,24 @@ public class RecipeController implements Initializable {
 	private ImageView addToFavorite;
 	@FXML
 	private ImageView addToCart;
+
+	 @FXML
+	    private TextArea textaddcomment;
+
+	    @FXML
+	    private Button buttonadd;
+
+	    @FXML
+	    private TableView<?> tableView;
+
+	    @FXML
+	    private TableColumn<?, ?> User;
+
+	    @FXML
+	    private TableColumn<?, ?> Date;
+
+	    @FXML
+	    private TableColumn<?, ?> Text;
 
 	/* attributes */
 	private RecipeFacade facade = RecipeFacade.getInstance();
@@ -121,7 +142,7 @@ public class RecipeController implements Initializable {
 
 		/* find main course and set it */
 		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
-		
+
 
 	}
 
