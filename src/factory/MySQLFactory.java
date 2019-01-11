@@ -1,8 +1,10 @@
 package factory;
 
+import abstractDAO.AbstractCommentDAO;
 import abstractDAO.AbstractCookingStepDAO;
 import abstractDAO.AbstractRecipeDAO;
 import abstractDAO.AbstractUserDAO;
+import mySQLDAO.MySQLCommentDAO;
 import mySQLDAO.MySQLCookingStepDAO;
 import mySQLDAO.MySQLRecipeDAO;
 import mySQLDAO.MySQLUserDAO;
@@ -35,5 +37,9 @@ public class MySQLFactory extends AbstractFactory {
 	@Override
 	public AbstractCookingStepDAO createCookingStepDAO() {
 		return MySQLCookingStepDAO.getInstance();
+	}
+	@Override
+	public AbstractCommentDAO createCommentDAO() {
+		return MySQLCommentDAO.getInstance();
 	}
 }

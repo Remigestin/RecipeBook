@@ -1,9 +1,11 @@
 package controller;
 
+import java.awt.event.ActionEvent;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import businessLogic.Commentary;
 import businessLogic.CookingStep;
 import businessLogic.Recipe;
 import facade.RecipeFacade;
@@ -145,6 +147,43 @@ public class RecipeController implements Initializable {
 
 
 	}
+
+	// Event Listener on Button[#buttonadd].onAction
+		@FXML
+		public void addComment(ActionEvent event) {
+			System.out.println("est ce que je passe dans cette fonction");
+			facade.createComment(textaddcomment.getText());
+			textaddcomment.clear();
+			System.out.println("est ce que je passe dans cette fonction");
+		}
+
+		public void setComment(ArrayList<Commentary> listcomment){
+
+
+//			for (Commentary c : listcomment) {
+	//
+//				if (c.getName() != null) {
+	//
+//					this.cookingSteps.getItems().add(numberStep + ". " + c.getName());
+//					this.cookingSteps.getItems().add(c.getDescription());
+	//
+//				} else {
+	//
+//					this.cookingSteps.getItems().add(numberStep + ". " + c.getDescription());
+	//
+//				}
+	//
+//				this.cookingSteps.getItems().add(""); // skip a line between each step
+//				numberStep++;
+			}
+
+
+
+	/*	public void showComment(Event e){
+
+			this.setComment(facade.showComment(1));
+		}
+		*/
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
