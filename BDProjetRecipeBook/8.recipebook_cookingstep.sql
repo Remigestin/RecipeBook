@@ -23,14 +23,14 @@ DROP TABLE IF EXISTS `cookingstep`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `cookingstep` (
-  `idcookingstep` int(11) NOT NULL,
+  `idcookingstep` int(11) NOT NULL AUTO_INCREMENT,
   `nameStep` varchar(45) DEFAULT NULL,
   `description` varchar(45) DEFAULT NULL,
   `idRecipe` int(11) DEFAULT NULL,
   PRIMARY KEY (`idcookingstep`),
   KEY `idRecipe_idx` (`idRecipe`),
   CONSTRAINT `idRecipe2` FOREIGN KEY (`idRecipe`) REFERENCES `recipe` (`idrecipe`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -52,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-09 20:52:01
+-- Dump completed on 2019-01-11  9:09:25

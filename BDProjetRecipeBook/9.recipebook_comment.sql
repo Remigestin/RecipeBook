@@ -23,7 +23,7 @@ DROP TABLE IF EXISTS `comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `comment` (
-  `idcomment` int(11) NOT NULL,
+  `idcomment` int(11) NOT NULL AUTO_INCREMENT,
   `date` datetime DEFAULT NULL,
   `text` varchar(150) DEFAULT NULL,
   `idRecipe` int(11) DEFAULT NULL,
@@ -34,7 +34,7 @@ CREATE TABLE `comment` (
   KEY `idusergivecomment_idx` (`idUser`),
   CONSTRAINT `idRecipeCSTP` FOREIGN KEY (`idRecipe`) REFERENCES `recipe` (`idrecipe`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `idusergivecomment` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -56,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-09 20:51:51
+-- Dump completed on 2019-01-11  9:10:20

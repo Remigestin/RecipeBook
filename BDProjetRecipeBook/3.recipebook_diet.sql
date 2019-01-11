@@ -23,11 +23,11 @@ DROP TABLE IF EXISTS `diet`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
  SET character_set_client = utf8mb4 ;
 CREATE TABLE `diet` (
-  `idDiet` int(11) NOT NULL,
+  `idDiet` int(11) NOT NULL AUTO_INCREMENT,
   `nameDiet` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`idDiet`),
   UNIQUE KEY `idDiet_UNIQUE` (`idDiet`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-01-09 20:51:58
+-- Dump completed on 2019-01-11  9:03:40
