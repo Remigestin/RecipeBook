@@ -19,6 +19,9 @@ public class User {
     private static User session;
     private ArrayList<Recipe> createList;
     private ArrayList<Recipe> favoriteList;
+    
+   //case 0 = starter, 1 = main and 2 = dessert
+    private Recipe[] tabRandomMenu = new Recipe[3]; 
    
 	//Getters/setters
 	
@@ -92,6 +95,18 @@ public class User {
 
 	public void setFavoriteList(ArrayList<Recipe> favoriteList) {
 		this.favoriteList = favoriteList;
+	}
+	
+	public void setRandomStarter(Recipe starter) {
+		this.tabRandomMenu[0]=starter;
+	}
+	
+	public void setRandomMain(Recipe main) {
+		this.tabRandomMenu[1]=main;
+	}
+	
+	public void setRandomDessert(Recipe dessert) {
+		this.tabRandomMenu[2]=dessert;
 	}
 	
 }
