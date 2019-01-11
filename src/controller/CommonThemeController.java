@@ -66,7 +66,7 @@ public class CommonThemeController implements Initializable {
 				break;
 	
 			case "randomMenu":
-				// newPage = "/views/RandomMenu.fxml";
+				newPage = "/views/RandomMenu.fxml";
 				break;
 	
 			case "shoppingList":
