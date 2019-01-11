@@ -8,12 +8,17 @@ import businessLogic.Recipe;
 import businessLogic.User;
 import facade.FavoritesFacade;
 import facade.RecipeFacade;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.TableView;
 
 public class FavoritesController implements Initializable {
 
@@ -28,6 +33,21 @@ public class FavoritesController implements Initializable {
 	@FXML
 	private CommonThemeController commonThemeController = new CommonThemeController();
 	
+	@FXML
+	private TableView<Recipe> favoritesTab;
+	
+	@FXML
+    private TableColumn<Recipe, String> recipeName;
+
+    @FXML
+    private TableColumn<Recipe, String> difficulty;
+
+    @FXML
+    private TableColumn<Recipe, String> preparationTime;
+
+    @FXML
+    private TableColumn<Recipe, String> course;
+    
     @FXML
     private TextArea text;
 
@@ -49,6 +69,10 @@ public class FavoritesController implements Initializable {
 		}
 		text.setText(s);
 		
+		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("nameRecipe"));
+		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
+		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
+		favoritesTab.setItems(getRecipes());
 	}
 	
 	/*attributes*/
@@ -56,11 +80,23 @@ public class FavoritesController implements Initializable {
 	
 	/*methods*/
 	
+	public ObservableList<Recipe> getRecipes() {
+
+		ObservableList<Recipe> recipes = FXCollections.observableArrayList();
+
+		recipes.addAll(favorites);
+
+		return recipes;
+
+	}
+	
 	//in order to test
     @FXML
     void addFavoriteRecipe(ActionEvent event) {
     	favorites = facade.addFavoriteRecipe(User.getSession().getId(),idRecipe);
-
+    	//favoritesTab.refresh();
+    	
+    	
     }
 
   //in order to test
