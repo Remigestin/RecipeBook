@@ -68,13 +68,7 @@ public class RecipeController implements Initializable {
 	/* attributes */
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
-	private int idRecipe;
-
 	/* Getters Setters */
-	public void setIdRecipe(int idRecipe) {
-		this.idRecipe = idRecipe;
-	}
-
 	public void setNameRecipe(String nameRecipe) {
 		this.nameRecipe.setText(nameRecipe);
 	}
@@ -128,7 +122,7 @@ public class RecipeController implements Initializable {
 	}
 
 	/* methods */
-	public void consultRecipe(Event e) {
+	public void consultRecipe(int idRecipe) {
 
 		/* find and set cooking steps */
 		this.setCookingSteps(facade.findCookingSteps(idRecipe));
