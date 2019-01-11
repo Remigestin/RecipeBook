@@ -2,8 +2,10 @@ package facade;
 
 import java.util.ArrayList;
 
+import abstractDAO.AbstractCommentDAO;
 import abstractDAO.AbstractCookingStepDAO;
 import abstractDAO.AbstractRecipeDAO;
+import businessLogic.Commentary;
 import businessLogic.CookingStep;
 import businessLogic.Recipe;
 import factory.AbstractFactory;
@@ -47,5 +49,18 @@ public class RecipeFacade {
 
 		return recipeDAO.findCourseCategory(idCourse);
 
+	}
+
+	public void createComment(String text){
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractCommentDAO commentDAO = f.createCommentDAO();
+		commentDAO.createComment(text);
+	}
+
+	public ArrayList<Commentary> showComment(int idRecipe) {
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractCommentDAO commentDAO = f.createCommentDAO();
+
+		return commentDAO.showcomment(idRecipe);
 	}
 }

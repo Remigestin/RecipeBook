@@ -58,7 +58,7 @@ public class CommonThemeController implements Initializable {
 				break;
 	
 			case "myRecipes":
-				// newPage = "/views/MyRecipes.fxml";
+				newPage = "/views/MyRecipes.fxml";
 				break;
 	
 			case "favorite":
@@ -66,7 +66,7 @@ public class CommonThemeController implements Initializable {
 				break;
 	
 			case "randomMenu":
-				// newPage = "/views/RandomMenu.fxml";
+				newPage = "/views/RandomMenu.fxml";
 				break;
 	
 			case "shoppingList":
@@ -78,7 +78,7 @@ public class CommonThemeController implements Initializable {
 	}
 
 	public void setUsername(String username) {
-		System.out.println("c moi :"+username);
+		
 		this.username.setText(username);
 	}
 	

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <fx:include source="CommonTheme.fxml" />
+      <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
+      <Pane layoutX="368.0" layoutY="194.0" maxWidth="2084.0" prefHeight="800.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
+         <children>
+            <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="My Recipes" />
+            <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
+            <TableView fx:id="listRecipes" layoutX="158.0" layoutY="143.0" prefHeight="400.0" prefWidth="792.0">
+              <columns>
+                <TableColumn fx:id="recipeName" prefWidth="75.0" text="Recipe Name" />
+                <TableColumn fx:id="prepTime" prefWidth="75.0" text="Cookng Preparation Time" />
+              </columns>
+            </TableView>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
