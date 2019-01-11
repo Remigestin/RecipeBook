@@ -1,8 +1,10 @@
 package controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import businessLogic.Recipe;
 import businessLogic.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -19,10 +21,17 @@ public class FavoritesController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-	
-		text.setText("ok");
+		//print the list of favorite recipes
+		String s ="";
+		ArrayList<Recipe> favorites = User.getSession().getFavoriteList();
+		
+		for(Recipe r : favorites) {
+			s += r.getNameRecipe()+"\n";
+		}
+		text.setText(s);
 		
 	}
+	
 
 }
 
