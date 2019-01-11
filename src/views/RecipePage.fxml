@@ -69,7 +69,7 @@
                               <Insets left="10.0" right="10.0" />
                            </padding>
                         </Label>
-                        <ListView fx:id="cookingSteps" layoutX="-75.0" layoutY="56.0" prefHeight="396.0" prefWidth="761.0" />
+                        <ListView fx:id="cookingSteps" focusTraversable="false" layoutX="-75.0" layoutY="56.0" mouseTransparent="true" prefHeight="396.0" prefWidth="761.0" />
                      </children>
                   </Group>
                   <Line endX="531.0" layoutX="900.0" layoutY="702.0" startX="-601.0" />

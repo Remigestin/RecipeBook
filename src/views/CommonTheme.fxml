@@ -1,10 +1,5 @@
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?xml version="1.0" encoding="UTF-8"?>
+
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -18,14 +13,14 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommonThemeController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommonThemeController">
    <children>
       <ImageView fitHeight="209.0" fitWidth="288.0" layoutX="57.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../asset/image/logo.png" />
          </image>
       </ImageView>
-      <TextField layoutX="406.0" layoutY="74.0" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">
+      <TextField focusTraversable="false" layoutX="416.0" layoutY="73.0" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">
          <font>
             <Font size="22.0" />
          </font>
