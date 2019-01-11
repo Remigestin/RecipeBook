@@ -19,7 +19,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class MyRecipesController implements Initializable {
@@ -64,16 +63,7 @@ public class MyRecipesController implements Initializable {
 
 	@FXML
 	void consultRecipe(Event event) {
-
-		System.out.print(((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get());
-
 		this.switchToNewPage(event, "/views/RecipePage.fxml");
-	}
-
-	public int getIdRecipeByRowNumber(int rowNumber) {
-
-		return User.getSession().getCreateList().get(rowNumber).getIdRecipe();
-
 	}
 
 	public void switchToNewPage(Event event, String newPage) {
@@ -90,8 +80,7 @@ public class MyRecipesController implements Initializable {
 			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
 			int idRecipe = this.getIdRecipeByRowNumber(rowNumber);
 			controller.setIdRecipe(idRecipe);
-			controller.consultRecipe(idRecipe);
-
+			controller.consultRecipe();
 
 			Scene scene = new Scene(root, 1920, 1080);
 
@@ -105,4 +94,8 @@ public class MyRecipesController implements Initializable {
 		}
 	}
 
+	public int getIdRecipeByRowNumber(int rowNumber) {
+
+		return User.getSession().getCreateList().get(rowNumber).getIdRecipe();
+	}
 }

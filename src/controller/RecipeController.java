@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -51,34 +50,32 @@ public class RecipeController implements Initializable {
 	@FXML
 	private ImageView addToCart;
 
+	@FXML
+	private TextArea textaddcomment;
+
+	@FXML
+	private Button buttonadd;
+
+	@FXML
+	private TableView<Commentary> tableView;
+
+	@FXML
+	private TableColumn<Commentary, String> ColoneUser;
+
+	@FXML
+	private TableColumn<Commentary, String> Date;
+
+	@FXML
+	private TableColumn<Commentary, String> Text;
+
+	/* attributes */
+	private RecipeFacade facade = RecipeFacade.getInstance();
+
 	private int idRecipe;
 
 	public void setIdRecipe(int idRecipe) {
 		this.idRecipe = idRecipe;
 	}
-
-
-
-	@FXML
-	    private TextArea textaddcomment;
-
-	    @FXML
-	    private Button buttonadd;
-
-	    @FXML
-	    private TableView<Commentary> tableView;
-
-	    @FXML
-	    private TableColumn<Commentary, String> ColoneUser;
-
-	    @FXML
-	    private TableColumn<Commentary, String> Date;
-
-	    @FXML
-	    private TableColumn<Commentary, String> Text;
-
-	/* attributes */
-	private RecipeFacade facade = RecipeFacade.getInstance();
 
 	/* Getters Setters */
 	public void setNameRecipe(String nameRecipe) {
@@ -134,7 +131,7 @@ public class RecipeController implements Initializable {
 	}
 
 	/* methods */
-	public void consultRecipe(int idRecipe) {
+	public void consultRecipe() {
 
 		/* find and set cooking steps */
 		this.setCookingSteps(facade.findCookingSteps(idRecipe));
@@ -145,12 +142,11 @@ public class RecipeController implements Initializable {
 		this.setNameRecipe(recipe.getNameRecipe());
 		this.setNumberPeople(recipe.getNbPersRecipe());
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
-		// this.setDifficulty(recipe.getDifficulty());
+		this.setDifficulty(Integer.toString(recipe.getDifficulty()));
 		// this.setRating(recipe.getRating());
 
 		/* find main course and set it */
 		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
-
 
 		ColoneUser.setCellValueFactory(new PropertyValueFactory<Commentary, String>("idUser"));
 		Date.setCellValueFactory(new PropertyValueFactory<Commentary, String>("date"));
@@ -160,51 +156,46 @@ public class RecipeController implements Initializable {
 	}
 
 	// Event Listener on Button[#buttonadd].onAction
-		@FXML
-		public void addComment(ActionEvent event) {
-			System.out.println("est ce que je passe dans cette fonction");
-			facade.createComment(textaddcomment.getText());
-			textaddcomment.clear();
-			System.out.println("est ce que je passe dans cette fonction");
-		}
+	@FXML
+	public void addComment(ActionEvent event) {
 
-		private ObservableList<Commentary> getComment() {
+		facade.createComment(textaddcomment.getText());
+		textaddcomment.clear();
 
-			ObservableList<Commentary> comments = FXCollections.observableArrayList();
-			//System.out.println(idRecipe);
-			comments.addAll(facade.showComment(idRecipe));
+	}
 
-			return comments;
+	private ObservableList<Commentary> getComment() {
 
-		}
+		ObservableList<Commentary> comments = FXCollections.observableArrayList();
+		comments.addAll(facade.showComment(idRecipe));
+		return comments;
 
-		public void setComment(ArrayList<Commentary> listcomment){
+	}
 
+	public void setComment(ArrayList<Commentary> listcomment) {
 
 //			for (Commentary c : listcomment) {
-	//
+		//
 //				if (c.getName() != null) {
-	//
+		//
 //					this.cookingSteps.getItems().add(numberStep + ". " + c.getName());
 //					this.cookingSteps.getItems().add(c.getDescription());
-	//
+		//
 //				} else {
-	//
+		//
 //					this.cookingSteps.getItems().add(numberStep + ". " + c.getDescription());
-	//
+		//
 //				}
-	//
+		//
 //				this.cookingSteps.getItems().add(""); // skip a line between each step
 //				numberStep++;
-			}
+	}
 
-
-
-	/*	public void showComment(Event e){
-
-			this.setComment(facade.showComment(1));
-		}
-		*/
+	/*
+	 * public void showComment(Event e){
+	 * 
+	 * this.setComment(facade.showComment(1)); }
+	 */
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
