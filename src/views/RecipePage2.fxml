@@ -5,7 +5,12 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -32,6 +37,34 @@
                   <Font name="System Bold" size="30.0" />
                </font>
             </Text>
+            <HBox layoutX="1408.0" layoutY="216.0" prefHeight="76.0" prefWidth="189.0" spacing="20.0">
+               <children>
+                  <Pane prefHeight="76.0" prefWidth="79.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
+                     <children>
+                        <ImageView fx:id="addToFavorite" fitHeight="56.0" fitWidth="73.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../asset/image/add-to-favorites.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="76.0" prefWidth="80.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
+                     <children>
+                        <ImageView fx:id="addToCart" fitHeight="56.0" fitWidth="59.0" layoutX="9.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../asset/image/add-to-cart.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <effect>
+                        <DropShadow />
+                     </effect>
+                  </Pane>
+               </children>
+            </HBox>
          </children>
       </AnchorPane>
 
