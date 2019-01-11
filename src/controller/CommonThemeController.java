@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.input.MouseEvent;
@@ -35,6 +36,33 @@ public class CommonThemeController implements Initializable {
 	private HBox randomMenu;
 	@FXML
 	private HBox shoppingList;
+	
+	@FXML
+	private Button buttonTest;
+	
+	public void test(Event event) {
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipePage.fxml"));
+
+			root = loader.load();
+			
+			RecipeController c = loader.getController();
+			c.setIdRecipe(1);
+			c.consultRecipe(null);
+
+			Scene scene = new Scene(root, 1920, 1080);
+
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
 	// Event Listener on HBox[#home].onMousePressed
 	// Event Listener on HBox[#advancedSearch].onMousePressed
