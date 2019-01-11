@@ -8,6 +8,7 @@ public class Recipe {
 	private int nbPersRecipe;
 	private String image;
 	private int idCourse;
+	private int difficulty;
 
 	public int getIdRecipe() {
 		return idRecipe;
@@ -55,6 +56,14 @@ public class Recipe {
 
 	public void setIdCourse(int idCourse) {
 		this.idCourse = idCourse;
+	}
+
+	public int getDifficulty() {
+		return difficulty;
+	}
+
+	public void setDifficulty(int difficulty) {
+		this.difficulty = difficulty;
 	}
 
 }

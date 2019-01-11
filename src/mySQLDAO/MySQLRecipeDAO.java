@@ -43,6 +43,8 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		recipe.setNbPersRecipe(resultSet.getInt("nbPersoRecipe"));
 		recipe.setPreparationTime(resultSet.getInt("preparationTime"));
 		recipe.setIdCourse(resultSet.getInt("idCourse"));
+		recipe.setDifficulty(resultSet.getInt("difficulty"));
+		recipe.setImage(resultSet.getString("image"));
 
 		return recipe;
 	}

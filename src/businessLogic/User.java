@@ -109,4 +109,18 @@ public class User {
 		this.tabRandomMenu[2]=dessert;
 	}
 	
+	public Recipe getRandomStarter() {
+        return this.tabRandomMenu[0];
+    }
+	
+	public Recipe getRandomMain() {
+        return this.tabRandomMenu[1];
+    }
+	
+	public Recipe getRandomDessert() {
+        return this.tabRandomMenu[2];
+    }
+	
+	
+	
 }

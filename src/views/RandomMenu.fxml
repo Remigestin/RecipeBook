@@ -10,14 +10,14 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RandomMenuController">
    <children>
       <fx:include source="CommonTheme.fxml" />
       <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="800.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;" styleClass="menuTabs">
          <children>
             <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Random Menu" />
             <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-            <Pane layoutX="107.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+            <Pane layoutX="105.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
                   <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Starter">
@@ -41,11 +41,6 @@
                      </image>
                   </ImageView>
                   <Label fx:id="timeStarter" layoutX="66.0" layoutY="115.0" text="&lt;time&gt;">
-                     <font>
-                        <Font size="19.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="133.0" layoutY="115.0" prefHeight="28.0" prefWidth="39.0" text="min">
                      <font>
                         <Font size="19.0" />
                      </font>
