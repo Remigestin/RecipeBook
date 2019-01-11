@@ -105,7 +105,14 @@ public class CommonThemeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
+		
 		this.setUsername(User.getSession().getUsername());
 	}
+	
+	 @FXML
+	    void logout(Event event) {
+		 User.setSession(null);
+		 this.switchToNewPage(event, "/views/LoginPage.fxml");
+
+	    }
 }
