@@ -62,7 +62,7 @@ public class CommonThemeController implements ControllerInterface {
 				break;
 	
 			case "randomMenu":
-				newPage = "/views/RandomMenu.fxml";
+				// newPage = "/views/RandomMenu.fxml";
 				break;
 	
 			case "shoppingList":
@@ -89,7 +89,7 @@ public class CommonThemeController implements ControllerInterface {
 			root = loader.load();
 
 			ControllerInterface newController = loader.getController();
-			//newController.setUsername(username.getText());
+			newController.setUsername(username.getText());
 
 			Scene scene = new Scene(root, 1920, 1080);
 

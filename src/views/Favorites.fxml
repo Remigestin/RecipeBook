@@ -1,12 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FavoritesController">
    <children>
       <fx:include source="CommonTheme.fxml" />
+      <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1000.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
+         <children>
+            <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Favorites" />
+            <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
+            <TextArea fx:id="text" layoutX="129.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
