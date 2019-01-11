@@ -60,6 +60,7 @@ public class FavoritesController implements Initializable {
     @FXML
     void addFavoriteRecipe(ActionEvent event) {
     	favorites = facade.addFavoriteRecipe(User.getSession().getId(),idRecipe);
+
     }
 
   //in order to test
