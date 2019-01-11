@@ -15,7 +15,7 @@ import exception.DAOException;
 
 public class MySQLCommentDAO extends AbstractCommentDAO {
 
-	private static final String SQL_CREATE_COMMENT = "INSERT INTO comment VALUES (3,null, ? ,1,1);";
+	private static final String SQL_CREATE_COMMENT = "INSERT INTO comment VALUES (4,null, ? ,1,1);";
 	private static final String SQL_SHOW_COMMENT = "SELECT * FROM comment	WHERE idRecipe = ?";
 	@Override
 	public void createComment(String text) throws DAOException {
@@ -61,7 +61,7 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
 			PreparedStatement st = c.prepareStatement(SQL_SHOW_COMMENT);
-			st.setInt(1, 1);
+			st.setInt(1, idRecipe);
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				Commentary tmp = null;
@@ -73,14 +73,14 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 			throw new DAOException(e);
 }
 
-		return null;
+		return commentlist;
 	}
 
 	private static Commentary map(ResultSet resultSet) throws SQLException {
 		Commentary comment = new Commentary();
 
 		comment.setIdComment(resultSet.getInt("idcomment"));
-		comment.setText(resultSet.getString("description"));
+		comment.setText(resultSet.getString("text"));
 
 		return comment;
 }

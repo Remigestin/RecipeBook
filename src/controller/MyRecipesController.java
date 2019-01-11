@@ -89,7 +89,9 @@ public class MyRecipesController implements Initializable {
 
 			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
 			int idRecipe = this.getIdRecipeByRowNumber(rowNumber);
+			controller.setIdRecipe(idRecipe);
 			controller.consultRecipe(idRecipe);
+
 
 			Scene scene = new Scene(root, 1920, 1080);
 

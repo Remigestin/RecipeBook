@@ -1,6 +1,6 @@
 package controller;
 
-import java.awt.event.ActionEvent;
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -9,6 +9,9 @@ import businessLogic.Commentary;
 import businessLogic.CookingStep;
 import businessLogic.Recipe;
 import facade.RecipeFacade;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -17,6 +20,7 @@ import javafx.scene.control.Label;
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -47,23 +51,31 @@ public class RecipeController implements Initializable {
 	@FXML
 	private ImageView addToCart;
 
-	 @FXML
+	private int idRecipe;
+
+	public void setIdRecipe(int idRecipe) {
+		this.idRecipe = idRecipe;
+	}
+
+
+
+	@FXML
 	    private TextArea textaddcomment;
 
 	    @FXML
 	    private Button buttonadd;
 
 	    @FXML
-	    private TableView<?> tableView;
+	    private TableView<Commentary> tableView;
 
 	    @FXML
-	    private TableColumn<?, ?> User;
+	    private TableColumn<Commentary, String> ColoneUser;
 
 	    @FXML
-	    private TableColumn<?, ?> Date;
+	    private TableColumn<Commentary, String> Date;
 
 	    @FXML
-	    private TableColumn<?, ?> Text;
+	    private TableColumn<Commentary, String> Text;
 
 	/* attributes */
 	private RecipeFacade facade = RecipeFacade.getInstance();
@@ -140,6 +152,11 @@ public class RecipeController implements Initializable {
 		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
 
 
+		ColoneUser.setCellValueFactory(new PropertyValueFactory<Commentary, String>("idUser"));
+		Date.setCellValueFactory(new PropertyValueFactory<Commentary, String>("date"));
+		Text.setCellValueFactory(new PropertyValueFactory<Commentary, String>("text"));
+		tableView.setItems(getComment());
+
 	}
 
 	// Event Listener on Button[#buttonadd].onAction
@@ -149,6 +166,16 @@ public class RecipeController implements Initializable {
 			facade.createComment(textaddcomment.getText());
 			textaddcomment.clear();
 			System.out.println("est ce que je passe dans cette fonction");
+		}
+
+		private ObservableList<Commentary> getComment() {
+
+			ObservableList<Commentary> comments = FXCollections.observableArrayList();
+			//System.out.println(idRecipe);
+			comments.addAll(facade.showComment(idRecipe));
+
+			return comments;
+
 		}
 
 		public void setComment(ArrayList<Commentary> listcomment){

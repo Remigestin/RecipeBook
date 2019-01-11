@@ -20,8 +20,8 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 
 public class CommonThemeController implements Initializable {
-	
-	
+
+
 	@FXML
 	private Label username;
 	@FXML
@@ -36,10 +36,10 @@ public class CommonThemeController implements Initializable {
 	private HBox randomMenu;
 	@FXML
 	private HBox shoppingList;
-	
+
 	@FXML
 	private Button buttonTest;
-	
+
 	public void test(Event event) {
 		Parent root;
 
@@ -47,10 +47,10 @@ public class CommonThemeController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipePage.fxml"));
 
 			root = loader.load();
-			
-			// test 
+
+			// test
 			RecipeController c = loader.getController();
-			c.consultRecipe(1);
+
 
 			Scene scene = new Scene(root, 1920, 1080);
 
@@ -74,29 +74,29 @@ public class CommonThemeController implements Initializable {
 	public void redirectToNewTab(MouseEvent event) {
 
 		String newPage = null;
-		
+
 		switch (((HBox)event.getSource()).getId()) {
 
 			case "home":
 				newPage = "/views/HomePage.fxml";
 				break;
-	
+
 			case "advancedSearch":
 				// newPage = "/views/AdvancedSearch.fxml";
 				break;
-	
+
 			case "myRecipes":
 				newPage = "/views/MyRecipes.fxml";
 				break;
-	
+
 			case "favorite":
 				newPage = "/views/Favorites.fxml";
 				break;
-	
+
 			case "randomMenu":
 				newPage = "/views/RandomMenu.fxml";
 				break;
-	
+
 			case "shoppingList":
 				// newPage = "/views/ShoppingList.fxml";
 				break;
@@ -106,12 +106,12 @@ public class CommonThemeController implements Initializable {
 	}
 
 	public void setUsername(String username) {
-		
+
 		this.username.setText(username);
 	}
-	
+
 	public void switchToNewPage(Event event, String newPage) {
-		
+
 		Parent root;
 
 		try {
@@ -133,10 +133,10 @@ public class CommonThemeController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		this.setUsername(User.getSession().getUsername());
 	}
-	
+
 	 @FXML
 	    void logout(Event event) {
 		 User.setSession(null);
