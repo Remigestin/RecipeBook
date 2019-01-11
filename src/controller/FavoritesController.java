@@ -6,9 +6,11 @@ import java.util.ResourceBundle;
 
 import businessLogic.Recipe;
 import businessLogic.User;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 
 public class FavoritesController implements Initializable {
@@ -18,6 +20,14 @@ public class FavoritesController implements Initializable {
 	
     @FXML
     private TextArea text;
+
+    //in order to test
+    @FXML
+    private Button add;
+    
+  //in order to test
+    @FXML
+    private Button delete;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -31,6 +41,18 @@ public class FavoritesController implements Initializable {
 		text.setText(s);
 		
 	}
+	
+	//in order to test
+    @FXML
+    void addFavoriteRecipe(ActionEvent event) {
+    	//to do
+    }
+
+  //in order to test
+    @FXML
+    void deleteFavoriteRecipe(ActionEvent event) {
+    	//to do
+    }
 	
 
 }
