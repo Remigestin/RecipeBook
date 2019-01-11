@@ -7,4 +7,5 @@ public abstract class AbstractFactory {
 	public abstract AbstractUserDAO createUserDAO();
 	public abstract AbstractRecipeDAO createRecipeDAO();
 	public abstract AbstractCookingStepDAO createCookingStepDAO();
+	public abstract AbstractCourseCategoryDAO createCourseCategoryStepDAO();
 }
