@@ -21,7 +21,6 @@ import javafx.scene.input.MouseEvent;
 
 public class CommonThemeController implements Initializable {
 
-
 	@FXML
 	private Label username;
 	@FXML
@@ -36,34 +35,7 @@ public class CommonThemeController implements Initializable {
 	private HBox randomMenu;
 	@FXML
 	private HBox shoppingList;
-
-	@FXML
-	private Button buttonTest;
-
-	public void test(Event event) {
-		Parent root;
-
-		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipePage.fxml"));
-
-			root = loader.load();
-
-			// test
-			RecipeController c = loader.getController();
-
-
-			Scene scene = new Scene(root, 1920, 1080);
-
-			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
-			newStage.setScene(scene);
-			newStage.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
+	 
 	// Event Listener on HBox[#home].onMousePressed
 	// Event Listener on HBox[#advancedSearch].onMousePressed
 	// Event Listener on HBox[#myRecipes].onMousePressed
@@ -75,31 +47,31 @@ public class CommonThemeController implements Initializable {
 
 		String newPage = null;
 
-		switch (((HBox)event.getSource()).getId()) {
+		switch (((HBox) event.getSource()).getId()) {
 
-			case "home":
-				newPage = "/views/HomePage.fxml";
-				break;
+		case "home":
+			newPage = "/views/HomePage.fxml";
+			break;
 
-			case "advancedSearch":
-				// newPage = "/views/AdvancedSearch.fxml";
-				break;
+		case "advancedSearch":
+			// newPage = "/views/AdvancedSearch.fxml";
+			break;
 
-			case "myRecipes":
-				newPage = "/views/MyRecipes.fxml";
-				break;
+		case "myRecipes":
+			newPage = "/views/MyRecipes.fxml";
+			break;
 
-			case "favorite":
-				newPage = "/views/Favorites.fxml";
-				break;
+		case "favorite":
+			newPage = "/views/Favorites.fxml";
+			break;
 
-			case "randomMenu":
-				newPage = "/views/RandomMenu.fxml";
-				break;
+		case "randomMenu":
+			newPage = "/views/RandomMenu.fxml";
+			break;
 
-			case "shoppingList":
-				// newPage = "/views/ShoppingList.fxml";
-				break;
+		case "shoppingList":
+			// newPage = "/views/ShoppingList.fxml";
+			break;
 		}
 
 		this.switchToNewPage(event, newPage);
@@ -137,10 +109,10 @@ public class CommonThemeController implements Initializable {
 		this.setUsername(User.getSession().getUsername());
 	}
 
-	 @FXML
-	    void logout(Event event) {
-		 User.setSession(null);
-		 this.switchToNewPage(event, "/views/LoginPage.fxml");
+	@FXML
+	void logout(Event event) {
+		User.setSession(null);
+		this.switchToNewPage(event, "/views/LoginPage.fxml");
 
-	    }
+	}
 }

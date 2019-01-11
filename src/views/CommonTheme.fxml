@@ -15,7 +15,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommonThemeController">
    <children>
-      <ImageView fitHeight="209.0" fitWidth="288.0" layoutX="57.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="209.0" fitWidth="288.0" layoutX="57.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
          <image>
             <Image url="@../../asset/image/logo.png" />
          </image>
@@ -32,7 +32,7 @@
       </Button>
       <VBox layoutX="43.0" layoutY="193.0" maxHeight="798.0" maxWidth="500.0" opacity="0.76" prefHeight="798.0" prefWidth="204.0" spacing="20.0" style="-fx-background-color: ffe68c;" styleClass="menuTabs">
          <children>
-            <HBox fx:id="home" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0">
+            <HBox fx:id="home" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -70,7 +70,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Line>
-            <HBox fx:id="myRecipes" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0">
+            <HBox fx:id="myRecipes" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,7 +89,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Line>
-            <HBox fx:id="favorite" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0">
+            <HBox fx:id="favorite" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -108,7 +108,7 @@
                   <Insets left="30.0" />
                </VBox.margin>
             </Line>
-            <HBox fx:id="randomMenu" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0">
+            <HBox fx:id="randomMenu" onMousePressed="#redirectToNewTab" prefHeight="70.0" prefWidth="348.0" spacing="15.0" style="-fx-cursor: hand;">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="88.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -174,13 +174,12 @@
                   <Insets />
                </HBox.margin>
             </Label>
-            <ImageView fitHeight="58.0" fitWidth="52.0" onMousePressed="#logout" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="58.0" fitWidth="52.0" onMousePressed="#logout" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                <image>
                   <Image url="@../../asset/image/signOut.png" />
                </image>
             </ImageView>
          </children>
       </HBox>
-      <Button fx:id="buttonTest" layoutX="372.0" layoutY="24.0" mnemonicParsing="false" onAction="#test" text="Button" />
    </children>
 </AnchorPane>
