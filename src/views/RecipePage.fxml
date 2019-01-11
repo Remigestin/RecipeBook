@@ -29,7 +29,7 @@
             <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1176.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
                <children>
                   <Label fx:id="nameRecipe" layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="&lt;Name Recipe&gt;" />
-                  <Label fx:id="mainCourse" layoutX="108.0" layoutY="58.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 50; -fx-background-radius: 50;" text="&lt;Main Course&gt;">
+                  <Label fx:id="courseCategory" layoutX="108.0" layoutY="58.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 50; -fx-background-radius: 50;" text="&lt;Course Category&gt;">
                      <font>
                         <Font name="System Bold" size="27.0" />
                      </font>

@@ -24,7 +24,7 @@ public class RecipeController implements Initializable {
 	@FXML
 	private Label nameRecipe;
 	@FXML
-	private Label mainCourse;
+	private Label courseCategory;
 	@FXML
 	private TextArea ingredients;
 	@FXML
@@ -56,8 +56,8 @@ public class RecipeController implements Initializable {
 		this.nameRecipe.setText(nameRecipe);
 	}
 
-	public void setMainCourse(String mainCourse) {
-		this.mainCourse.setText(mainCourse);
+	public void setCourseCategory(String courseCategory) {
+		this.courseCategory.setText(courseCategory);
 	}
 
 	public void setRating(String rating) {
@@ -113,12 +113,15 @@ public class RecipeController implements Initializable {
 		/* find recipe details and set them */
 		Recipe recipe = facade.findRecipe(idRecipe);
 
+		this.setNameRecipe(recipe.getNameRecipe());
 		this.setNumberPeople(recipe.getNbPersRecipe());
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
 		// this.setDifficulty(recipe.getDifficulty());
 		// this.setRating(recipe.getRating());
 
 		/* find main course and set it */
+		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
+		
 
 	}
 

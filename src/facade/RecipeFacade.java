@@ -42,7 +42,10 @@ public class RecipeFacade {
 
 	public String findCourseCategoryName(int idCourse) {
 
-		return "";
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
+
+		return recipeDAO.findCourseCategory(idCourse);
 
 	}
 }
