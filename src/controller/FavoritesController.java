@@ -66,7 +66,7 @@ public class FavoritesController implements Initializable {
   //in order to test
     @FXML
     void deleteFavoriteRecipe(ActionEvent event) {
-    	//to do
+    	facade.removeFavoriteRecipe(User.getSession().getId(),idRecipe);
     }
 	
 
