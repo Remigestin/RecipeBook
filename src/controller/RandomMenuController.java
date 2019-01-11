@@ -40,6 +40,8 @@ public class RandomMenuController implements Initializable {
 		Image starterImg = new Image(starter.getImage());
 		this.imageStarter.setImage(starterImg);
 		this.lvlStarter.setText(Integer.toString(starter.getDifficulty()) + "/5");
+		
+		
 
 	}
 
