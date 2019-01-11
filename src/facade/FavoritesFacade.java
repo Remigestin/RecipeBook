@@ -40,7 +40,7 @@ public class FavoritesFacade {
 		User.getSession().setFavoriteList(newFavoritesList);
 		
 		return User.getSession().getFavoriteList();
-		//to do
+		
 	}
 	
 	public ArrayList<Recipe> removeFavoriteRecipe(int idUser, int idRecipe){
@@ -52,7 +52,24 @@ public class FavoritesFacade {
 		//make the changes into the DB 
 		userDAO.removeFavoriteRecipe(idUser, idRecipe);
 		
+		//add the recipe in the user's favorites list
+		ArrayList<Recipe> favoritesList = User.getSession().getFavoriteList();
+		Recipe r = findRecipe(favoritesList,idRecipe);
+		favoritesList.remove(r);
+		
 		return null;
-		//to do
+		
+	}
+	
+	public Recipe findRecipe(ArrayList<Recipe> favorites, int idRecipe) {
+		
+		boolean found = false;
+		int i=0;
+		
+		while(!found) {
+			found = (favorites.get(i).getIdRecipe() == idRecipe);
+		}
+		
+		return favorites.get(i);
 	}
 }
