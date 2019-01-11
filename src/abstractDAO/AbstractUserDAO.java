@@ -7,5 +7,6 @@ public abstract class AbstractUserDAO {
 
 	public abstract User login(String username, String password) throws DAOException;
 	public abstract void addFavoriteRecipe(int idUser, int idRecipe)throws DAOException;
+	public abstract void removeFavoriteRecipe(int idUser, int idRecipe)throws DAOException;
 
 }

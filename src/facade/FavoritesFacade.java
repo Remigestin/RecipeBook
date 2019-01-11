@@ -39,11 +39,19 @@ public class FavoritesFacade {
 		newFavoritesList.add(r);
 		User.getSession().setFavoriteList(newFavoritesList);
 		
-		return null;
+		return User.getSession().getFavoriteList();
 		//to do
 	}
 	
 	public ArrayList<Recipe> removeFavoriteRecipe(int idUser, int idRecipe){
+		
+		//take the user DAO
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractUserDAO userDAO = f.createUserDAO();
+		
+		//make the changes into the DB 
+		userDAO.removeFavoriteRecipe(idUser, idRecipe);
+		
 		return null;
 		//to do
 	}
