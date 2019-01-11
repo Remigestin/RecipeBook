@@ -62,7 +62,7 @@ public class CommonThemeController implements ControllerInterface {
 				break;
 	
 			case "randomMenu":
-				// newPage = "/views/RandomMenu.fxml";
+				newPage = "/views/RandomMenu.fxml";
 				break;
 	
 			case "shoppingList":

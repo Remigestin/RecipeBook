@@ -13,7 +13,7 @@
 <AnchorPane stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <fx:include source="CommonTheme.fxml" />
-      <Pane layoutX="327.0" layoutY="103.0" maxWidth="2084.0" prefHeight="800.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;" styleClass="menuTabs">
+      <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="800.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;" styleClass="menuTabs">
          <children>
             <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Random Menu" />
             <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
