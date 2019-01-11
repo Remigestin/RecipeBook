@@ -12,7 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 
-public class FooterController implements ControllerInterface {
+public class FooterController  {
 
 	@FXML
 	private Text aboutUs;
@@ -31,7 +31,6 @@ public class FooterController implements ControllerInterface {
 		}
 	}
 
-	@Override
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -48,9 +47,5 @@ public class FooterController implements ControllerInterface {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	@Override
-	public void setUsername(String username) {
 	}
 }

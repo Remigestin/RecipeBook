@@ -13,7 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
-public class AdminModeController implements ControllerInterface {
+public class AdminModeController {
 	@FXML
 	private CommonThemeAdminController commonThemeAdminController;
 
@@ -57,7 +57,6 @@ public class AdminModeController implements ControllerInterface {
 		this.switchToNewPage(event, newPage);
 	}
 
-	@Override
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -67,9 +66,9 @@ public class AdminModeController implements ControllerInterface {
 
 			root = loader.load();
 
-			ControllerInterface newController = loader.getController();
-			String username = this.commonThemeAdminController.getUsername();
-			newController.setUsername(username);
+			//ControllerInterface newController = loader.getController();
+			//String username = this.commonThemeAdminController.getUsername();
+			//newController.setUsername(username);
 
 			Scene scene = new Scene(root, 1920, 1080);
 
@@ -84,7 +83,6 @@ public class AdminModeController implements ControllerInterface {
 
 	}
 
-	@Override
 	public void setUsername(String username) {
 		this.commonThemeAdminController.setUsername(username);
 	}

@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 
 import javafx.scene.input.MouseEvent;
 
-public class CommonThemeAdminController implements ControllerInterface {
+public class CommonThemeAdminController {
 	@FXML
 	private Label username;
 	@FXML
@@ -82,12 +82,10 @@ public class CommonThemeAdminController implements ControllerInterface {
 		return this.username.getText();
 	}
 
-	@Override
 	public void setUsername(String username) {
 		this.username.setText(username);
 	}
 	
-	@Override
 	public void switchToNewPage(Event event, String newPage) {
 		
 		Parent root;
@@ -97,8 +95,8 @@ public class CommonThemeAdminController implements ControllerInterface {
 
 			root = loader.load();
 
-			ControllerInterface newController = loader.getController();
-			newController.setUsername(username.getText());
+			//ControllerInterface newController = loader.getController();
+			//newController.setUsername(username.getText());
 
 			Scene scene = new Scene(root, 1920, 1080);
 

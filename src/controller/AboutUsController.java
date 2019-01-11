@@ -13,7 +13,7 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 
-public class AboutUsController implements ControllerInterface {
+public class AboutUsController {
 	@FXML
 	private Button login;
 	@FXML
@@ -31,13 +31,6 @@ public class AboutUsController implements ControllerInterface {
 		}
 	}
 
-	@Override
-	public void setUsername(String username) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;

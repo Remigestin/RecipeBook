@@ -20,7 +20,7 @@ import facade.LoginPageFacade;
 import javafx.event.Event;
 import javafx.scene.control.PasswordField;
 
-public class LoginPageController implements ControllerInterface {
+public class LoginPageController {
 
 	@FXML
 	private TextField username;
@@ -63,7 +63,6 @@ public class LoginPageController implements ControllerInterface {
 		alert.showAndWait();
 	}
 
-	@Override
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -74,10 +73,7 @@ public class LoginPageController implements ControllerInterface {
 
 			root = loader.load();
 
-			ControllerInterface controller = loader.getController();
-			User user = User.getSession();
-
-			controller.setUsername(user.getUsername());
+			//ControllerInterface controller = loader.getController();
 
 			Scene scene = new Scene(root, 1920, 1080);
 
@@ -91,7 +87,4 @@ public class LoginPageController implements ControllerInterface {
 		}
 	}
 
-	@Override
-	public void setUsername(String username) {
-	}
 }

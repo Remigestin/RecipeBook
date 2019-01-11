@@ -1,10 +1,14 @@
 package controller;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import businessLogic.User;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.scene.Node;
@@ -14,7 +18,7 @@ import javafx.scene.control.Label;
 
 import javafx.scene.input.MouseEvent;
 
-public class CommonThemeController implements ControllerInterface {
+public class CommonThemeController implements Initializable {
 	
 	
 	@FXML
@@ -73,12 +77,11 @@ public class CommonThemeController implements ControllerInterface {
 		this.switchToNewPage(event, newPage);
 	}
 
-	@Override
 	public void setUsername(String username) {
+		System.out.println("c moi :"+username);
 		this.username.setText(username);
 	}
 	
-	@Override
 	public void switchToNewPage(Event event, String newPage) {
 		
 		Parent root;
@@ -87,9 +90,6 @@ public class CommonThemeController implements ControllerInterface {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource(newPage));
 
 			root = loader.load();
-
-			ControllerInterface newController = loader.getController();
-			newController.setUsername(username.getText());
 
 			Scene scene = new Scene(root, 1920, 1080);
 
@@ -101,5 +101,11 @@ public class CommonThemeController implements ControllerInterface {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		// TODO Auto-generated method stub
+		this.setUsername(User.getSession().getUsername());
 	}
 }
