@@ -18,7 +18,8 @@ public class MySQLUserDAO extends AbstractUserDAO {
 
 	// sql
 	private static final String SQL_FIND_BY_USERNAME_AND_PASSWORD = "Select * FROM user WHERE username = ? AND password = ?";
-
+	private static final String SQL_INSERT_NEW_FAVORITE_RECIPE = "INSERT INTO favoritelist VALUES (?,?)";
+	
 	// actions
 	@Override
 	public User login(String username, String password) throws DAOException {
@@ -55,7 +56,25 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		}
 		return user;
 	}
-
+	
+	@Override
+	public void addFavoriteRecipe(int idUser, int idRecipe) throws DAOException {
+		
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_INSERT_NEW_FAVORITE_RECIPE);
+			st.setInt(1, idUser);
+			st.setInt(2, idRecipe);
+			st.executeUpdate();
+			
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		
+	}
+	
+	
 	public static void main(String args[]) {
 		AbstractUserDAO dao = new MySQLUserDAO();
 
@@ -72,4 +91,6 @@ public class MySQLUserDAO extends AbstractUserDAO {
 	public static MySQLUserDAO getInstance() {
 		return MySQLUserDAOHolder.userDAO;
 	}
+
+	
 }

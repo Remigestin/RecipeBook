@@ -2,7 +2,10 @@ package facade;
 
 import java.util.ArrayList;
 
+import abstractDAO.AbstractUserDAO;
 import businessLogic.Recipe;
+import factory.AbstractFactory;
+import factory.MySQLFactory;
 
 public class FavoritesFacade {
 	
@@ -17,6 +20,14 @@ public class FavoritesFacade {
 	
 	
 	public ArrayList<Recipe> addFavoriteRecipe(int idUser, int idRecipe){
+		
+		//take the user DAO
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractUserDAO userDAO = f.createUserDAO();
+		
+		//make the changes into the DB 
+		userDAO.addFavoriteRecipe(idUser, idRecipe);
+		
 		return null;
 		//to do
 	}

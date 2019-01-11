@@ -16,8 +16,8 @@
             <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Favorites" />
             <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
             <TextArea fx:id="text" layoutX="129.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="add" layoutX="409.0" layoutY="217.0" mnemonicParsing="false" text="add a favorite recipe" />
-            <Button fx:id="delete" layoutX="409.0" layoutY="279.0" mnemonicParsing="false" text="delete a favorite recipe" />
+            <Button fx:id="add" layoutX="409.0" layoutY="217.0" mnemonicParsing="false" onAction="#addFavoriteRecipe" text="add a favorite recipe" />
+            <Button fx:id="delete" layoutX="409.0" layoutY="279.0" mnemonicParsing="false" onAction="#deleteFavoriteRecipe" text="delete a favorite recipe" />
          </children>
       </Pane>
    </children>
