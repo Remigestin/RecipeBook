@@ -39,4 +39,10 @@ public class RecipeFacade {
 
 		return recipeDAO.findRecipe(idRecipe);
 	}
+
+	public String findCourseCategoryName(int idCourse) {
+
+		return "";
+
+	}
 }
