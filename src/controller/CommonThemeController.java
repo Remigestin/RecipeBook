@@ -48,9 +48,9 @@ public class CommonThemeController implements Initializable {
 
 			root = loader.load();
 			
+			// test 
 			RecipeController c = loader.getController();
-			c.setIdRecipe(1);
-			c.consultRecipe(null);
+			c.consultRecipe(1);
 
 			Scene scene = new Scene(root, 1920, 1080);
 
