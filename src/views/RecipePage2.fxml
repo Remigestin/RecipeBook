@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<ScrollPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecipeController">
+   <content>
+      <AnchorPane>
+         <children>
+            <fx:include source="CommonTheme.fxml" />
+            <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
