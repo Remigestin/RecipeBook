@@ -1,18 +1,26 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 import businessLogic.Recipe;
 import businessLogic.User;
+import facade.RecipeFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class MyRecipesController implements Initializable {
 
@@ -30,6 +38,8 @@ public class MyRecipesController implements Initializable {
 
 	@FXML
 	private TableColumn<Recipe, Integer> difficulty;
+
+	private RecipeFacade facade = RecipeFacade.getInstance();
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -53,10 +63,44 @@ public class MyRecipesController implements Initializable {
 	}
 
 	@FXML
-	void test(MouseEvent event) {
+	void consultRecipe(Event event) {
 
 		System.out.print(((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get());
 
+		this.switchToNewPage(event, "/views/RecipePage.fxml");
+	}
+
+	public int getIdRecipeByRowNumber(int rowNumber) {
+
+		return User.getSession().getCreateList().get(rowNumber).getIdRecipe();
+
+	}
+
+	public void switchToNewPage(Event event, String newPage) {
+
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(newPage));
+
+			root = loader.load();
+
+			RecipeController controller = loader.getController();
+
+			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
+			int idRecipe = this.getIdRecipeByRowNumber(rowNumber);
+			controller.consultRecipe(idRecipe);
+
+			Scene scene = new Scene(root, 1920, 1080);
+
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 }

@@ -17,7 +17,7 @@
          <children>
             <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="My Recipes" />
             <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-            <TableView fx:id="listRecipes" layoutX="158.0" layoutY="143.0" onMousePressed="#test" prefHeight="453.0" prefWidth="939.0" stylesheets="@myRecipes.css">
+            <TableView fx:id="listRecipes" layoutX="158.0" layoutY="143.0" onMousePressed="#consultRecipe" prefHeight="453.0" prefWidth="939.0" stylesheets="@myRecipes.css">
               <columns>
                 <TableColumn fx:id="recipeName" prefWidth="172.3333740234375" text="Recipe Name" />
                   <TableColumn fx:id="rating" prefWidth="75.0" text="Rating" />
