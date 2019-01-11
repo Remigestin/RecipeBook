@@ -19,6 +19,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	// sql
 	private static final String SQL_FIND_FAVORITES_BY_IDUSER = "Select * FROM favoritelist F JOIN recipe R ON R.idrecipe = F.idrecipe WHERE F.iduser = ?";
 	private static final String SQL_FIND_CREATES_BY_IDUSER = "Select * FROM recipe WHERE iduser = ?";
+	private static final String SQL_FIND_RECIPE_BY_IDRECIPE = "Select * FROM recipe WHERE idRecipe = ?";
 
 	/* Private constructor */
 	private MySQLRecipeDAO() {
@@ -83,6 +84,28 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		recipe.setNameRecipe(resultSet.getString("nameRecipe"));
 		recipe.setNbPersRecipe(resultSet.getInt("nbPersoRecipe"));
 		recipe.setPreparationTime(resultSet.getInt("preparationTime"));
+
+		return recipe;
+	}
+
+	@Override
+	public Recipe findRecipe(int idRecipe) {
+		
+		Recipe recipe = new Recipe();
+
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_FIND_RECIPE_BY_IDRECIPE);
+			st.setInt(1, idRecipe);
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				recipe = map(rs);
+			}
+			
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
 
 		return recipe;
 	}

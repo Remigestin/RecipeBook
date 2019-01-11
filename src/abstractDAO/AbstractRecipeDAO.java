@@ -11,4 +11,6 @@ public abstract class AbstractRecipeDAO {
 
 	public abstract ArrayList<Recipe> loadCreateRecipe(int idUser);
 
+	public abstract Recipe findRecipe(int idRecipe);
+
 }
