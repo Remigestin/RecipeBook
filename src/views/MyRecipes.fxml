@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.net.URL?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -49,6 +50,7 @@
                         <DropShadow />
                      </effect>
                   </Pane>
+                  <ComboBox fx:id="filter" layoutX="107.0" layoutY="58.0" onAction="#filterRecipesByCourseCategory" prefHeight="25.0" prefWidth="179.0" promptText="filter by course category" />
                </children>
             </Pane>
          </children>
