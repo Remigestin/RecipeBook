@@ -10,6 +10,8 @@ public abstract class AbstractRecipeDAO {
 	public abstract ArrayList<Recipe> loadFavoriteRecipe(int idUser);
 
 	public abstract ArrayList<Recipe> loadCreateRecipe(int idUser);
+	
+	public abstract ArrayList<Recipe> searchRecipes(String search);
 
 	public abstract Recipe findRecipe(int idRecipe);
 	

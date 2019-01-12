@@ -85,6 +85,10 @@ public class RecipeFacade {
 		return commentDAO.showcomment(idRecipe);
 	}
 	
+	public ArrayList<Recipe> searchRecipes(String search) {
+		return recipeDAO.searchRecipes(search);
+	}
+	
 	public boolean hasRatedRecipe(int idRecipe) {
 		return recipeDAO.findRate(User.getSession().getId(), idRecipe) != -1;
 	}
