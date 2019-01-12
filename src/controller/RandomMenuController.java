@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import businessLogic.Recipe;
 import businessLogic.User;
+import facade.RandomFacade;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -48,9 +49,11 @@ public class RandomMenuController implements Initializable {
 	private Label lvlDessert;
 	@FXML
 	private ImageView imageDessert;
+	
+	private RandomFacade randomFacade=  RandomFacade.getInstance();
+	
+	
 	@Override
-	
-	
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		User session = User.getSession();
 		Recipe starter = session.getRandomStarter();
@@ -84,8 +87,28 @@ public class RandomMenuController implements Initializable {
 
     @FXML
     public void changeAll(Event event) {
-    	
-
+    	randomFacade.changeRandomStarter();
+    	randomFacade.changeRandomMain();
+    	randomFacade.changeRandomDessert();
+    	initialize(null,null);
+    }
+    
+    @FXML
+    void changeRandomStarter(Event event) {
+    	randomFacade.changeRandomStarter();
+    	initialize(null,null);
+    }
+    
+    @FXML
+    void changeRandomMain(Event event) {
+    	randomFacade.changeRandomMain();
+    	initialize(null,null);
+    }
+    
+    @FXML
+    void changeRandomDessert(Event event) {
+    	randomFacade.changeRandomDessert();
+    	initialize(null,null);
     }
 
 }
