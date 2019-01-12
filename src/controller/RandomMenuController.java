@@ -26,8 +26,27 @@ public class RandomMenuController implements Initializable {
 	private ImageView imageStarter;
 	@FXML
 	private Button changeMain;
+	
+	@FXML
+	private Label nameMain;
+	@FXML
+	private Label timeMain;
+	@FXML
+	private Label lvlMain;
+	@FXML
+	private ImageView imageMain;
+	
 	@FXML
 	private Button changeDessert;
+	
+	@FXML
+	private Label nameDessert;
+	@FXML
+	private Label timeDessert;
+	@FXML
+	private Label lvlDessert;
+	@FXML
+	private ImageView imageDessert;
 	@Override
 	
 	
@@ -40,6 +59,22 @@ public class RandomMenuController implements Initializable {
 		Image starterImg = new Image(starter.getImage());
 		this.imageStarter.setImage(starterImg);
 		this.lvlStarter.setText(Integer.toString(starter.getDifficulty()) + "/5");
+		
+		Recipe main = session.getRandomMain();
+
+		this.timeMain.setText(Integer.toString(main.getPreparationTime()) + " min");
+		this.nameMain.setText(main.getNameRecipe());
+		Image mainImg = new Image(main.getImage());
+		this.imageMain.setImage(mainImg);
+		this.lvlMain.setText(Integer.toString(main.getDifficulty()) + "/5");
+		
+		Recipe dessert = session.getRandomDessert();
+
+		this.timeDessert.setText(Integer.toString(dessert.getPreparationTime()) + " min");
+		this.nameDessert.setText(dessert.getNameRecipe());
+		Image dessertImg = new Image(dessert.getImage());
+		this.imageDessert.setImage(dessertImg);
+		this.lvlDessert.setText(Integer.toString(dessert.getDifficulty()) + "/5");
 		
 		
 

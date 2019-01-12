@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +20,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RandomMenuController">
+<AnchorPane stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RandomMenuController">
    <children>
       <fx:include source="CommonTheme.fxml" />
       <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="800.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;" styleClass="menuTabs">
@@ -34,7 +42,7 @@
                   <Button fx:id="changeStarter" layoutX="62.0" layoutY="351.0" mnemonicParsing="false" text="Change it !" />
                   <Label fx:id="nameStarter" alignment="CENTER" layoutY="48.0" prefHeight="48.0" prefWidth="340.0" text="&lt;nameRecette&gt;" textAlignment="CENTER" textFill="#eb0b0b">
                      <font>
-                        <Font size="24.0" />
+                        <Font size="33.0" />
                      </font>
                   </Label>
                   <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
@@ -64,34 +72,6 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane layoutX="608.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                  <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Main Course">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                     <padding>
-                        <Insets left="10.0" right="10.0" />
-                     </padding>
-                  </Label>
-                  <Button fx:id="changeMain" layoutX="62.0" layoutY="350.0" mnemonicParsing="false" text="Change it !" />
-               </children>
-            </Pane>
-            <Pane layoutX="1089.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
-               <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                  <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Dessert">
-                     <font>
-                        <Font size="30.0" />
-                     </font>
-                     <padding>
-                        <Insets left="10.0" right="10.0" />
-                     </padding>
-                  </Label>
-                  <Button fx:id="changeDessert" layoutX="62.0" layoutY="353.0" mnemonicParsing="false" text="Change it !" />
-               </children>
-            </Pane>
             <Pane layoutX="1365.0" layoutY="30.0" prefHeight="76.0" prefWidth="79.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
                <children>
                   <ImageView fitHeight="56.0" fitWidth="73.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
@@ -103,6 +83,96 @@
                <effect>
                   <DropShadow />
                </effect>
+            </Pane>
+            <Pane layoutX="575.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                  <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Main Course">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="70.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="changeStarter1" layoutX="62.0" layoutY="351.0" mnemonicParsing="false" text="Change it !" />
+                  <Label fx:id="nameMain" alignment="CENTER" layoutY="48.0" prefHeight="48.0" prefWidth="340.0" text="&lt;nameRecette&gt;" textAlignment="CENTER" textFill="#eb0b0b">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/clock.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="timeMain" layoutX="66.0" layoutY="115.0" text="&lt;time&gt;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/biceps.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lvlMain" layoutX="248.0" layoutY="115.0" text="&lt;lvl&gt;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imageMain" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/poulet.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <Pane layoutX="1045.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
+                  <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Dessert">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
+                  <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="70.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="changeStarter11" layoutX="62.0" layoutY="351.0" mnemonicParsing="false" text="Change it !" />
+                  <Label fx:id="nameDessert" alignment="CENTER" layoutY="48.0" prefHeight="48.0" prefWidth="340.0" text="&lt;nameRecette&gt;" textAlignment="CENTER" textFill="#eb0b0b">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/clock.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="timeDessert" layoutX="66.0" layoutY="115.0" text="&lt;time&gt;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/biceps.png" />
+                     </image>
+                  </ImageView>
+                  <Label fx:id="lvlDessert" layoutX="248.0" layoutY="115.0" text="&lt;lvl&gt;">
+                     <font>
+                        <Font size="19.0" />
+                     </font>
+                  </Label>
+                  <ImageView fx:id="imageDessert" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/poulet.PNG" />
+                     </image>
+                  </ImageView>
+               </children>
             </Pane>
          </children>
       </Pane>
