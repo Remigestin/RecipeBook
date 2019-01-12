@@ -2,7 +2,6 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
@@ -31,26 +30,31 @@ public class MyRecipesController implements Initializable {
 	private ImageView createRecipe;
 
 	@FXML
-	private TableView<Recipe> listRecipes;
+	private TableView<RecipeWithButton> listRecipes;
 
 	@FXML
-	private TableColumn<Recipe, String> recipeName;
+	private TableColumn<RecipeWithButton, String> recipeName;
 
 	@FXML
-	private TableColumn<Recipe, String> rating;
+	private TableColumn<RecipeWithButton, String> rating;
 
 	@FXML
-	private TableColumn<Recipe, Integer> preparationTime;
+	private TableColumn<RecipeWithButton, Integer> preparationTime;
 
 	@FXML
-	private TableColumn<Recipe, Integer> difficulty;
+	private TableColumn<RecipeWithButton, Integer> difficulty;
+
+	@FXML
+	private TableColumn<RecipeWithButton, String> edit;
 
 	@FXML
 	private ComboBox<String> filter;
 
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
-	public void setFilter() {
+	private ObservableList<RecipeWithButton> myRecipes = FXCollections.observableArrayList();
+
+	public void setCourseCategoryFilter() {
 
 		HashMap<Integer, String> courses = facade.findAllCourseCategory();
 		ObservableList<String> choices = FXCollections.observableArrayList(courses.values());
@@ -59,6 +63,7 @@ public class MyRecipesController implements Initializable {
 	}
 
 	@FXML
+	// redirect the recipe creation form
 	void addRecipe(Event event) {
 
 		Parent root;
@@ -67,39 +72,40 @@ public class MyRecipesController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipeCreatingFormPage.fxml"));
 
 			root = loader.load();
-
 			Scene scene = new Scene(root, 1920, 1080);
-
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
 			newStage.setScene(scene);
 			newStage.show();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
-	public ObservableList<Recipe> getAllRecipes() {
+	public ObservableList<RecipeWithButton> getAllRecipes() {
 
-		ObservableList<Recipe> recipes = FXCollections.observableArrayList();
-		recipes.addAll(User.getSession().getCreateList());
-		return recipes;
+		myRecipes.clear();
+		for (Recipe r : User.getSession().getCreateList()) {
 
+			myRecipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
+					r.getDifficulty()));
+
+		}
+		return myRecipes;
 	}
 
-	public ObservableList<Recipe> getRecipesByFilterCourseSelected(int idCourseSelected) {
+	public ObservableList<RecipeWithButton> getRecipesByFilterCourseSelected(int idCourseSelected) {
 
-		ObservableList<Recipe> recipesFiltered = FXCollections.observableArrayList();
-
+		myRecipes.clear();
 		for (Recipe r : User.getSession().getCreateList()) {
 
 			if (r.getIdCourse() == idCourseSelected)
-				recipesFiltered.add(r);
+
+				myRecipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
+						r.getDifficulty()));
 		}
 
-		return recipesFiltered;
+		return myRecipes;
 
 	}
 
@@ -116,8 +122,8 @@ public class MyRecipesController implements Initializable {
 			RecipeController controller = loader.getController();
 
 			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
-			int idRecipe = this.getIdRecipeByRowNumber(rowNumber);
-			controller.setIdRecipe(idRecipe);
+			controller.setIdRecipe(myRecipes.get(rowNumber).getIdRecipe());
+
 			controller.consultRecipe();
 
 			Scene scene = new Scene(root, 1920, 1080);
@@ -132,25 +138,21 @@ public class MyRecipesController implements Initializable {
 		}
 	}
 
-	public int getIdRecipeByRowNumber(int rowNumber) {
-
-		return User.getSession().getCreateList().get(rowNumber).getIdRecipe();
-	}
-
 	@FXML
 	void filterRecipesByCourseCategory(Event event) {
 
 		if (filter.getValue().equals("all recipes")) {
 			listRecipes.setItems(getAllRecipes());
-			
+
 		} else {
 			int idCourseSelected = getIdCourseByCourseNameSelected();
 			listRecipes.setItems(getRecipesByFilterCourseSelected(idCourseSelected));
 		}
-		
+
 		listRecipes.refresh();
 	}
 
+	// get the id course from the course selected in the ComboBox
 	private int getIdCourseByCourseNameSelected() {
 
 		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
@@ -169,12 +171,14 @@ public class MyRecipesController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("nameRecipe"));
+		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
 		// rating.setCellValueFactory(new PropertyValueFactory<Recipe, String>(""));
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
 		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
+		edit.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("editButton"));
+
 		listRecipes.setItems(getAllRecipes());
 
-		setFilter();
+		setCourseCategoryFilter();
 	}
 }

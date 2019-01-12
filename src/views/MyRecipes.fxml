@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.net.URL?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
@@ -16,7 +15,7 @@
 
 <ScrollPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyRecipesController">
    <content>
-      <AnchorPane>
+      <AnchorPane stylesheets="@theme.css">
          <children>
             <fx:include source="CommonTheme.fxml" />
             <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
@@ -24,12 +23,13 @@
                <children>
                   <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="My Recipes" />
                   <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-                  <TableView fx:id="listRecipes" layoutX="158.0" layoutY="143.0" onMousePressed="#consultRecipe" prefHeight="453.0" prefWidth="939.0" style="-fx-cursor: hand;" stylesheets="@myRecipes.css">
+                  <TableView fx:id="listRecipes" layoutX="158.0" layoutY="143.0" onMousePressed="#consultRecipe" prefHeight="453.0" prefWidth="939.0" style="-fx-cursor: hand;">
                     <columns>
                       <TableColumn fx:id="recipeName" prefWidth="172.3333740234375" text="Recipe Name" />
                         <TableColumn fx:id="rating" prefWidth="75.0" text="Rating" />
                       <TableColumn fx:id="preparationTime" prefWidth="187.6666259765625" text="Cookng Preparation Time" />
                         <TableColumn fx:id="difficulty" prefWidth="75.0" text="Difficulty" />
+                        <TableColumn fx:id="edit" prefWidth="75.0" text="Edit Recipe" />
                     </columns>
                      <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -50,14 +50,10 @@
                         <DropShadow />
                      </effect>
                   </Pane>
-                  <ComboBox fx:id="filter" layoutX="107.0" layoutY="58.0" onAction="#filterRecipesByCourseCategory" prefHeight="25.0" prefWidth="179.0" promptText="filter by course category" />
+                  <ComboBox fx:id="filter" layoutX="107.0" layoutY="58.0" onAction="#filterRecipesByCourseCategory" prefHeight="25.0" prefWidth="179.0" promptText="filter by course category" style="-fx-border-color: #93c47d; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                </children>
             </Pane>
          </children>
-         <stylesheets>
-            <URL value="@theme.css" />
-            <URL value="@myRecipes.css" />
-         </stylesheets>
       </AnchorPane>
    </content>
 </ScrollPane>
