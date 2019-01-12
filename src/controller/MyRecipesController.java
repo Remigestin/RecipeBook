@@ -19,9 +19,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
 public class MyRecipesController implements Initializable {
+
+	@FXML
+	private ImageView createRecipe;
 
 	@FXML
 	private TableView<Recipe> listRecipes;
@@ -40,14 +44,26 @@ public class MyRecipesController implements Initializable {
 
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
+	@FXML
+	void addRecipe(Event event) {
 
-		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("nameRecipe"));
-		// rating.setCellValueFactory(new PropertyValueFactory<Recipe, String>(""));
-		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
-		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
-		listRecipes.setItems(getRecipes());
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipeCreatingFormPage.fxml"));
+
+			root = loader.load();
+
+			Scene scene = new Scene(root, 1920, 1080);
+
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -63,15 +79,11 @@ public class MyRecipesController implements Initializable {
 
 	@FXML
 	void consultRecipe(Event event) {
-		this.switchToNewPage(event, "/views/RecipePage.fxml");
-	}
-
-	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
 
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource(newPage));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipePage.fxml"));
 
 			root = loader.load();
 
@@ -97,5 +109,16 @@ public class MyRecipesController implements Initializable {
 	public int getIdRecipeByRowNumber(int rowNumber) {
 
 		return User.getSession().getCreateList().get(rowNumber).getIdRecipe();
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+
+		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("nameRecipe"));
+		// rating.setCellValueFactory(new PropertyValueFactory<Recipe, String>(""));
+		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
+		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
+		listRecipes.setItems(getRecipes());
+
 	}
 }

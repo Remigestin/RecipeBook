@@ -76,7 +76,7 @@
                      </children>
                   </Group>
                   <Line endX="531.0" layoutX="900.0" layoutY="702.0" startX="-601.0" />
-                  <VBox layoutX="45.0" layoutY="251.0" prefHeight="270.0" prefWidth="209.0" spacing="20.0" styleClass="mainInformation">
+                  <VBox layoutX="45.0" layoutY="391.0" prefHeight="270.0" prefWidth="209.0" spacing="20.0" styleClass="mainInformation">
                      <children>
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="141.0" spacing="20.0">
                            <children>
@@ -173,6 +173,7 @@
                         <TableColumn fx:id="Text" prefWidth="539.0" />
                     </columns>
                   </TableView>
+                  <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
                </children>
             </Pane>
          </children>

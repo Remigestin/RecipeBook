@@ -13,6 +13,8 @@ public abstract class AbstractRecipeDAO {
 
 	public abstract Recipe findRecipe(int idRecipe);
 	
+	public abstract ArrayList<Recipe> createRecipe(Recipe recipe);
+	
 	public abstract String findCourseCategory(int idCourse);
 	
 	public abstract Recipe findRandomRecipe(int idCourse);

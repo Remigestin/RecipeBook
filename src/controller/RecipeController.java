@@ -20,6 +20,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -33,6 +34,8 @@ public class RecipeController implements Initializable {
 	private Label nameRecipe;
 	@FXML
 	private Label courseCategory;
+	@FXML
+	private ImageView image;
 	@FXML
 	private TextArea ingredients;
 	@FXML
@@ -86,6 +89,10 @@ public class RecipeController implements Initializable {
 		this.courseCategory.setText(courseCategory);
 	}
 
+	public void setImage(String urlImage) {
+		this.image.setImage(new Image(urlImage));
+	}
+	
 	public void setRating(String rating) {
 		this.rating.setText(rating);
 	}
