@@ -3,6 +3,7 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 import businessLogic.CookingStep;
@@ -52,7 +53,8 @@ public class RecipeCreatingFormController implements Initializable {
 
 	public void setCourseCategory() {
 
-		ObservableList<String> choices = FXCollections.observableArrayList("apples", "oranges");
+		HashMap<Integer, String> courses = facade.findAllCourseCategory();
+		ObservableList<String> choices = FXCollections.observableArrayList(courses.values());
 		courseCategory.setItems(choices);
 	}
 
@@ -84,7 +86,6 @@ public class RecipeCreatingFormController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-
 	}
 
 	@FXML
@@ -92,21 +93,34 @@ public class RecipeCreatingFormController implements Initializable {
 
 		Recipe recipe = new Recipe();
 
+		// Set recipe information
 		recipe.setNameRecipe(nameRecipe.getText());
 
 		if (!preparationTime.getText().equals("")) {
 			recipe.setPreparationTime(Integer.parseInt(preparationTime.getText()));
 		}
+		
 		recipe.setNbPersRecipe((Integer) numberPeople.getValue());
 		recipe.setDifficulty((Integer) difficulty.getValue());
 		recipe.setImage(image.getText());
-
-		// attention recup idcours de bd a partir nom
-		recipe.setIdCourse(1);
-
+	
+		// Get id of course category selected and set it in the recipe created
+		int idCourseSelected = 0;
+		
+		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
+		
+		for (Object id : allCourses.keySet()) {
+		      if (allCourses.get(id).equals(courseCategory.getValue())) {
+		    	  idCourseSelected = (int)id;
+		      }
+		}
+		recipe.setIdCourse(idCourseSelected);
+		
+		// Add in DB the cooking steps of the recipe created
 		ArrayList<CookingStep> steps = new ArrayList<CookingStep>();
 		facade.createRecipe(recipe, steps);
 
+		// Display confirmation message if recipe is created and added
 		this.displayConfirmation(event);
 
 	}
@@ -116,6 +130,8 @@ public class RecipeCreatingFormController implements Initializable {
 		alert.setTitle("Confirmation");
 		alert.setHeaderText("Your recipe " + nameRecipe.getText() + " has been created and added to your list ! ");
 		alert.showAndWait();
+		
+		// Come back to myRecipes page with the new recipe created
 		this.redirectToMyRecipes(event);
 	}
 
@@ -124,5 +140,4 @@ public class RecipeCreatingFormController implements Initializable {
 		initSpinner();
 		setCourseCategory();
 	}
-
 }

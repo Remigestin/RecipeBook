@@ -1,6 +1,7 @@
 package facade;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import abstractDAO.AbstractCommentDAO;
 import abstractDAO.AbstractCookingStepDAO;
@@ -73,6 +74,15 @@ public class RecipeFacade {
 		AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
 
 		return recipeDAO.findCourseCategory(idCourse);
+
+	}
+	
+	public HashMap<Integer, String> findAllCourseCategory() {
+
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
+
+		return recipeDAO.findAllCourseCategory();
 
 	}
 

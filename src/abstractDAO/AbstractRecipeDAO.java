@@ -1,8 +1,8 @@
 package abstractDAO;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import businessLogic.CookingStep;
 import businessLogic.Recipe;
 
 public abstract class AbstractRecipeDAO {
@@ -18,5 +18,7 @@ public abstract class AbstractRecipeDAO {
 	public abstract String findCourseCategory(int idCourse);
 	
 	public abstract Recipe findRandomRecipe(int idCourse);
+	
+	public abstract HashMap<Integer, String> findAllCourseCategory();
 
 }
