@@ -25,7 +25,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_FIND_ALL_COURSE_CATEGORY = "Select * FROM coursecategory";
 	private static final String SQL_FIND_RANDOM_RECIPE_BY_CATEGORY = "Select * FROM recipe  WHERE idCourse = ? ORDER BY RAND() LIMIT 1";
 	private static final String SQL_FIND_RANDOM_RECIPE_BY_CATEGORY_AND_IDRECIPE_DIFFERENT = "Select * FROM recipe  WHERE idCourse = ? AND idrecipe != ? ORDER BY RAND() LIMIT 1";
-
+	private static final String SQL_FIND_RATING_BY_IDRECIPE = "SELECT AVG(mark) FROM recipe R, rating N WHERE R.idrecipe = N.idrecipe AND R.idrecipe = ?";
 	private static final String SQL_INSERT_NEW_RECIPE = "INSERT INTO recipe VALUES (NULL,?,?,?,?,?,?,?)";
 
 	/* Private constructor */
@@ -50,6 +50,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		recipe.setIdCourse(resultSet.getInt("idCourse"));
 		recipe.setDifficulty(resultSet.getInt("difficulty"));
 		recipe.setImage(resultSet.getString("image"));
+		recipe.setRate(findRating(resultSet.getInt("idRecipe")));
 
 		return recipe;
 	}
@@ -228,6 +229,26 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		}
 
 		return courses;
+	}
+	
+	private static float findRating(int idRecipe) {
+		float result = 0;
+		
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_FIND_RATING_BY_IDRECIPE);
+			st.setInt(1, idRecipe);
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				result = rs.getFloat("avg(mark)");
+			}
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		
+		return result;
 	}
 
 	

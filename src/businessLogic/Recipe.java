@@ -9,6 +9,15 @@ public class Recipe {
 	private String image;
 	private int idCourse;
 	private int difficulty;
+	private float rate;
+
+	public float getRate() {
+		return rate;
+	}
+
+	public void setRate(float rate) {
+		this.rate = rate;
+	}
 
 	public int getIdRecipe() {
 		return idRecipe;
