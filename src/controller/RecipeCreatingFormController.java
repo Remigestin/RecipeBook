@@ -17,6 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ListView;
@@ -24,6 +25,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class RecipeCreatingFormController implements Initializable {
@@ -82,7 +84,7 @@ public class RecipeCreatingFormController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@FXML
@@ -91,10 +93,12 @@ public class RecipeCreatingFormController implements Initializable {
 		Recipe recipe = new Recipe();
 
 		recipe.setNameRecipe(nameRecipe.getText());
-		System.out.println(preparationTime.getText());
-		recipe.setPreparationTime(Integer.parseInt(preparationTime.getText()));
-		recipe.setNbPersRecipe((Integer)numberPeople.getValue());
-		recipe.setDifficulty((Integer)difficulty.getValue());
+
+		if (!preparationTime.getText().equals("")) {
+			recipe.setPreparationTime(Integer.parseInt(preparationTime.getText()));
+		}
+		recipe.setNbPersRecipe((Integer) numberPeople.getValue());
+		recipe.setDifficulty((Integer) difficulty.getValue());
 		recipe.setImage(image.getText());
 
 		// attention recup idcours de bd a partir nom
@@ -103,6 +107,16 @@ public class RecipeCreatingFormController implements Initializable {
 		ArrayList<CookingStep> steps = new ArrayList<CookingStep>();
 		facade.createRecipe(recipe, steps);
 
+		this.displayConfirmation(event);
+
+	}
+
+	private void displayConfirmation(Event event) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Confirmation");
+		alert.setHeaderText("Your recipe " + nameRecipe.getText() + " has been created and added to your list ! ");
+		alert.showAndWait();
+		this.redirectToMyRecipes(event);
 	}
 
 	@Override
