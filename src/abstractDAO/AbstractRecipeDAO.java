@@ -25,6 +25,8 @@ public abstract class AbstractRecipeDAO {
 	
 	public abstract int findRate(int idUser, int idRecipe);
 	
+	public abstract void rateARecipe(int idRecipe,int idUser,int ratingValue);
+	
 	public abstract HashMap<Integer, String> findAllCourseCategory();
 
 }

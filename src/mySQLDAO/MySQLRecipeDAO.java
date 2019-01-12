@@ -28,6 +28,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_FIND_RATING_BY_IDRECIPE = "SELECT AVG(mark) FROM recipe R, rating N WHERE R.idrecipe = N.idrecipe AND R.idrecipe = ?";
 	private static final String SQL_FIND_RATING_BY_IDRECIPE_AND_IDUSER = "SELECT mark FROM rating  WHERE idrecipe = ? AND iduser = ?";
 	private static final String SQL_INSERT_NEW_RECIPE = "INSERT INTO recipe VALUES (NULL,?,?,?,?,?,?,?)";
+	private static final String SQL_INSERT_NEW_RATING = "INSERT INTO rating VALUES (?,?,?)";
 	private static final String SQL_FIND_RECIPES_BY_SEARCH = "Select * FROM recipe WHERE namerecipe LIKE ?";
 
 	/* Private constructor */
@@ -296,6 +297,24 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		}
 
 		return recipeList;
+	}
+
+	@Override
+	public void rateARecipe(int idRecipe, int idUser, int ratingValue) {
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_INSERT_NEW_RATING);
+			st.setInt(1, idRecipe);
+			st.setInt(2, idUser);
+			st.setInt(3, ratingValue);
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		
 	}
 
 	

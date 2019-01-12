@@ -97,8 +97,13 @@ public class RecipeFacade {
 		return recipeDAO.findRate(User.getSession().getId(), idRecipe);
 	}
 	
-	public void rateARecipe(int idRecipe, int rate) {
-		//TODO
+	public void rateARecipe(int idRecipe, int ratingValue) {
+		User session = User.getSession();
+		recipeDAO.rateARecipe(idRecipe, session.getId(), ratingValue);
+		
+		//todo : refresh session
+		
+	
 	}
 	
 	
