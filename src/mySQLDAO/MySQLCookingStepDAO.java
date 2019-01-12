@@ -15,7 +15,7 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 
 	/* SQL */
 	private static final String SQL_FIND_COOKING_STEPS_BY_IDRECIPE = "SELECT * FROM cookingstep	WHERE idRecipe = ?";
-	private static final String SQL_INSERT_NEW_COOKING_STEP = "INSERT INTO cookingstep VALUES (?,?,?,?)";
+	private static final String SQL_INSERT_NEW_COOKING_STEP = "INSERT INTO cookingstep VALUES (NULL,?,?,?)";
 
 	/* Private constructor */
 	private MySQLCookingStepDAO() {
@@ -74,9 +74,9 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 			
 				PreparedStatement st = c.prepareStatement(SQL_INSERT_NEW_COOKING_STEP);
 				
-				st.setString(2, step.getName());
-				st.setString(3, step.getDescription());
-				st.setInt(4, idRecipe);
+				st.setString(1, step.getName());
+				st.setString(2, step.getDescription());
+				st.setInt(3, idRecipe);
 				st.executeUpdate();
 				
 			}

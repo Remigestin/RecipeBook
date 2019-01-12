@@ -23,7 +23,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_FIND_COURSE_CATEGORY_BY_IDCOURSE = "Select nameCourse FROM coursecategory  WHERE idCourse = ?";
 	private static final String SQL_FIND_RANDOM_RECIPE_BY_CATEGORY = "Select * FROM recipe  WHERE idCourse = ? ORDER BY RAND() LIMIT 1";
 
-	private static final String SQL_INSERT_NEW_RECIPE = "INSERT INTO recipe VALUES (?,?,?,?,?,?,?,?)";
+	private static final String SQL_INSERT_NEW_RECIPE = "INSERT INTO recipe VALUES (NULL,?,?,?,?,?,?,?)";
 
 	/* Private constructor */
 	private MySQLRecipeDAO() {
@@ -168,13 +168,13 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
 			PreparedStatement st = c.prepareStatement(SQL_INSERT_NEW_RECIPE);
-			st.setString(2, recipe.getNameRecipe());
-			st.setInt(3, recipe.getPreparationTime());
-			st.setInt(4, recipe.getNbPersRecipe());
-			st.setInt(5, recipe.getIdCourse());
-			st.setInt(6, User.getSession().getId());
-			st.setInt(7, recipe.getDifficulty());
-			st.setString(8, recipe.getImage());
+			st.setString(1, recipe.getNameRecipe());
+			st.setInt(2, recipe.getPreparationTime());
+			st.setInt(3, recipe.getNbPersRecipe());
+			st.setInt(4, recipe.getIdCourse());
+			st.setInt(5, User.getSession().getId());
+			st.setInt(6, recipe.getDifficulty());
+			st.setString(7, recipe.getImage());
 			st.executeUpdate();
 
 		} catch (SQLException e) {

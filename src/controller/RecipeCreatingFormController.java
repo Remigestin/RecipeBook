@@ -91,12 +91,14 @@ public class RecipeCreatingFormController implements Initializable {
 		Recipe recipe = new Recipe();
 
 		recipe.setNameRecipe(nameRecipe.getText());
+		System.out.println(preparationTime.getText());
 		recipe.setPreparationTime(Integer.parseInt(preparationTime.getText()));
-		recipe.setNbPersRecipe(Integer.parseInt((String) numberPeople.getValue()));
-		recipe.setDifficulty(Integer.parseInt((String) difficulty.getValue()));
+		recipe.setNbPersRecipe((Integer)numberPeople.getValue());
+		recipe.setDifficulty((Integer)difficulty.getValue());
 		recipe.setImage(image.getText());
 
-		// recipe.setIdCourse(courseCategory);
+		// attention recup idcours de bd a partir nom
+		recipe.setIdCourse(1);
 
 		ArrayList<CookingStep> steps = new ArrayList<CookingStep>();
 		facade.createRecipe(recipe, steps);
