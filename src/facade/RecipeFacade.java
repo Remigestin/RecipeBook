@@ -15,6 +15,11 @@ import factory.AbstractFactory;
 import factory.MySQLFactory;
 
 public class RecipeFacade {
+	
+	AbstractFactory f = MySQLFactory.getInstance();
+	AbstractCookingStepDAO cookingStepDAO = f.createCookingStepDAO();
+	AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
+	AbstractCommentDAO commentDAO = f.createCommentDAO();
 
 	/* Private constructor */
 	private RecipeFacade() {
@@ -30,30 +35,19 @@ public class RecipeFacade {
 	}
 
 	public ArrayList<CookingStep> findCookingSteps(int idRecipe) {
-
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractCookingStepDAO cookingStepDAO = f.createCookingStepDAO();
-
+		
 		return cookingStepDAO.loadCookingStepsOfRecipe(idRecipe);
 	}
 
 	public Recipe findRecipe(int idRecipe) {
 
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
 
 		return recipeDAO.findRecipe(idRecipe);
 	}
 
 	public ArrayList<Recipe> createRecipe(Recipe newRecipe, ArrayList<CookingStep> cookingSteps) {
 		
-		// Recipe DAO
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
-		
-		// Cooking Step DAO
-		AbstractCookingStepDAO cookingStepDAO = f.createCookingStepDAO();
-		
+
 		// Add recipe in DB 
 		ArrayList<Recipe> newCreateList = recipeDAO.createRecipe(newRecipe);
 		
@@ -69,9 +63,7 @@ public class RecipeFacade {
 	}
 
 	public String findCourseCategoryName(int idCourse) {
-
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
+	
 
 		return recipeDAO.findCourseCategory(idCourse);
 
@@ -79,23 +71,31 @@ public class RecipeFacade {
 	
 	public HashMap<Integer, String> findAllCourseCategory() {
 
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
-
 		return recipeDAO.findAllCourseCategory();
 
 	}
 
 	public void createComment(String text) {
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractCommentDAO commentDAO = f.createCommentDAO();
+		
 		commentDAO.createComment(text);
 	}
 
 	public ArrayList<Commentary> showComment(int idRecipe) {
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractCommentDAO commentDAO = f.createCommentDAO();
 
 		return commentDAO.showcomment(idRecipe);
 	}
+	
+	public boolean hasRatedRecipe(int idRecipe) {
+		return recipeDAO.findRate(User.getSession().getId(), idRecipe) != -1;
+	}
+	
+	public int getRate(int idRecipe) {
+		return recipeDAO.findRate(User.getSession().getId(), idRecipe);
+	}
+	
+	public void rateARecipe(int idRecipe, int rate) {
+		//TODO
+	}
+	
+	
 }
