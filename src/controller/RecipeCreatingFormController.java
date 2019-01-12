@@ -20,7 +20,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -35,7 +35,7 @@ public class RecipeCreatingFormController implements Initializable {
 	@FXML
 	private TextField nameRecipe;
 	@FXML
-	private ChoiceBox<String> courseCategory;
+	private ComboBox<String> courseCategory;
 	@FXML
 	private TextField image;
 	@FXML
@@ -89,6 +89,22 @@ public class RecipeCreatingFormController implements Initializable {
 	}
 
 	@FXML
+	void submitForm(Event event) {
+
+		if (nameRecipe.getText().equals("")) {
+			displayErrorNameRecipeMissing(event);
+		}
+
+		else if (courseCategory.getValue() == null) {
+			displayErrorCourseCategoryMissing(event);
+		}
+		
+		else {
+			this.createRecipe(event);
+		}
+	}
+
+	@FXML
 	void createRecipe(Event event) {
 
 		Recipe recipe = new Recipe();
@@ -105,18 +121,21 @@ public class RecipeCreatingFormController implements Initializable {
 		recipe.setImage(image.getText());
 
 		// Get id of course category selected and set it in the recipe created
-		recipe.setIdCourse(getIdCourseByCourseNameSelected());
+
+		if (getIdCourseByCourseNameSelected() != 0) {
+			recipe.setIdCourse(getIdCourseByCourseNameSelected());
+		}
 
 		// Add in DB the cooking steps of the recipe created
 		ArrayList<CookingStep> steps = new ArrayList<CookingStep>();
 		facade.createRecipe(recipe, steps);
 
 		// Display confirmation message if recipe is created and added
-		this.displayConfirmation(event);
+		this.displayConfirmationCreation(event);
 
 	}
 
-	private void displayConfirmation(Event event) {
+	private void displayConfirmationCreation(Event event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation");
 		alert.setHeaderText("Your recipe " + nameRecipe.getText() + " has been created and added to your list ! ");
@@ -125,13 +144,27 @@ public class RecipeCreatingFormController implements Initializable {
 		// Come back to myRecipes page with the new recipe created
 		this.redirectToMyRecipes(event);
 	}
+	
+	private void displayErrorNameRecipeMissing(Event event) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Hey Stop there");
+		alert.setHeaderText("Recipe name is missing. Enter one !");
+		alert.showAndWait();
+	}
+
+	private void displayErrorCourseCategoryMissing(Event event) {
+		Alert alert = new Alert(AlertType.ERROR);
+		alert.setTitle("Hey Stop there");
+		alert.setHeaderText("Course category is missing. Choose one !");
+		alert.showAndWait();
+	}
 
 	private int getIdCourseByCourseNameSelected() {
-		
+
 		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
 
 		int idCourseSelected = 0;
-		
+
 		for (Object id : allCourses.keySet()) {
 			if (allCourses.get(id).equals(courseCategory.getValue())) {
 				idCourseSelected = (int) id;
