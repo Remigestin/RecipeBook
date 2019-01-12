@@ -9,8 +9,8 @@ import factory.MySQLFactory;
 
 public class RandomFacade {
 	
-	AbstractFactory f = MySQLFactory.getInstance();
-	AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
+	private AbstractFactory f = MySQLFactory.getInstance();
+	private AbstractRecipeDAO recipeDAO = f.createRecipeDAO();
 	
 	/* Private constructor */
 	private RandomFacade() {
