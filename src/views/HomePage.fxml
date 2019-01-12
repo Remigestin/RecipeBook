@@ -9,7 +9,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane prefHeight="3200.0" prefWidth="1922.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
+<ScrollPane prefHeight="3200.0" prefWidth="1922.0" stylesheets="@recipePage.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
    <content>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="3180.0" prefWidth="1920.0">
          <children>
@@ -22,7 +22,7 @@
                   <Pane layoutX="325.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 1">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 1">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -35,7 +35,7 @@
                   <Pane layoutX="838.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 2">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 2">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -48,7 +48,7 @@
                   <Pane layoutX="325.0" layoutY="751.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 3">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 3">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -61,7 +61,7 @@
                   <Pane layoutX="838.0" layoutY="751.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 4">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 4">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -74,7 +74,7 @@
                   <Pane layoutX="324.0" layoutY="1285.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 5">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 5">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -87,7 +87,7 @@
                   <Pane layoutX="837.0" layoutY="1285.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 6">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 6">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -100,7 +100,7 @@
                   <Pane layoutX="324.0" layoutY="1819.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 7">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 7">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -113,7 +113,7 @@
                   <Pane layoutX="837.0" layoutY="1819.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 8">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 8">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -126,7 +126,7 @@
                   <Pane layoutX="324.0" layoutY="2351.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 9">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 9">
                            <font>
                               <Font size="30.0" />
                            </font>
@@ -139,7 +139,7 @@
                   <Pane layoutX="837.0" layoutY="2351.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
                      <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="428.0" layoutX="-1.0" layoutY="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="2.0" width="342.0" />
-                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" text="Top 10">
+                        <Label layoutX="25.0" style="-fx-background-color: white; -fx-font-weight: bold;" styleClass="h2" text="Top 10">
                            <font>
                               <Font size="30.0" />
                            </font>

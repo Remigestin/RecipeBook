@@ -7,7 +7,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FooterController">
    <children>
-      <Text fx:id="aboutUs" layoutX="36.0" layoutY="381.0" onMousePressed="#redirectToNewPage" strokeType="OUTSIDE" strokeWidth="0.0" text="About us" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="50.0" />
+      <Text fx:id="aboutUs" layoutX="36.0" layoutY="381.0" onMousePressed="#redirectToNewPage" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-cursor: hand;" text="About us" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="50.0" />
       <ImageView fitHeight="16.0" fitWidth="22.0" layoutX="14.0" layoutY="368.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="25.0">
          <image>
             <Image url="@../../asset/image/interrogation.png" />
