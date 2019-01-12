@@ -19,6 +19,8 @@ public abstract class AbstractRecipeDAO {
 	
 	public abstract Recipe findRandomRecipe(int idCourse);
 	
+	public abstract Recipe findRandomRecipe(int idCourse, int idRecipe);
+	
 	public abstract HashMap<Integer, String> findAllCourseCategory();
 
 }

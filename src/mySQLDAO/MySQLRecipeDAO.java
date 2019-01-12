@@ -24,6 +24,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_FIND_COURSE_CATEGORY_BY_IDCOURSE = "Select nameCourse FROM coursecategory WHERE idCourse = ?";
 	private static final String SQL_FIND_ALL_COURSE_CATEGORY = "Select * FROM coursecategory";
 	private static final String SQL_FIND_RANDOM_RECIPE_BY_CATEGORY = "Select * FROM recipe  WHERE idCourse = ? ORDER BY RAND() LIMIT 1";
+	private static final String SQL_FIND_RANDOM_RECIPE_BY_CATEGORY_AND_IDRECIPE_DIFFERENT = "Select * FROM recipe  WHERE idCourse = ? AND idrecipe != ? ORDER BY RAND() LIMIT 1";
 
 	private static final String SQL_INSERT_NEW_RECIPE = "INSERT INTO recipe VALUES (NULL,?,?,?,?,?,?,?)";
 
@@ -162,6 +163,28 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 		return recipe;
 	}
+	
+	@Override
+	public Recipe findRandomRecipe(int idCourse, int idRecipe) {
+		Recipe recipe = new Recipe();
+
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_FIND_RANDOM_RECIPE_BY_CATEGORY_AND_IDRECIPE_DIFFERENT);
+			st.setInt(1, idCourse);
+			st.setInt(2, idRecipe);
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				recipe = map(rs);
+			}
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		return recipe;
+	}
 
 	@Override
 	public ArrayList<Recipe> createRecipe(Recipe recipe) {
@@ -206,5 +229,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 		return courses;
 	}
+
+	
 
 }

@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 import businessLogic.Recipe;
 import businessLogic.User;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -79,5 +80,12 @@ public class RandomMenuController implements Initializable {
 		
 
 	}
+	
+
+    @FXML
+    public void changeAll(Event event) {
+    	
+
+    }
 
 }

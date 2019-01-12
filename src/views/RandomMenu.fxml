@@ -74,7 +74,7 @@
             </Pane>
             <Pane layoutX="1365.0" layoutY="30.0" prefHeight="76.0" prefWidth="79.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
                <children>
-                  <ImageView fitHeight="56.0" fitWidth="73.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="56.0" fitWidth="73.0" layoutX="11.0" layoutY="10.0" onMousePressed="#changeAll" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/refresh.png" />
                      </image>
