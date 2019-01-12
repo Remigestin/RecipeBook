@@ -60,7 +60,7 @@ public class RecipeCreatingFormController implements Initializable {
 
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
-	/* initialize the spinner of numberPeople with integers */
+	/* initialize the spinners with integers */
 	private void initSpinner() {
 		numberPeople.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
 		difficulty.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5));
@@ -99,23 +99,14 @@ public class RecipeCreatingFormController implements Initializable {
 		if (!preparationTime.getText().equals("")) {
 			recipe.setPreparationTime(Integer.parseInt(preparationTime.getText()));
 		}
-		
+
 		recipe.setNbPersRecipe((Integer) numberPeople.getValue());
 		recipe.setDifficulty((Integer) difficulty.getValue());
 		recipe.setImage(image.getText());
-	
+
 		// Get id of course category selected and set it in the recipe created
-		int idCourseSelected = 0;
-		
-		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
-		
-		for (Object id : allCourses.keySet()) {
-		      if (allCourses.get(id).equals(courseCategory.getValue())) {
-		    	  idCourseSelected = (int)id;
-		      }
-		}
-		recipe.setIdCourse(idCourseSelected);
-		
+		recipe.setIdCourse(getIdCourseByCourseNameSelected());
+
 		// Add in DB the cooking steps of the recipe created
 		ArrayList<CookingStep> steps = new ArrayList<CookingStep>();
 		facade.createRecipe(recipe, steps);
@@ -130,9 +121,24 @@ public class RecipeCreatingFormController implements Initializable {
 		alert.setTitle("Confirmation");
 		alert.setHeaderText("Your recipe " + nameRecipe.getText() + " has been created and added to your list ! ");
 		alert.showAndWait();
-		
+
 		// Come back to myRecipes page with the new recipe created
 		this.redirectToMyRecipes(event);
+	}
+
+	private int getIdCourseByCourseNameSelected() {
+		
+		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
+
+		int idCourseSelected = 0;
+		
+		for (Object id : allCourses.keySet()) {
+			if (allCourses.get(id).equals(courseCategory.getValue())) {
+				idCourseSelected = (int) id;
+			}
+		}
+
+		return idCourseSelected;
 	}
 
 	@Override
