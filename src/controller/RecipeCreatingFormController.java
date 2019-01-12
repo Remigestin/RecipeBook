@@ -51,6 +51,27 @@ public class RecipeCreatingFormController implements Initializable {
 	@FXML
 	private Button create;
 
+	@FXML
+    private TextArea descStep1;
+    @FXML
+    private TextField nameStep1;
+    @FXML
+    private TextArea descStep2;
+    @FXML
+    private TextField nameStep2;
+    @FXML
+    private TextArea descStep3;
+    @FXML
+    private TextField nameStep3;
+    @FXML
+    private TextArea descStep4;
+    @FXML
+    private TextField nameStep4;
+    @FXML
+    private TextArea descStep5;
+    @FXML
+    private TextField nameStep5;
+    
 	public void setCourseCategory() {
 
 		HashMap<Integer, String> courses = facade.findAllCourseCategory();
