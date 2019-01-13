@@ -114,6 +114,11 @@ public class RecipeFacade {
 
 	}
 	
+	public void deleteRating(int idRecipe) {
+		recipeDAO.deleteRating(idRecipe, User.getSession().getId());
+		this.refreshSession();
+	}
+	
 	private void refreshSession() {
 		
 				// Update the user list of created recipes and favorite recipes

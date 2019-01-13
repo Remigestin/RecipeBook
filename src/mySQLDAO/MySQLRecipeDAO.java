@@ -31,6 +31,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_EDIT_RECIPE = "UPDATE recipe SET nameRecipe = ? , preparationTime = ? , nbPersoRecipe = ? , idCourse = ? , difficulty = ? , image = ? WHERE idRecipe = ?";
 	private static final String SQL_INSERT_NEW_RATING = "INSERT INTO rating VALUES (?,?,?)";
 	private static final String SQL_FIND_RECIPES_BY_SEARCH = "Select * FROM recipe WHERE namerecipe LIKE ?";
+	private static final String SQL_DELETE_RATING = "DELETE FROM rating WHERE idrecipe = ? AND iduser = ? ";
 
 	/* Private constructor */
 	private MySQLRecipeDAO() {
@@ -338,5 +339,22 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			throw new DAOException(e);
 		}
 
+	}
+
+	@Override
+	public void deleteRating(int idRecipe, int idUser) {
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_DELETE_RATING);
+			st.setInt(1, idRecipe);
+			st.setInt(2, idUser);
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		
 	}
 }

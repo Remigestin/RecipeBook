@@ -171,6 +171,8 @@ public class RecipeController implements Initializable {
 			this.editRatingAdded.setOnMousePressed(e -> {this.editeRating(null);});
 		}
 		
+		this.deleteRatingAdded.setOnMousePressed(e -> {this.deleteRating(null);});
+		
 		
 
 		/* find main course and set it */
@@ -196,7 +198,9 @@ public class RecipeController implements Initializable {
 	}
 	
 	private void deleteRating(Event event) {
-		
+		facade.deleteRating(idRecipe);
+		this.ratingAdded.setRating(0);
+		this.consultRecipe();
 	}
 
 	// Event Listener on Button[#buttonEdit].onAction
