@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -13,7 +14,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -22,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
@@ -55,19 +61,16 @@ public class RecipeController implements Initializable {
 
 	@FXML
 	private TextArea textaddcomment;
-
 	@FXML
 	private Button buttonadd;
-
+	@FXML
+	private ImageView buttonEditRecipe;
 	@FXML
 	private TableView<Commentary> tableView;
-
 	@FXML
 	private TableColumn<Commentary, String> ColoneUser;
-
 	@FXML
 	private TableColumn<Commentary, String> Date;
-
 	@FXML
 	private TableColumn<Commentary, String> Text;
 
@@ -92,7 +95,7 @@ public class RecipeController implements Initializable {
 	public void setImage(String urlImage) {
 		this.image.setImage(new Image(urlImage));
 	}
-	
+
 	public void setRating(String rating) {
 		this.rating.setText(rating);
 	}
@@ -162,6 +165,34 @@ public class RecipeController implements Initializable {
 
 	}
 
+	// Event Listener on Button[#buttonEdit].onAction
+	@FXML
+	private void editRecipe(Event event) {
+
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipeEditingFormPage.fxml"));
+
+			root = loader.load();
+
+			RecipeEditingFormController controller = loader.getController();
+
+			controller.setIdRecipe(idRecipe);
+			controller.setAllRecipeInformation();
+
+			Scene scene = new Scene(root, 1920, 1080);
+
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	// Event Listener on Button[#buttonadd].onAction
 	@FXML
 	public void addComment(ActionEvent event) {
@@ -204,10 +235,19 @@ public class RecipeController implements Initializable {
 	 * this.setComment(facade.showComment(1)); }
 	 */
 
+	public void setVisibleEditRecipeButton() {
+
+		// TO DO : check if user is the creator of the recipe and display edit button,
+		// else hide the button
+		// this.buttonEditRecipe.setVisible(true);
+
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		initSpinner();
+
 	}
 
 }

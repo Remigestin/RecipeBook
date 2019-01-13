@@ -28,6 +28,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_FIND_RATING_BY_IDRECIPE = "SELECT AVG(mark) FROM recipe R, rating N WHERE R.idrecipe = N.idrecipe AND R.idrecipe = ?";
 	private static final String SQL_FIND_RATING_BY_IDRECIPE_AND_IDUSER = "SELECT mark FROM rating  WHERE idrecipe = ? AND iduser = ?";
 	private static final String SQL_INSERT_NEW_RECIPE = "INSERT INTO recipe VALUES (NULL,?,?,?,?,?,?,?)";
+	private static final String SQL_EDIT_RECIPE = "UPDATE recipe SET nameRecipe = ? , preparationTime = ? , nbPersoRecipe = ? , idCourse = ? , difficulty = ? , image = ? WHERE idRecipe = ?";
 	private static final String SQL_INSERT_NEW_RATING = "INSERT INTO rating VALUES (?,?,?)";
 	private static final String SQL_FIND_RECIPES_BY_SEARCH = "Select * FROM recipe WHERE namerecipe LIKE ?";
 
@@ -167,7 +168,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 		return recipe;
 	}
-	
+
 	@Override
 	public Recipe findRandomRecipe(int idCourse, int idRecipe) {
 		Recipe recipe = new Recipe();
@@ -214,8 +215,31 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	}
 
 	@Override
+	public ArrayList<Recipe> editRecipe(Recipe recipe) {
+
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_EDIT_RECIPE);
+			st.setString(1, recipe.getNameRecipe());
+			st.setInt(2, recipe.getPreparationTime());
+			st.setInt(3, recipe.getNbPersRecipe());
+			st.setInt(4, recipe.getIdCourse());
+			st.setInt(5, recipe.getDifficulty());
+			st.setString(6, recipe.getImage());
+			st.setInt(7, recipe.getIdRecipe());
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		return this.loadCreateRecipe(User.getSession().getId());
+	}
+
+	@Override
 	public HashMap<Integer, String> findAllCourseCategory() {
-		
+
 		HashMap<Integer, String> courses = new HashMap<Integer, String>();
 
 		try {
@@ -233,10 +257,10 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 		return courses;
 	}
-	
+
 	private static float findRating(int idRecipe) {
 		float result = 0;
-		
+
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
@@ -250,15 +274,15 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
-		
+
 		return result;
 	}
 
-	//return -1 if there is no rate
+	// return -1 if there is no rate
 	@Override
 	public int findRate(int idUser, int idRecipe) {
 		int result = -1;
-		
+
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
@@ -273,7 +297,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
-		
+
 		return result;
 	}
 
@@ -285,7 +309,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
 			PreparedStatement st = c.prepareStatement(SQL_FIND_RECIPES_BY_SEARCH);
-			st.setString(1, "%"+search+"%");
+			st.setString(1, "%" + search + "%");
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
 				Recipe tmp = null;
@@ -314,9 +338,5 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			throw new DAOException(e);
 		}
 
-		
 	}
-
-	
-
 }

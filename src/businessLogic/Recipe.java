@@ -11,6 +11,22 @@ public class Recipe {
 	private int difficulty;
 	private float rate;
 
+	public Recipe() {
+
+	}
+
+	public Recipe(int idRecipe, String nameRecipe, int preparationTime, int nbPersRecipe, String image, int idCourse,
+			int difficulty) {
+		super();
+		this.idRecipe = idRecipe;
+		this.nameRecipe = nameRecipe;
+		this.preparationTime = preparationTime;
+		this.nbPersRecipe = nbPersRecipe;
+		this.image = image;
+		this.idCourse = idCourse;
+		this.difficulty = difficulty;
+	}
+
 	public float getRate() {
 		return rate;
 	}

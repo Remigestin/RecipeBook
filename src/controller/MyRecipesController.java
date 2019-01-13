@@ -176,7 +176,7 @@ public class MyRecipesController implements Initializable {
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
 		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
 		edit.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("editButton"));
-
+		
 		listRecipes.setItems(getAllRecipes());
 
 		setCourseCategoryFilter();
