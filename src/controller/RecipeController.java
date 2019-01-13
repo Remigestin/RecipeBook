@@ -181,6 +181,7 @@ public class RecipeController implements Initializable {
 			this.editRatingAdded.setOnMousePressed(e -> {this.editeRating(null);});
 			this.editRatingAdded.setImage(new Image("file:../../asset/image/pencil.png"));
 			this.deleteRatingAdded.setVisible(true);
+			this.frameDeleteRatingAdded.setVisible(true);
 		}
 		
 		this.deleteRatingAdded.setOnMousePressed(e -> {this.deleteRating(null);});
