@@ -1,6 +1,17 @@
 package controller;
 
+import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 
 public class RecipeWithButton {
 
@@ -9,8 +20,7 @@ public class RecipeWithButton {
 	private int preparationTime;
 	private int difficulty;
 	private Button editButton;
-	
-	
+
 	public RecipeWithButton(int idRecipe, String nameRecipe, Integer preparationTime, Integer difficulty) {
 		
 		this.idRecipe = idRecipe;
@@ -18,6 +28,37 @@ public class RecipeWithButton {
 		this.preparationTime = preparationTime;
 		this.difficulty = difficulty;
 		this.editButton = new Button("edit");
+		
+		this.editButton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override public void handle(ActionEvent event) {
+
+					Parent root;
+
+					try {
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipeEditingFormPage.fxml"));
+
+						root = loader.load();
+
+						RecipeEditingFormController controller = loader.getController();
+
+						controller.setIdRecipe(idRecipe);
+						controller.setAllRecipeInformation();
+
+						Scene scene = new Scene(root, 1920, 1080);
+
+						Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+						newStage.setScene(scene);
+						newStage.show();
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+					
+					
+				}
+				});
+		
 	}
 
 	public int getIdRecipe() {
