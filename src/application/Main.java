@@ -16,7 +16,7 @@ public class Main extends Application {
 			
 			Scene scene = new Scene(root,1920,1080);
 			primaryStage.setScene(scene);
-			//primaryStage.getIcons().add(new Image(getClass().getResourceAsStream("../../asset.image/logo.png")));
+			primaryStage.getIcons().add(new Image("file:../../asset/image/logo.png"));
 			primaryStage.setTitle("RecipeBook");
 			primaryStage.show();
 			

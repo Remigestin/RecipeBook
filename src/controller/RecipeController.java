@@ -172,14 +172,14 @@ public class RecipeController implements Initializable {
 		
 		if (facade.getRate(idRecipe) == -1) {
 			this.editRatingAdded.setOnMousePressed(e -> {this.addRating(null);});
-			this.editRatingAdded.setImage(new Image("../../asset/image/add.png"));
+			this.editRatingAdded.setImage(new Image("file:../../asset/image/add.png"));
 			
 			this.deleteRatingAdded.setVisible(false);
 			this.frameDeleteRatingAdded.setVisible(false);
 		} else {
 			this.ratingAdded.setRating(facade.getRate(idRecipe));
 			this.editRatingAdded.setOnMousePressed(e -> {this.editeRating(null);});
-			//this.editRatingAdded.setImage(new Image("@../../asset/image/pencil.png"));
+			this.editRatingAdded.setImage(new Image("file:../../asset/image/pencil.png"));
 			this.deleteRatingAdded.setVisible(true);
 		}
 		
