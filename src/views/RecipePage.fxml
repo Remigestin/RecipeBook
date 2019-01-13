@@ -79,7 +79,7 @@
                   <Line endX="531.0" layoutX="900.0" layoutY="702.0" startX="-601.0" />
                   <VBox layoutX="45.0" layoutY="391.0" prefHeight="270.0" prefWidth="209.0" spacing="20.0" styleClass="mainInformation">
                      <children>
-                        <Rating fx:id="rating" partialRating="true" rating="0.0">
+                        <Rating fx:id="rating" disable="true" partialRating="true" rating="0.0">
                            <VBox.margin>
                               <Insets top="15.0" />
                            </VBox.margin></Rating>
