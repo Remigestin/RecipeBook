@@ -102,10 +102,7 @@ public class RecipeFacade {
 		return recipeDAO.searchRecipes(search);
 	}
 
-	public boolean hasRatedRecipe(int idRecipe) {
-		return recipeDAO.findRate(User.getSession().getId(), idRecipe) != -1;
-	}
-
+	//return -1 if there is no rate
 	public int getRate(int idRecipe) {
 		return recipeDAO.findRate(User.getSession().getId(), idRecipe);
 	}
