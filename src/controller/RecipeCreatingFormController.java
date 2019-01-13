@@ -148,12 +148,36 @@ public class RecipeCreatingFormController implements Initializable {
 		}
 
 		// Add in DB the cooking steps of the recipe created
-		ArrayList<CookingStep> steps = new ArrayList<CookingStep>();
-		facade.createRecipe(recipe, steps);
+		facade.createRecipe(recipe, getListCookingStepEntered());
 
 		// Display confirmation message if recipe is created and added
 		this.displayConfirmationCreation(event);
 
+	}
+	
+	private ArrayList<CookingStep> getListCookingStepEntered() {
+		ArrayList<CookingStep> listNewSteps = new ArrayList<CookingStep>();
+
+		CookingStep newStep1 = new CookingStep(nameStep1.getText(), descStep1.getText());
+		CookingStep newStep2 = new CookingStep(nameStep2.getText(), descStep2.getText());
+		CookingStep newStep3 = new CookingStep(nameStep3.getText(), descStep3.getText());
+		CookingStep newStep4 = new CookingStep(nameStep4.getText(), descStep4.getText());
+		CookingStep newStep5 = new CookingStep(nameStep5.getText(), descStep5.getText());
+
+		listNewSteps.add(newStep1);
+		listNewSteps.add(newStep2);
+		listNewSteps.add(newStep3);
+		listNewSteps.add(newStep4);
+		listNewSteps.add(newStep5);
+
+		for (int i = 0; i < listNewSteps.size(); i++) {
+
+			if (listNewSteps.get(i).getDescription().equals("") && listNewSteps.get(i).getDescription().equals("")) {
+				listNewSteps.remove(i);
+			}
+		}
+		
+		return listNewSteps;
 	}
 
 	private void displayConfirmationCreation(Event event) {

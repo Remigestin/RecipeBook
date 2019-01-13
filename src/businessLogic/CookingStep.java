@@ -6,6 +6,12 @@ public class CookingStep {
 	private String name;
 	private String description;
 	
+	public CookingStep() {}
+	
+	public CookingStep(String name, String description) {
+		this.name = name;
+		this.description = description;
+	}
 	public int getIdCookingStep() {
 		return idCookingStep;
 	}
