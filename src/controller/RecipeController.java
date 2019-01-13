@@ -170,7 +170,7 @@ public class RecipeController implements Initializable {
 		this.setRating(recipe.getRate());
 		
 		
-		if (facade.getRate(idRecipe) == -1) {
+		if (facade.getRate(idRecipe) == -1) { //if there is no rate from the user
 			this.editRatingAdded.setOnMousePressed(e -> {this.addRating(null);});
 			this.editRatingAdded.setImage(new Image("file:../../asset/image/add.png"));
 			
