@@ -60,14 +60,13 @@ public class RecipeFacade {
 
 	}
 
-	public ArrayList<Recipe> editRecipe(Recipe newRecipe, ArrayList<CookingStep> cookingSteps) {
+	public ArrayList<Recipe> editRecipe(Recipe recipeEdited, ArrayList<CookingStep> cookingStepsEdited) {
 
 		// Update recipe in DB
-		ArrayList<Recipe> newCreateList = recipeDAO.editRecipe(newRecipe);
+		ArrayList<Recipe> newCreateList = recipeDAO.editRecipe(recipeEdited);
 
-//		// Update cooking steps in DB
-//		int idNewRecipe = newCreateList.get(newCreateList.size() - 1).getIdRecipe();
-//		cookingStepDAO.createCookingStep(cookingSteps, idNewRecipe);
+		// Update cooking steps in DB
+		cookingStepDAO.editCookingStep(cookingStepsEdited);
 
 		// Update the user list of created recipes and favorite recipes
 		User.getSession().setCreateList(newCreateList);

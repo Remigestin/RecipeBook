@@ -16,6 +16,7 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 	/* SQL */
 	private static final String SQL_FIND_COOKING_STEPS_BY_IDRECIPE = "SELECT * FROM cookingstep	WHERE idRecipe = ?";
 	private static final String SQL_INSERT_NEW_COOKING_STEP = "INSERT INTO cookingstep VALUES (NULL,?,?,?)";
+	private static final String SQL_EDIT_COOKING_STEP = "UPDATE cookingstep SET nameStep = ? , description = ? WHERE idcookingstep = ?";
 
 	/* Private constructor */
 	private MySQLCookingStepDAO() {
@@ -64,13 +65,13 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 	}
 
 	@Override
-	public void createCookingStep(ArrayList<CookingStep> steps, int idRecipe) {
+	public void createCookingStep(ArrayList<CookingStep> newSteps, int idRecipe) {
 		
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
 			
-			for (CookingStep step : steps) {
+			for (CookingStep step : newSteps) {
 			
 				PreparedStatement st = c.prepareStatement(SQL_INSERT_NEW_COOKING_STEP);
 				
@@ -79,6 +80,33 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 				st.setInt(3, idRecipe);
 				st.executeUpdate();
 				
+			}
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		
+	}
+
+	@Override
+	public void editCookingStep(ArrayList<CookingStep> editedSteps) {
+		
+		for (CookingStep step : editedSteps) {
+			System.out.println(step.getIdCookingStep());
+		}
+		
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			
+			for (CookingStep step : editedSteps) {
+			
+				PreparedStatement st = c.prepareStatement(SQL_EDIT_COOKING_STEP);
+				
+				st.setString(1, step.getName());
+				st.setString(2, step.getDescription());
+				st.setInt(3, step.getIdCookingStep());
+				st.executeUpdate();
 			}
 
 		} catch (SQLException e) {

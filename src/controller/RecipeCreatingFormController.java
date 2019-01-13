@@ -170,13 +170,13 @@ public class RecipeCreatingFormController implements Initializable {
 		listNewSteps.add(newStep4);
 		listNewSteps.add(newStep5);
 
-		for (int i = 0; i < listNewSteps.size(); i++) {
-
-			if (listNewSteps.get(i).getDescription().equals("") && listNewSteps.get(i).getDescription().equals("")) {
-				listNewSteps.remove(i);
-			}
-		}
-		
+//		for (int i = 0; i < listNewSteps.size(); i++) {
+//
+//			if (listNewSteps.get(i).getDescription().equals("") && listNewSteps.get(i).getDescription().equals("")) {
+//				listNewSteps.remove(i);
+//			}
+//		}
+//		
 		return listNewSteps;
 	}
 

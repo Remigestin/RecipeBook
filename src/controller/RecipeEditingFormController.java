@@ -75,6 +75,12 @@ public class RecipeEditingFormController implements Initializable {
 	private ComboBox courseCategory;
 
 	private int idRecipe;
+	
+	private CookingStep step1 = new CookingStep();
+	private CookingStep step2 = new CookingStep();
+	private CookingStep step3 = new CookingStep();
+	private CookingStep step4 = new CookingStep();
+	private CookingStep step5 = new CookingStep();
 
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
@@ -166,15 +172,32 @@ public class RecipeEditingFormController implements Initializable {
 
 		ArrayList<CookingStep> cookingSteps = facade.findCookingSteps(idRecipe);
 
-		// this.setNameStep1(cookingSteps.get(0).getName());
-		// this.setDescStep1(cookingSteps.get(0).getDescription());
+		step1.setIdCookingStep(cookingSteps.get(0).getIdCookingStep());
+		step2.setIdCookingStep(cookingSteps.get(1).getIdCookingStep());
+		step3.setIdCookingStep(cookingSteps.get(2).getIdCookingStep());
+		step4.setIdCookingStep(cookingSteps.get(3).getIdCookingStep());
+		step5.setIdCookingStep(cookingSteps.get(4).getIdCookingStep());
+				
+		this.setNameStep1(cookingSteps.get(0).getName());
+		this.setDescStep1(cookingSteps.get(0).getDescription());
+		
+		this.setNameStep2(cookingSteps.get(1).getName());
+		this.setDescStep2(cookingSteps.get(1).getDescription());
+
+		this.setNameStep3(cookingSteps.get(2).getName());
+		this.setDescStep3(cookingSteps.get(2).getDescription());
+
+		this.setNameStep4(cookingSteps.get(3).getName());
+		this.setDescStep4(cookingSteps.get(3).getDescription());
+
+		this.setNameStep5(cookingSteps.get(4).getName());
+		this.setDescStep5(cookingSteps.get(4).getDescription());
 
 		this.setDifficulty(newRecipe.getDifficulty());
 		this.setPreparationTime(Integer.toString(newRecipe.getPreparationTime()));
 		this.setNumberPeople(newRecipe.getNbPersRecipe());
 		this.setImage(newRecipe.getImage());
 		this.setCourseCategory(facade.findCourseCategoryName(newRecipe.getIdCourse()));
-
 	}
 
 	/* initialize the spinners with integers */
@@ -187,14 +210,36 @@ public class RecipeEditingFormController implements Initializable {
 	@FXML
 	public void submitEdits(ActionEvent event) {
 
+		// create the recipe edited 
 		int idCourseSelected = this.getIdCourseByCourseNameSelected();
 		Recipe recipeEdited = new Recipe(idRecipe, nameRecipe.getText(), Integer.parseInt(preparationTime.getText()),
 				(int) numberPeople.getValue(), image.getText(), idCourseSelected, (int) difficulty.getValue());
 
-		// attention to do : gerer update cooking steps !!!
-		ArrayList<CookingStep> cookingSteps = new ArrayList<CookingStep>();
+		// put new cooking steps in a list	
+		step1.setName(nameStep1.getText());
+		step1.setDescription(descStep1.getText());
+		
+		step2.setName(nameStep2.getText());
+		step2.setDescription(descStep2.getText());
+		
+		step3.setName(nameStep3.getText());
+		step3.setDescription(descStep3.getText());
+		
+		step4.setName(nameStep4.getText());
+		step4.setDescription(descStep4.getText());
+		
+		step5.setName(nameStep5.getText());
+		step5.setDescription(descStep5.getText());
 
-		facade.editRecipe(recipeEdited, cookingSteps);
+		ArrayList<CookingStep> cookingStepsEdited = new ArrayList<CookingStep>();
+		cookingStepsEdited.add(step1);
+		cookingStepsEdited.add(step2);
+		cookingStepsEdited.add(step3);
+		cookingStepsEdited.add(step4);
+		cookingStepsEdited.add(step5);
+		
+		// update recipe and cooking steps in DB
+		facade.editRecipe(recipeEdited, cookingStepsEdited);
 
 		// Display confirmation message if recipe is created and added
 		this.displayConfirmationEdit(event);
