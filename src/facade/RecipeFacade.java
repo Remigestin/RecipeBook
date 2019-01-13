@@ -13,6 +13,7 @@ import businessLogic.Recipe;
 import businessLogic.User;
 import factory.AbstractFactory;
 import factory.MySQLFactory;
+import mySQLDAO.MySQLRecipeDAO;
 
 public class RecipeFacade {
 
@@ -71,6 +72,11 @@ public class RecipeFacade {
 		// Update the user list of created recipes and favorite recipes
 		User.getSession().setCreateList(newCreateList);
 		User.getSession().setFavoriteList(recipeDAO.loadFavoriteRecipe(User.getSession().getId()));
+
+		// Update user random menu
+		User.getSession().setRandomStarter(MySQLRecipeDAO.getInstance().findRandomRecipe(1));
+		User.getSession().setRandomMain(MySQLRecipeDAO.getInstance().findRandomRecipe(2));
+		User.getSession().setRandomDessert(MySQLRecipeDAO.getInstance().findRandomRecipe(3));
 
 		return newCreateList;
 
