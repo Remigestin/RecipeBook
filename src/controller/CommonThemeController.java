@@ -2,9 +2,12 @@ package controller;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import businessLogic.Recipe;
 import businessLogic.User;
+import facade.RecipeFacade;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,11 +19,17 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 
 public class CommonThemeController implements Initializable {
 
+	@FXML
+	private TextField quickSearch;
+	@FXML
+	private Button submitSearch;
 	@FXML
 	private Label username;
 	@FXML
@@ -35,7 +44,9 @@ public class CommonThemeController implements Initializable {
 	private HBox randomMenu;
 	@FXML
 	private HBox shoppingList;
-	 
+	
+	private RecipeFacade facade = RecipeFacade.getInstance();
+
 	// Event Listener on HBox[#home].onMousePressed
 	// Event Listener on HBox[#advancedSearch].onMousePressed
 	// Event Listener on HBox[#myRecipes].onMousePressed
@@ -101,6 +112,41 @@ public class CommonThemeController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+
+	@FXML
+	void quickSearchWithKeyEnter(KeyEvent event) {
+		if (!username.getText().isEmpty() && event.getCode() == KeyCode.ENTER) {
+			this.quickSearch(event);
+		}
+	}
+
+	@FXML
+	void quickSearch(Event event) {
+
+		ArrayList<Recipe> results = facade.searchRecipes(quickSearch.getText());
+		
+		// switch to quick search page with the results
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/QuickSearchResultsPage.fxml"));
+
+			root = loader.load();
+			
+			QuickSearchController controller = loader.getController();
+			controller.setResults(results);
+			controller.setResultsInTableView();
+			
+			Scene scene = new Scene(root, 1920, 1080);
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	@Override

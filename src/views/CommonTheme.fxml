@@ -20,12 +20,12 @@
             <Image url="@../../asset/image/logo.png" />
          </image>
       </ImageView>
-      <TextField focusTraversable="false" layoutX="416.0" layoutY="73.0" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">
+      <TextField fx:id="quickSearch" focusTraversable="false" layoutX="416.0" layoutY="73.0" onKeyPressed="#quickSearchWithKeyEnter" prefHeight="48.0" prefWidth="485.0" promptText="quick search for a recipe ...">
          <font>
             <Font size="22.0" />
          </font>
       </TextField>
-      <Button layoutX="901.0" layoutY="78.0" mnemonicParsing="false" text="OK">
+      <Button fx:id="submitSearch" layoutX="901.0" layoutY="78.0" mnemonicParsing="false" onAction="#quickSearch" text="OK">
          <font>
             <Font size="17.0" />
          </font>

@@ -23,7 +23,7 @@
                <children>
                   <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="My Recipes" />
                   <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-                  <TableView fx:id="listRecipes" layoutX="158.0" layoutY="143.0" onMousePressed="#consultRecipe" prefHeight="453.0" prefWidth="939.0" style="-fx-cursor: hand;">
+                  <TableView fx:id="listRecipes" layoutX="259.0" layoutY="265.0" onMousePressed="#consultRecipe" prefHeight="477.0" prefWidth="983.0" style="-fx-cursor: hand;">
                     <columns>
                       <TableColumn fx:id="recipeName" prefWidth="172.3333740234375" text="Recipe Name" />
                         <TableColumn fx:id="rating" prefWidth="75.0" text="Rating" />
@@ -50,7 +50,7 @@
                         <DropShadow />
                      </effect>
                   </Pane>
-                  <ComboBox fx:id="filter" layoutX="107.0" layoutY="58.0" onAction="#filterRecipesByCourseCategory" prefHeight="25.0" prefWidth="179.0" promptText="filter by course category" style="-fx-border-color: #93c47d; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <ComboBox fx:id="filter" layoutX="1134.0" layoutY="174.0" onAction="#filterRecipesByCourseCategory" prefHeight="25.0" prefWidth="179.0" promptText="filter by course category" style="-fx-border-color: #93c47d; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
                </children>
             </Pane>
          </children>
