@@ -166,9 +166,11 @@ public class RecipeController implements Initializable {
 		
 		if (facade.getRate(idRecipe) == -1) {
 			this.editRatingAdded.setOnMousePressed(e -> {this.addRating(null);});
+			this.deleteRatingAdded.setVisible(false);
 		} else {
 			this.ratingAdded.setRating(facade.getRate(idRecipe));
 			this.editRatingAdded.setOnMousePressed(e -> {this.editeRating(null);});
+			this.deleteRatingAdded.setVisible(true);
 		}
 		
 		this.deleteRatingAdded.setOnMousePressed(e -> {this.deleteRating(null);});
