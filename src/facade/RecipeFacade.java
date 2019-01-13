@@ -68,15 +68,8 @@ public class RecipeFacade {
 
 		// Update cooking steps in DB
 		cookingStepDAO.editCookingStep(cookingStepsEdited);
-
-		// Update the user list of created recipes and favorite recipes
-		User.getSession().setCreateList(newCreateList);
-		User.getSession().setFavoriteList(recipeDAO.loadFavoriteRecipe(User.getSession().getId()));
-
-		// Update user random menu
-		User.getSession().setRandomStarter(MySQLRecipeDAO.getInstance().findRandomRecipe(1));
-		User.getSession().setRandomMain(MySQLRecipeDAO.getInstance().findRandomRecipe(2));
-		User.getSession().setRandomDessert(MySQLRecipeDAO.getInstance().findRandomRecipe(3));
+		
+		this.refreshSession();
 
 		return newCreateList;
 
@@ -117,7 +110,20 @@ public class RecipeFacade {
 		User session = User.getSession();
 		recipeDAO.rateARecipe(idRecipe, session.getId(), ratingValue);
 
-		// todo : refresh session
+		this.refreshSession();
+
+	}
+	
+	private void refreshSession() {
+		
+				// Update the user list of created recipes and favorite recipes
+				User.getSession().setCreateList(recipeDAO.loadCreateRecipe(User.getSession().getId()));
+				User.getSession().setFavoriteList(recipeDAO.loadFavoriteRecipe(User.getSession().getId()));
+
+				// Update user random menu
+				User.getSession().setRandomStarter(recipeDAO.findRecipe(User.getSession().getRandomStarter().getIdRecipe()));
+				User.getSession().setRandomMain(recipeDAO.findRecipe(User.getSession().getRandomMain().getIdRecipe()));
+				User.getSession().setRandomDessert(recipeDAO.findRecipe(User.getSession().getRandomDessert().getIdRecipe()));
 
 	}
 
