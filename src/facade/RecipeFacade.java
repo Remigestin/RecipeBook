@@ -106,7 +106,7 @@ public class RecipeFacade {
 		return recipeDAO.findRate(User.getSession().getId(), idRecipe);
 	}
 
-	public void rateARecipe(int idRecipe, int ratingValue) {
+	public void rateARecipe(int idRecipe, double ratingValue) {
 		User session = User.getSession();
 		recipeDAO.rateARecipe(idRecipe, session.getId(), ratingValue);
 

@@ -324,14 +324,14 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	}
 
 	@Override
-	public void rateARecipe(int idRecipe, int idUser, int ratingValue) {
+	public void rateARecipe(int idRecipe, int idUser, double ratingValue) {
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
 			PreparedStatement st = c.prepareStatement(SQL_INSERT_NEW_RATING);
 			st.setInt(1, idRecipe);
 			st.setInt(2, idUser);
-			st.setInt(3, ratingValue);
+			st.setDouble(3, ratingValue);
 			st.executeUpdate();
 
 		} catch (SQLException e) {

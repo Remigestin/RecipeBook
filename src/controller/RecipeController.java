@@ -162,6 +162,16 @@ public class RecipeController implements Initializable {
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
 		this.setDifficulty(Integer.toString(recipe.getDifficulty()));
 		this.setRating(recipe.getRate());
+		
+		
+		if (facade.getRate(idRecipe) == -1) {
+			this.editRatingAdded.setOnMousePressed(e -> {this.addRating(null);});
+		} else {
+			this.ratingAdded.setRating(facade.getRate(idRecipe));
+			this.editRatingAdded.setOnMousePressed(e -> {this.editeRating(null);});
+		}
+		
+		
 
 		/* find main course and set it */
 		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
@@ -171,6 +181,22 @@ public class RecipeController implements Initializable {
 		Text.setCellValueFactory(new PropertyValueFactory<Commentary, String>("text"));
 		tableView.setItems(getComment());
 
+	}
+	
+	private void addRating(Event event) {
+		
+		
+		facade.rateARecipe(idRecipe, this.ratingAdded.getRating());
+		this.consultRecipe();
+		
+	}
+	
+	private void editeRating(Event event) {
+		
+	}
+	
+	private void deleteRating(Event event) {
+		
 	}
 
 	// Event Listener on Button[#buttonEdit].onAction
