@@ -114,6 +114,14 @@ public class RecipeFacade {
 
 	}
 	
+	public void editRating(int idRecipe, double ratingValue) {
+		User session = User.getSession();
+		recipeDAO.editRating(idRecipe, session.getId(), ratingValue);
+
+		this.refreshSession();
+
+	}
+	
 	public void deleteRating(int idRecipe) {
 		recipeDAO.deleteRating(idRecipe, User.getSession().getId());
 		this.refreshSession();

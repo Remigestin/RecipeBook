@@ -194,7 +194,8 @@ public class RecipeController implements Initializable {
 	}
 	
 	private void editeRating(Event event) {
-		
+		facade.editRating(idRecipe, this.ratingAdded.getRating());
+		this.consultRecipe();
 	}
 	
 	private void deleteRating(Event event) {

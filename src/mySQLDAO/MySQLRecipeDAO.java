@@ -32,6 +32,8 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_INSERT_NEW_RATING = "INSERT INTO rating VALUES (?,?,?)";
 	private static final String SQL_FIND_RECIPES_BY_SEARCH = "Select * FROM recipe WHERE namerecipe LIKE ?";
 	private static final String SQL_DELETE_RATING = "DELETE FROM rating WHERE idrecipe = ? AND iduser = ? ";
+	private static final String SQL_UPDATE_RATING = "UPDATE rating SET mark = ? WHERE idrecipe = ? AND iduser = ? ";
+	
 
 	/* Private constructor */
 	private MySQLRecipeDAO() {
@@ -355,6 +357,23 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			throw new DAOException(e);
 		}
 
+		
+	}
+
+	@Override
+	public void editRating(int idRecipe, int idUser, double ratingValue) {
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_UPDATE_RATING);
+			st.setDouble(1, ratingValue);
+			st.setInt(2, idRecipe);
+			st.setInt(3, idUser);
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
 		
 	}
 }
