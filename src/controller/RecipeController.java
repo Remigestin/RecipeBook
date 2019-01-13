@@ -27,6 +27,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
@@ -65,7 +66,11 @@ public class RecipeController implements Initializable {
 	@FXML
 	private ImageView editRatingAdded;
 	@FXML
+	private Pane frameEditRatingAdded;
+	@FXML
 	private ImageView deleteRatingAdded;
+	@FXML
+	private Pane frameDeleteRatingAdded;
 	
 	@FXML
 	private TextArea textaddcomment;
@@ -152,6 +157,7 @@ public class RecipeController implements Initializable {
 	public void consultRecipe() {
 
 		/* find and set cooking steps */
+		cookingSteps.getItems().clear();
 		this.setCookingSteps(facade.findCookingSteps(idRecipe));
 
 		/* find recipe details and set them */
@@ -166,10 +172,14 @@ public class RecipeController implements Initializable {
 		
 		if (facade.getRate(idRecipe) == -1) {
 			this.editRatingAdded.setOnMousePressed(e -> {this.addRating(null);});
+			this.editRatingAdded.setImage(new Image("../../asset/image/add.png"));
+			
 			this.deleteRatingAdded.setVisible(false);
+			this.frameDeleteRatingAdded.setVisible(false);
 		} else {
 			this.ratingAdded.setRating(facade.getRate(idRecipe));
 			this.editRatingAdded.setOnMousePressed(e -> {this.editeRating(null);});
+			//this.editRatingAdded.setImage(new Image("@../../asset/image/pencil.png"));
 			this.deleteRatingAdded.setVisible(true);
 		}
 		
