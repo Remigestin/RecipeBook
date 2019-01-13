@@ -61,6 +61,13 @@ public class RecipeController implements Initializable {
 	private ImageView addToCart;
 
 	@FXML
+	private Rating ratingAdded;
+	@FXML
+	private ImageView editRatingAdded;
+	@FXML
+	private ImageView deleteRatingAdded;
+	
+	@FXML
 	private TextArea textaddcomment;
 	@FXML
 	private Button buttonadd;
