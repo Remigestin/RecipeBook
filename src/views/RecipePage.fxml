@@ -22,14 +22,15 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
 <ScrollPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RecipeController">
    <content>
-      <AnchorPane prefHeight="1376.0" prefWidth="1920.0">
+      <AnchorPane prefHeight="1628.0" prefWidth="1920.0">
          <children>
             <fx:include fx:id="commonTheme" source="CommonTheme.fxml" />
             <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
-            <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1176.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
+            <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1384.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
                <children>
                   <Label fx:id="nameRecipe" layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="&lt;Name Recipe&gt;" />
                   <Label fx:id="courseCategory" layoutX="54.0" layoutY="37.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-radius: 50; -fx-background-radius: 50;" text="&lt;Course Category&gt;">
@@ -175,10 +176,10 @@
                         </Pane>
                      </children>
                   </HBox>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="125.0" layoutX="298.0" layoutY="726.0" stroke="BLACK" strokeType="INSIDE" width="1134.0" />
-                  <TextArea fx:id="textaddcomment" layoutX="323.0" layoutY="736.0" prefHeight="105.0" prefWidth="935.0" />
-                  <Button fx:id="buttonadd" layoutX="1286.0" layoutY="777.0" mnemonicParsing="false" onAction="#addComment" prefHeight="57.0" prefWidth="125.0" text="Add A Comment" />
-                  <TableView fx:id="tableView" layoutX="298.0" layoutY="866.0" prefHeight="306.0" prefWidth="1134.0">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="125.0" layoutX="298.0" layoutY="908.0" stroke="BLACK" strokeType="INSIDE" width="1134.0" />
+                  <TextArea fx:id="textaddcomment" layoutX="323.0" layoutY="918.0" prefHeight="105.0" prefWidth="935.0" />
+                  <Button fx:id="buttonadd" layoutX="1286.0" layoutY="959.0" mnemonicParsing="false" onAction="#addComment" prefHeight="57.0" prefWidth="125.0" text="Add A Comment" />
+                  <TableView fx:id="tableView" layoutX="298.0" layoutY="1048.0" prefHeight="306.0" prefWidth="1134.0">
                     <columns>
                       <TableColumn fx:id="ColoneUser" prefWidth="136.0" />
                       <TableColumn fx:id="Date" prefWidth="132.0" />
@@ -186,6 +187,36 @@
                     </columns>
                   </TableView>
                   <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="102.0" layoutX="300.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
+                  <Rating layoutX="336.0" layoutY="761.0" prefHeight="34.0" prefWidth="204.0" rating="0.0" updateOnHover="true" />
+                  <HBox layoutX="601.0" layoutY="756.0" prefHeight="76.0" prefWidth="165.0" spacing="20.0">
+                     <children>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="46.0" prefWidth="47.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
+                           <children>
+                              <ImageView fx:id="buttonEditRecipe1" fitHeight="32.0" fitWidth="25.0" layoutX="11.0" layoutY="10.0" onMousePressed="#editRecipe" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                                 <image>
+                                    <Image url="@../../asset/image/pencil.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Pane>
+                        <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="46.0" prefWidth="48.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
+                           <children>
+                              <ImageView fx:id="addToFavorite1" fitHeight="30.0" fitWidth="24.0" layoutX="11.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../asset/image/delete.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
+                        </Pane>
+                     </children>
+                  </HBox>
                </children>
             </Pane>
          </children>
