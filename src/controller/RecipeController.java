@@ -32,6 +32,7 @@ import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import org.controlsfx.control.Rating;
 
 public class RecipeController implements Initializable {
 
@@ -47,7 +48,7 @@ public class RecipeController implements Initializable {
 	@FXML
 	private ListView cookingSteps;
 	@FXML
-	private Label rating;
+	private Rating rating;
 	@FXML
 	private Label preparationTime;
 	@FXML
@@ -97,7 +98,7 @@ public class RecipeController implements Initializable {
 	}
 
 	public void setRating(String rating) {
-		this.rating.setText(rating);
+		//this.rating.setText(rating);
 	}
 
 	public void setPreparationTime(String preparationTime) {
@@ -247,6 +248,7 @@ public class RecipeController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		initSpinner();
+		
 
 	}
 

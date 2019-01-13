@@ -79,20 +79,10 @@
                   <Line endX="531.0" layoutX="900.0" layoutY="702.0" startX="-601.0" />
                   <VBox layoutX="45.0" layoutY="391.0" prefHeight="270.0" prefWidth="209.0" spacing="20.0" styleClass="mainInformation">
                      <children>
-                        <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="141.0" spacing="20.0">
-                           <children>
-                              <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../asset/image/star.png" />
-                                 </image>
-                              </ImageView>
-                              <Label fx:id="rating" prefHeight="50.0" prefWidth="88.0" text="?">
-                                 <font>
-                                    <Font size="20.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </HBox>
+                        <Rating fx:id="rating" partialRating="true" rating="1.4">
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin></Rating>
                         <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="141.0" spacing="20.0">
                            <children>
                               <ImageView fitHeight="32.0" fitWidth="54.0" pickOnBounds="true" preserveRatio="true">
