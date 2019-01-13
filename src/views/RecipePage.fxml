@@ -178,7 +178,7 @@
                   </TableView>
                   <ImageView fx:id="image" fitHeight="150.0" fitWidth="200.0" layoutX="45.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="102.0" layoutX="300.0" layoutY="730.0" stroke="BLACK" strokeType="INSIDE" width="462.0" />
-                  <Rating fx:id="ratingAdded" layoutX="336.0" layoutY="761.0" prefHeight="34.0" prefWidth="204.0" rating="0.0" updateOnHover="true" />
+                  <Rating fx:id="ratingAdded" layoutX="336.0" layoutY="761.0" partialRating="true" prefHeight="34.0" prefWidth="204.0" rating="0.0" updateOnHover="true" />
                   <HBox layoutX="601.0" layoutY="756.0" prefHeight="76.0" prefWidth="165.0" spacing="20.0">
                      <children>
                         <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="46.0" prefWidth="47.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
