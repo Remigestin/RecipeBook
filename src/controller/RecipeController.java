@@ -97,8 +97,8 @@ public class RecipeController implements Initializable {
 		this.image.setImage(new Image(urlImage));
 	}
 
-	public void setRating(String rating) {
-		//this.rating.setText(rating);
+	public void setRating(float rating) {
+		this.rating.setRating(rating);
 	}
 
 	public void setPreparationTime(String preparationTime) {
@@ -154,7 +154,7 @@ public class RecipeController implements Initializable {
 		this.setNumberPeople(recipe.getNbPersRecipe());
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
 		this.setDifficulty(Integer.toString(recipe.getDifficulty()));
-		// this.setRating(recipe.getRating());
+		this.setRating(recipe.getRate());
 
 		/* find main course and set it */
 		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
@@ -248,7 +248,6 @@ public class RecipeController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		initSpinner();
-		
 
 	}
 
