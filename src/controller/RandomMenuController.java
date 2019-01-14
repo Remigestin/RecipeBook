@@ -85,7 +85,7 @@ public class RandomMenuController implements Initializable {
 		this.setIdStarter(starter.getIdRecipe());
 		this.timeStarter.setText(Integer.toString(starter.getPreparationTime()) + " min");
 		this.nameStarter.setText(starter.getNameRecipe());
-		Image starterImg = new Image(starter.getImage());
+		Image starterImg = new Image("file:../../asset/imageRecette/"+starter.getImage());
 		this.imageStarter.setImage(starterImg);
 		this.lvlStarter.setText(Integer.toString(starter.getDifficulty()) + "/5");
 
@@ -94,7 +94,7 @@ public class RandomMenuController implements Initializable {
 		this.setIdMain(main.getIdRecipe());
 		this.timeMain.setText(Integer.toString(main.getPreparationTime()) + " min");
 		this.nameMain.setText(main.getNameRecipe());
-		Image mainImg = new Image(main.getImage());
+		Image mainImg = new Image("file:../../asset/imageRecette/"+main.getImage());
 		this.imageMain.setImage(mainImg);
 		this.lvlMain.setText(Integer.toString(main.getDifficulty()) + "/5");
 
@@ -103,7 +103,7 @@ public class RandomMenuController implements Initializable {
 		this.setIdDessert(dessert.getIdRecipe());
 		this.timeDessert.setText(Integer.toString(dessert.getPreparationTime()) + " min");
 		this.nameDessert.setText(dessert.getNameRecipe());
-		Image dessertImg = new Image(dessert.getImage());
+		Image dessertImg = new Image("file:../../asset/imageRecette/"+dessert.getImage());
 		this.imageDessert.setImage(dessertImg);
 		this.lvlDessert.setText(Integer.toString(dessert.getDifficulty()) + "/5");
 
