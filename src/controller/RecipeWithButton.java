@@ -21,21 +21,33 @@ public class RecipeWithButton {
 	private int difficulty;
 	private Button editButton;
 
-	public RecipeWithButton(int idRecipe, String nameRecipe, Integer preparationTime, Integer difficulty) {
+	public RecipeWithButton(int idRecipe, String nameRecipe, Integer preparationTime, Integer difficulty, String buttonType) {
 		
 		this.idRecipe = idRecipe;
 		this.nameRecipe = nameRecipe;
 		this.preparationTime = preparationTime;
 		this.difficulty = difficulty;
-		this.editButton = new Button("edit");
+		
+		this.editButton = new Button(buttonType);
+		
 		
 		this.editButton.setOnAction(new EventHandler<ActionEvent>() {
+			
 				@Override public void handle(ActionEvent event) {
+					
+					String page = "";
+					
+					if(buttonType.equals("edit")) {
+						page="/views/RecipeEditingFormPage.fxml";
+						
+					}else if(buttonType.equals("remove")){
+						page = "/views/Favorites.fxml";
+					}
 
 					Parent root;
 
 					try {
-						FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipeEditingFormPage.fxml"));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource(page));
 
 						root = loader.load();
 
