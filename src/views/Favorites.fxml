@@ -15,15 +15,16 @@
          <children>
             <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Favorites" />
             <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-            <TextArea fx:id="text" layoutX="129.0" layoutY="217.0" prefHeight="200.0" prefWidth="200.0" />
-            <Button fx:id="add" layoutX="409.0" layoutY="217.0" mnemonicParsing="false" onAction="#addFavoriteRecipe" text="add a favorite recipe" />
-            <Button fx:id="delete" layoutX="409.0" layoutY="279.0" mnemonicParsing="false" onAction="#deleteFavoriteRecipe" text="delete a favorite recipe" />
-            <TableView fx:id="favoritesTab" layoutX="148.0" layoutY="458.0" prefHeight="200.0" prefWidth="517.0">
+            <Button fx:id="add" layoutX="129.0" layoutY="132.0" mnemonicParsing="false" onAction="#addFavoriteRecipe" text="add a favorite recipe" />
+            <Button fx:id="delete" layoutX="309.0" layoutY="132.0" mnemonicParsing="false" onAction="#deleteFavoriteRecipe" text="delete a favorite recipe" />
+            <TableView fx:id="favoritesTab" layoutX="232.0" layoutY="227.0" prefHeight="477.0" prefWidth="983.0">
               <columns>
-                <TableColumn fx:id="recipeName" prefWidth="126.0" text="Recipe Name" />
-                <TableColumn fx:id="preparationTime" minWidth="8.0" prefWidth="162.0" text="Preparation Time" />
-                  <TableColumn fx:id="difficulty" prefWidth="99.0" text="Difficulty" />
-                  <TableColumn fx:id="course" prefWidth="109.0" text="Course" />
+                <TableColumn fx:id="recipeName" prefWidth="283.0" text="Recipe Name" />
+                <TableColumn fx:id="rating" minWidth="0.0" prefWidth="104.0" text="Rating" />
+                  <TableColumn fx:id="preparationTime" prefWidth="162.0" text="Preparation Time" />
+                  <TableColumn fx:id="difficulty" prefWidth="110.0" text="Difficulty" />
+                  <TableColumn fx:id="course" prefWidth="112.0" text="Course" />
+                  <TableColumn fx:id="remove" prefWidth="181.0" text="remove from favorites" />
               </columns>
             </TableView>
          </children>

@@ -37,19 +37,23 @@ public class FavoritesController implements Initializable {
 	private TableView<Recipe> favoritesTab;
 	
 	@FXML
-    private TableColumn<Recipe, String> recipeName;
+	private TableColumn<Recipe, String> recipeName;
 
-    @FXML
-    private TableColumn<Recipe, String> difficulty;
+	@FXML
+	private TableColumn<Recipe, String> difficulty;
 
-    @FXML
+	@FXML
+	private TableColumn<Recipe, String> rating;
+
+	@FXML
     private TableColumn<Recipe, String> preparationTime;
 
-    @FXML
+	@FXML
     private TableColumn<Recipe, String> course;
-    
-    @FXML
-    private TextArea text;
+	
+	@FXML
+    private TableColumn<Recipe, String> remove;
+	    
 
     //in order to test
     @FXML
@@ -61,13 +65,6 @@ public class FavoritesController implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		//print the list of favorite recipes
-		String s ="";
-		
-		for(Recipe r : favorites) {
-			s += r.getNameRecipe()+"\n";
-		}
-		text.setText(s);
 		
 		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("nameRecipe"));
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
@@ -94,7 +91,8 @@ public class FavoritesController implements Initializable {
     @FXML
     void addFavoriteRecipe(ActionEvent event) {
     	favorites = facade.addFavoriteRecipe(User.getSession().getId(),idRecipe);
-    	//favoritesTab.refresh();
+    	favoritesTab.setItems(getRecipes());
+    	favoritesTab.refresh();
     	
     	
     }
@@ -103,6 +101,9 @@ public class FavoritesController implements Initializable {
     @FXML
     void deleteFavoriteRecipe(ActionEvent event) {
     	facade.removeFavoriteRecipe(User.getSession().getId(),idRecipe);
+    	favoritesTab.setItems(getRecipes());
+    	favoritesTab.refresh();
+    	
     }
 	
 

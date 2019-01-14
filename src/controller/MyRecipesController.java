@@ -88,7 +88,7 @@ public class MyRecipesController implements Initializable {
 		for (Recipe r : User.getSession().getCreateList()) {
 
 			myRecipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
-					r.getDifficulty()));
+					r.getDifficulty(), "edit"));
 
 		}
 		return myRecipes;
@@ -102,7 +102,7 @@ public class MyRecipesController implements Initializable {
 			if (r.getIdCourse() == idCourseSelected)
 
 				myRecipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
-						r.getDifficulty()));
+						r.getDifficulty(), "edit"));
 		}
 
 		return myRecipes;
