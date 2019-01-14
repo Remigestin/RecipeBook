@@ -11,6 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import org.controlsfx.control.Rating?>
 
 <AnchorPane stylesheets="@theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.RandomMenuController">
    <children>
@@ -37,31 +38,32 @@
                         <Font size="33.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/clock.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="timeStarter" layoutX="66.0" layoutY="115.0" text="&lt;time&gt;">
+                  <Label fx:id="timeStarter" layoutX="66.0" layoutY="157.0" text="&lt;time&gt;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/biceps.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lvlStarter" layoutX="248.0" layoutY="115.0" text="&lt;lvl&gt;">
+                  <Label fx:id="lvlStarter" layoutX="248.0" layoutY="157.0" text="&lt;lvl&gt;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imageStarter" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="186.0" onMousePressed="#consultRecipe" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                  <ImageView fx:id="imageStarter" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="203.0" onMousePressed="#consultRecipe" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
                         <Image url="@../../asset/image/poulet.PNG" />
                      </image>
                   </ImageView>
+                  <Rating fx:id="starterRating" disable="true" layoutX="24.0" layoutY="110.0" prefHeight="14.0" prefWidth="146.0" rating="0.0" />
                </children>
             </Pane>
             <Pane layoutX="1365.0" layoutY="30.0" prefHeight="76.0" prefWidth="79.0" style="-fx-background-color: white; -fx-border-color: black; -fx-border-width: 3;">
@@ -94,31 +96,32 @@
                         <Font size="33.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/clock.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="timeMain" layoutX="66.0" layoutY="115.0" text="&lt;time&gt;">
+                  <Label fx:id="timeMain" layoutX="66.0" layoutY="160.0" text="&lt;time&gt;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/biceps.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lvlMain" layoutX="248.0" layoutY="115.0" text="&lt;lvl&gt;">
+                  <Label fx:id="lvlMain" layoutX="248.0" layoutY="160.0" text="&lt;lvl&gt;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imageMain" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="186.0" onMousePressed="#consultRecipe" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                  <ImageView fx:id="imageMain" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="206.0" onMousePressed="#consultRecipe" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
                         <Image url="@../../asset/image/poulet.PNG" />
                      </image>
                   </ImageView>
+                  <Rating fx:id="mainRating" disable="true" layoutX="25.0" layoutY="110.0" />
                </children>
             </Pane>
             <Pane layoutX="1045.0" layoutY="217.0" opacity="0.75" prefHeight="450.0" prefWidth="340.0" style="-fx-background-color: white;">
@@ -139,31 +142,32 @@
                         <Font size="33.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="25.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/clock.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="timeDessert" layoutX="66.0" layoutY="115.0" text="&lt;time&gt;">
+                  <Label fx:id="timeDessert" layoutX="66.0" layoutY="160.0" text="&lt;time&gt;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="114.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="65.0" layoutX="211.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/biceps.png" />
                      </image>
                   </ImageView>
-                  <Label fx:id="lvlDessert" layoutX="248.0" layoutY="115.0" text="&lt;lvl&gt;">
+                  <Label fx:id="lvlDessert" layoutX="248.0" layoutY="160.0" text="&lt;lvl&gt;">
                      <font>
                         <Font size="19.0" />
                      </font>
                   </Label>
-                  <ImageView fx:id="imageDessert" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="186.0" onMousePressed="#consultRecipe" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
+                  <ImageView fx:id="imageDessert" fitHeight="139.0" fitWidth="215.0" layoutX="65.0" layoutY="206.0" onMousePressed="#consultRecipe" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
                      <image>
                         <Image url="@../../asset/image/poulet.PNG" />
                      </image>
                   </ImageView>
+                  <Rating fx:id="dessertRating" disable="true" layoutX="22.0" layoutY="110.0" />
                </children>
             </Pane>
          </children>

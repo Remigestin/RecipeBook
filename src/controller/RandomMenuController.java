@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import org.controlsfx.control.Rating;
+
 import businessLogic.Recipe;
 import businessLogic.User;
 import facade.RandomFacade;
@@ -33,6 +35,9 @@ public class RandomMenuController implements Initializable {
 	private Label lvlStarter;
 	@FXML
 	private ImageView imageStarter;
+    @FXML
+    private Rating starterRating;
+	
 	@FXML
 	private Button changeMain;
 
@@ -46,6 +51,8 @@ public class RandomMenuController implements Initializable {
 	private Label lvlMain;
 	@FXML
 	private ImageView imageMain;
+	@FXML
+    private Rating mainRating;
 
 	@FXML
 	private Button changeDessert;
@@ -60,6 +67,8 @@ public class RandomMenuController implements Initializable {
 	private Label lvlDessert;
 	@FXML
 	private ImageView imageDessert;
+	@FXML
+    private Rating dessertRating;
 
 	private int idDessert;
 
