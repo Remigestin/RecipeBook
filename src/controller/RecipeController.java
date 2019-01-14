@@ -293,9 +293,9 @@ public class RecipeController implements Initializable {
 	@FXML
 	void addFavoriteRecipe(Event event) {
 		
-		System.out.println("hello 1");
+		
 		favoritesfacade.addFavoriteRecipe(User.getSession().getId(),idRecipe);
-		System.out.println("hello 2");
+		
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation");
 		alert.setHeaderText("Your recipe " + nameRecipe.getText() + " has been added to your favorites ! ");

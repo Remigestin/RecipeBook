@@ -110,6 +110,7 @@ public class MySQLUserDAO extends AbstractUserDAO {
 			st.setInt(2, idRecipe);
 			st.executeUpdate();
 
+			User.getSession().setFavoriteList(MySQLRecipeDAO.getInstance().loadFavoriteRecipe(idUser));
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}

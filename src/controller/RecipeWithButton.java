@@ -61,9 +61,31 @@ public class RecipeWithButton {
 						e.printStackTrace();
 					}
 					
-					}else if(buttonType.equals("remove")){
-						FavoritesController controller = new FavoritesController();
-						controller.deleteFavoriteRecipe(event);
+					}else if(buttonType.equals("remove")){					
+						
+
+						Parent root;
+
+						try {
+							FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Favorites.fxml"));
+
+							root = loader.load();
+
+							FavoritesController controller = loader.getController();
+
+							controller.setIdRecipe(idRecipe);
+							controller.deleteFavoriteRecipe((Event) event);
+
+							Scene scene = new Scene(root, 1920, 1080);
+
+							Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+							newStage.setScene(scene);
+							newStage.show();
+
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
 					}
 
 					

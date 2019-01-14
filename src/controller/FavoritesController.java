@@ -26,9 +26,8 @@ public class FavoritesController implements Initializable {
 	@FXML
 	ArrayList<Recipe> favorites = User.getSession().getFavoriteList();
 	
-	//in order to test
 	@FXML
-	int idRecipe = 1;
+	int idRecipe;
 	
 	@FXML
 	private CommonThemeController commonThemeController = new CommonThemeController();
@@ -55,14 +54,6 @@ public class FavoritesController implements Initializable {
     private TableColumn<RecipeWithButton, String> remove;
 	    
 
-    //in order to test
-    @FXML
-    private Button add;
-    
-  //in order to test
-    @FXML
-    private Button delete;
-
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
@@ -76,12 +67,21 @@ public class FavoritesController implements Initializable {
 	/*attributes*/
 	private FavoritesFacade facade = FavoritesFacade.getInstance();
 	
+	
+	
 	/*methods*/
 	
+	public int getIdRecipe() {
+		return idRecipe;
+	}
+
+	public void setIdRecipe(int idRecipe) {
+		this.idRecipe = idRecipe;
+	}
+
 	public ObservableList<RecipeWithButton> getRecipes() {
 
 		ObservableList<RecipeWithButton> recipes = FXCollections.observableArrayList();
-		
 		for (Recipe r : favorites) {
 
 			recipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
@@ -89,28 +89,20 @@ public class FavoritesController implements Initializable {
 
 		}
 		
-		
 
 		return recipes;
 
 	}
 	
-	//in order to test
-    @FXML
-    void addFavoriteRecipe(ActionEvent event) {
-    	favorites = facade.addFavoriteRecipe(User.getSession().getId(),idRecipe);
-    	favoritesTab.setItems(getRecipes());
-    	favoritesTab.refresh();
-    	
-    	
-    }
 
   //in order to test
     @FXML
-    void deleteFavoriteRecipe(ActionEvent event) {
-    	facade.removeFavoriteRecipe(User.getSession().getId(),idRecipe);
-    	favoritesTab.setItems(getRecipes());
+    void deleteFavoriteRecipe(Event event) {
+    	
+    	favorites = facade.removeFavoriteRecipe(User.getSession().getId(),idRecipe);
+    	favoritesTab.setItems(getRecipes());	
     	favoritesTab.refresh();
+    	
     	
     }
 	

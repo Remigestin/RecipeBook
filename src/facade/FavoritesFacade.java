@@ -49,15 +49,15 @@ public class FavoritesFacade {
 		AbstractFactory f = MySQLFactory.getInstance();
 		AbstractUserDAO userDAO = f.createUserDAO();
 		
-		//make the changes into the DB 
+		//make the changes into the DB and remove the recipe in the user's favorites list
 		userDAO.removeFavoriteRecipe(idUser, idRecipe);
 		
-		//add the recipe in the user's favorites list
-		ArrayList<Recipe> favoritesList = User.getSession().getFavoriteList();
-		Recipe r = findRecipe(favoritesList,idRecipe);
-		favoritesList.remove(r);
+		//remove the recipe in the user's favorites list
 		
-		return null;
+		//ArrayList<Recipe> favoritesList = User.getSession().getFavoriteList();
+		//Recipe r = findRecipe(favoritesList,idRecipe);
+		//favoritesList.remove(r);
+		return User.getSession().getFavoriteList();
 		
 	}
 	
