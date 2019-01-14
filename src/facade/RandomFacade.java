@@ -1,7 +1,6 @@
 package facade;
 
 import abstractDAO.AbstractRecipeDAO;
-import abstractDAO.AbstractUserDAO;
 import businessLogic.Recipe;
 import businessLogic.User;
 import factory.AbstractFactory;
@@ -25,18 +24,27 @@ public class RandomFacade {
 		return RandomFacadeHolder.RandomFacade;
 	}
 	
+	/**
+	 * This method allows to change the random starter of the user session
+	 */
 	public void changeRandomStarter () {
 		User session = User.getSession();
 		Recipe starter = recipeDAO.findRandomRecipe(1, session.getRandomStarter().getIdRecipe());
 		session.setRandomStarter(starter);
 	}
 	
+	/**
+	 * This method allows to change the random main course of the user session
+	 */
 	public void changeRandomMain () {
 		User session = User.getSession();
 		Recipe main = recipeDAO.findRandomRecipe(2, session.getRandomMain().getIdRecipe());
 		session.setRandomMain(main);
 	}
 	
+	/**
+	 * This method allows to change the random dessert of the user session
+	 */
 	public void changeRandomDessert () {
 		User session = User.getSession();
 		Recipe dessert = recipeDAO.findRandomRecipe(3, session.getRandomDessert().getIdRecipe());
