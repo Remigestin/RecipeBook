@@ -123,7 +123,6 @@ public class MyRecipesController implements Initializable {
 
 			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
 			controller.setIdRecipe(myRecipes.get(rowNumber).getIdRecipe());
-
 			controller.consultRecipe();
 
 			Scene scene = new Scene(root, 1920, 1080);

@@ -15,6 +15,8 @@ public abstract class AbstractRecipeDAO {
 
 	public abstract Recipe findRecipe(int idRecipe);
 	
+	public abstract int findIdUserCreator(int idRecipe);
+	
 	public abstract ArrayList<Recipe> createRecipe(Recipe recipe);
 	
 	public abstract ArrayList<Recipe> editRecipe(Recipe recipe);

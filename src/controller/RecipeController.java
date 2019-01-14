@@ -73,13 +73,15 @@ public class RecipeController implements Initializable {
 	private ImageView deleteRatingAdded;
 	@FXML
 	private Pane frameDeleteRatingAdded;
-	
+
 	@FXML
 	private TextArea textaddcomment;
 	@FXML
 	private Button buttonadd;
 	@FXML
 	private ImageView buttonEditRecipe;
+	@FXML
+	private Pane frameEditButton;
 	@FXML
 	private TableView<Commentary> tableView;
 	@FXML
@@ -89,7 +91,6 @@ public class RecipeController implements Initializable {
 	@FXML
 	private TableColumn<Commentary, String> Text;
 
-	
 	/* attributes */
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
@@ -151,8 +152,6 @@ public class RecipeController implements Initializable {
 
 	}
 
-	
-	
 	public TextArea getTextaddcomment() {
 		return textaddcomment;
 	}
@@ -205,25 +204,30 @@ public class RecipeController implements Initializable {
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
 		this.setDifficulty(Integer.toString(recipe.getDifficulty()));
 		this.setRating(recipe.getRate());
-		
-		
-		if (facade.getRate(idRecipe) == -1) { //if there is no rate from the user
-			this.editRatingAdded.setOnMousePressed(e -> {this.addRating(null);});
+
+		if (facade.getRate(idRecipe) == -1) { // if there is no rate from the user
+			this.editRatingAdded.setOnMousePressed(e -> {
+				this.addRating(null);
+			});
 			this.editRatingAdded.setImage(new Image("file:../../asset/image/add.png"));
-			
+
 			this.deleteRatingAdded.setVisible(false);
 			this.frameDeleteRatingAdded.setVisible(false);
 		} else {
 			this.ratingAdded.setRating(facade.getRate(idRecipe));
-			this.editRatingAdded.setOnMousePressed(e -> {this.editeRating(null);});
+			this.editRatingAdded.setOnMousePressed(e -> {
+				this.editeRating(null);
+			});
 			this.editRatingAdded.setImage(new Image("file:../../asset/image/pencil.png"));
 			this.deleteRatingAdded.setVisible(true);
 			this.frameDeleteRatingAdded.setVisible(true);
 		}
+
+		this.deleteRatingAdded.setOnMousePressed(e -> {
+			this.deleteRating(null);
+		});
 		
-		this.deleteRatingAdded.setOnMousePressed(e -> {this.deleteRating(null);});
-		
-		
+		this.setVisibleEditRecipeButton();
 
 		/* find main course and set it */
 		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
@@ -234,20 +238,19 @@ public class RecipeController implements Initializable {
 		tableView.setItems(getComment());
 
 	}
-	
+
 	private void addRating(Event event) {
-		
-		
+
 		facade.rateARecipe(idRecipe, this.ratingAdded.getRating());
 		this.consultRecipe();
-		
+
 	}
-	
+
 	private void editeRating(Event event) {
 		facade.editRating(idRecipe, this.ratingAdded.getRating());
 		this.consultRecipe();
 	}
-	
+
 	private void deleteRating(Event event) {
 		facade.deleteRating(idRecipe);
 		this.ratingAdded.setRating(0);
@@ -286,7 +289,7 @@ public class RecipeController implements Initializable {
 	@FXML
 	public void addComment(ActionEvent event) {
 		Calendar cal = Calendar.getInstance();
-		facade.createComment(textaddcomment.getText(),cal,idRecipe,User.getSession().getId());
+		facade.createComment(textaddcomment.getText(), cal, idRecipe, User.getSession().getId());
 		textaddcomment.clear();
 		tableView.setItems(getComment());
 		tableView.refresh();
@@ -328,10 +331,11 @@ public class RecipeController implements Initializable {
 
 	public void setVisibleEditRecipeButton() {
 
-		// TO DO : check if user is the creator of the recipe and display edit button,
-		// else hide the button
-		// this.buttonEditRecipe.setVisible(true);
+		if (User.getSession().getId() != facade.findIdUserCreator(idRecipe)) {
 
+			this.buttonEditRecipe.setVisible(false);
+			this.frameEditButton.setVisible(false);
+		}
 	}
 
 	@Override

@@ -87,6 +87,11 @@ public class RecipeFacade {
 		return recipeDAO.findAllCourseCategory();
 
 	}
+	
+	public int findIdUserCreator (int idRecipe) {
+		
+		return recipeDAO.findIdUserCreator(idRecipe);
+	}
 
 	public void createComment(String text,Calendar cal,int idRecipe,  int idUser) {
 
