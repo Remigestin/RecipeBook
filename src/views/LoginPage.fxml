@@ -80,7 +80,7 @@
                               <Insets top="3.0" />
                            </HBox.margin>
                         </Text>
-                        <Hyperlink alignment="TOP_CENTER" contentDisplay="TOP" text="REGISTER HERE" />
+                        <Hyperlink fx:id="register" alignment="TOP_CENTER" contentDisplay="TOP" onMousePressed="#register" text="REGISTER HERE" />
                      </children>
                   </HBox>
                </children>

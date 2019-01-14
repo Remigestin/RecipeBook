@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -28,6 +29,8 @@ public class LoginPageController {
 	private PasswordField password;
 	@FXML
 	private Button login;
+	@FXML
+	private Hyperlink register;
 
 	private LoginPageFacade facade = LoginPageFacade.getInstance();
 
@@ -63,6 +66,13 @@ public class LoginPageController {
 		alert.showAndWait();
 	}
 
+	@FXML
+	void register(Event event) {
+
+		this.switchToNewPage(event, "/views/RegisterPage.fxml");
+
+	}
+
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -73,12 +83,8 @@ public class LoginPageController {
 
 			root = loader.load();
 
-			//ControllerInterface controller = loader.getController();
-
 			Scene scene = new Scene(root, 1920, 1080);
-
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
 			newStage.setScene(scene);
 			newStage.show();
 
@@ -86,5 +92,4 @@ public class LoginPageController {
 			e.printStackTrace();
 		}
 	}
-
 }
