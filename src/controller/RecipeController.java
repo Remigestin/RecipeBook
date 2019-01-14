@@ -3,11 +3,13 @@ package controller;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.ResourceBundle;
 
 import businessLogic.Commentary;
 import businessLogic.CookingStep;
 import businessLogic.Recipe;
+import businessLogic.User;
 import facade.RecipeFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -248,9 +250,11 @@ public class RecipeController implements Initializable {
 	// Event Listener on Button[#buttonadd].onAction
 	@FXML
 	public void addComment(ActionEvent event) {
-
-		facade.createComment(textaddcomment.getText());
+		Calendar cal = Calendar.getInstance();
+		facade.createComment(textaddcomment.getText(),cal,idRecipe,User.getSession().getId());
 		textaddcomment.clear();
+		tableView.setItems(getComment());
+		tableView.refresh();
 
 	}
 

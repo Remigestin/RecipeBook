@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import abstractDAO.AbstractCommentDAO;
 import abstractDAO.AbstractUserDAO;
@@ -15,10 +16,10 @@ import exception.DAOException;
 
 public class MySQLCommentDAO extends AbstractCommentDAO {
 
-	private static final String SQL_CREATE_COMMENT = "INSERT INTO comment VALUES (4,null, ? ,1,1);";
+	private static final String SQL_CREATE_COMMENT = "INSERT INTO comment VALUES (null,null, ? ,?,?);";
 	private static final String SQL_SHOW_COMMENT = "SELECT * FROM comment	WHERE idRecipe = ?";
 	@Override
-	public void createComment(String text) throws DAOException {
+	public void createComment(String text, Calendar cal, int idRecipe,  int idUser) throws DAOException {
 
 		Commentary comment = new Commentary();
 		try {
@@ -26,6 +27,9 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 			Connection c = dc.getConnection();
 			PreparedStatement st = c.prepareStatement(SQL_CREATE_COMMENT);
 			st.setString(1, text);
+			st.setInt(3, idUser);
+			st.setInt(2, idRecipe);
+			//st.setString(1, cal);
 			st.executeUpdate();
 		}
 			/*

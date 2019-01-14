@@ -1,6 +1,7 @@
 package facade;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 
 import abstractDAO.AbstractCommentDAO;
@@ -87,9 +88,9 @@ public class RecipeFacade {
 
 	}
 
-	public void createComment(String text) {
+	public void createComment(String text,Calendar cal,int idRecipe,  int idUser) {
 
-		commentDAO.createComment(text);
+		commentDAO.createComment(text,cal,idRecipe,idUser);
 	}
 
 	public ArrayList<Commentary> showComment(int idRecipe) {
