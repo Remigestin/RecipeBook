@@ -20,6 +20,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
@@ -32,6 +33,8 @@ public class CommonThemeController implements Initializable {
 	private Button submitSearch;
 	@FXML
 	private Label username;
+	@FXML
+	private ImageView usernameLogo;
 	@FXML
 	private HBox home;
 	@FXML
@@ -86,6 +89,11 @@ public class CommonThemeController implements Initializable {
 		}
 
 		this.switchToNewPage(event, newPage);
+	}
+	
+	@FXML
+	public void redirectToMyAccount(Event event) {
+		this.switchToNewPage(event, "/views/MyAccountPage.fxml");
 	}
 
 	public void setUsername(String username) {
