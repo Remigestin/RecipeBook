@@ -89,6 +89,7 @@ public class RecipeController implements Initializable {
 	@FXML
 	private TableColumn<Commentary, String> Text;
 
+	
 	/* attributes */
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
@@ -148,6 +149,40 @@ public class RecipeController implements Initializable {
 			numberStep++;
 		}
 
+	}
+
+	
+	
+	public TextArea getTextaddcomment() {
+		return textaddcomment;
+	}
+
+	public void setTextaddcomment(TextArea textaddcomment) {
+		this.textaddcomment = textaddcomment;
+	}
+
+	public TableColumn<Commentary, String> getColoneUser() {
+		return ColoneUser;
+	}
+
+	public void setColoneUser(TableColumn<Commentary, String> coloneUser) {
+		ColoneUser = coloneUser;
+	}
+
+	public TableColumn<Commentary, String> getDate() {
+		return Date;
+	}
+
+	public void setDate(TableColumn<Commentary, String> date) {
+		Date = date;
+	}
+
+	public TableColumn<Commentary, String> getText() {
+		return Text;
+	}
+
+	public void setText(TableColumn<Commentary, String> text) {
+		Text = text;
 	}
 
 	/* initialize the spinner of numberPeople with integers */

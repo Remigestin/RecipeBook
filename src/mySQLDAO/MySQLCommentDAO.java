@@ -32,14 +32,7 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 			//st.setString(1, cal);
 			st.executeUpdate();
 		}
-			/*
-			if (rs.next()) {
-
-				comment.setIdComment(2);
-				comment.setText(rs.toString());
-
-		}
-		*/
+	
 		catch(SQLException e) {
 			throw new DAOException(e);
 		}
@@ -85,6 +78,7 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 
 		comment.setIdComment(resultSet.getInt("idcomment"));
 		comment.setText(resultSet.getString("text"));
+		comment.setIdUser(resultSet.getInt("idUser"));
 
 		return comment;
 }
