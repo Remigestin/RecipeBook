@@ -10,6 +10,7 @@ import businessLogic.Commentary;
 import businessLogic.CookingStep;
 import businessLogic.Recipe;
 import businessLogic.User;
+import facade.FavoritesFacade;
 import facade.RecipeFacade;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,11 +22,13 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -93,6 +96,7 @@ public class RecipeController implements Initializable {
 
 	/* attributes */
 	private RecipeFacade facade = RecipeFacade.getInstance();
+	private FavoritesFacade favoritesfacade = FavoritesFacade.getInstance();
 
 	private int idRecipe;
 
@@ -285,6 +289,23 @@ public class RecipeController implements Initializable {
 		}
 	}
 
+	//add the recipe to the fav list
+	@FXML
+	void addFavoriteRecipe(Event event) {
+		
+		System.out.println("hello 1");
+		favoritesfacade.addFavoriteRecipe(User.getSession().getId(),idRecipe);
+		System.out.println("hello 2");
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Confirmation");
+		alert.setHeaderText("Your recipe " + nameRecipe.getText() + " has been added to your favorites ! ");
+		alert.showAndWait();
+
+
+
+	}
+
+	   
 	// Event Listener on Button[#buttonadd].onAction
 	@FXML
 	public void addComment(ActionEvent event) {

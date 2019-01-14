@@ -35,19 +35,13 @@ public class RecipeWithButton {
 			
 				@Override public void handle(ActionEvent event) {
 					
-					String page = "";
-					
 					if(buttonType.equals("edit")) {
-						page="/views/RecipeEditingFormPage.fxml";
 						
-					}else if(buttonType.equals("remove")){
-						page = "/views/Favorites.fxml";
-					}
-
+					
 					Parent root;
 
 					try {
-						FXMLLoader loader = new FXMLLoader(getClass().getResource(page));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipeEditingFormPage.fxml"));
 
 						root = loader.load();
 
@@ -67,6 +61,11 @@ public class RecipeWithButton {
 						e.printStackTrace();
 					}
 					
+					}else if(buttonType.equals("remove")){
+						FavoritesController controller = new FavoritesController();
+						controller.deleteFavoriteRecipe(event);
+					}
+
 					
 				}
 				});

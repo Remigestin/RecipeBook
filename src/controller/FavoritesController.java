@@ -34,25 +34,25 @@ public class FavoritesController implements Initializable {
 	private CommonThemeController commonThemeController = new CommonThemeController();
 	
 	@FXML
-	private TableView<Recipe> favoritesTab;
+	private TableView<RecipeWithButton> favoritesTab;
 	
 	@FXML
-	private TableColumn<Recipe, String> recipeName;
+	private TableColumn<RecipeWithButton, String> recipeName;
 
 	@FXML
-	private TableColumn<Recipe, String> difficulty;
+	private TableColumn<RecipeWithButton, String> difficulty;
 
 	@FXML
-	private TableColumn<Recipe, String> rating;
+	private TableColumn<RecipeWithButton, String> rating;
 
 	@FXML
-    private TableColumn<Recipe, String> preparationTime;
+    private TableColumn<RecipeWithButton, String> preparationTime;
 
 	@FXML
-    private TableColumn<Recipe, String> course;
+    private TableColumn<RecipeWithButton, String> course;
 	
 	@FXML
-    private TableColumn<Recipe, String> remove;
+    private TableColumn<RecipeWithButton, String> remove;
 	    
 
     //in order to test
@@ -66,9 +66,10 @@ public class FavoritesController implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		
-		recipeName.setCellValueFactory(new PropertyValueFactory<Recipe, String>("nameRecipe"));
+		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
 		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
+		remove.setCellValueFactory(new PropertyValueFactory("editButton"));
 		favoritesTab.setItems(getRecipes());
 	}
 	
@@ -77,11 +78,18 @@ public class FavoritesController implements Initializable {
 	
 	/*methods*/
 	
-	public ObservableList<Recipe> getRecipes() {
+	public ObservableList<RecipeWithButton> getRecipes() {
 
-		ObservableList<Recipe> recipes = FXCollections.observableArrayList();
+		ObservableList<RecipeWithButton> recipes = FXCollections.observableArrayList();
+		
+		for (Recipe r : favorites) {
 
-		recipes.addAll(favorites);
+			recipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
+					r.getDifficulty(), "remove"));
+
+		}
+		
+		
 
 		return recipes;
 
