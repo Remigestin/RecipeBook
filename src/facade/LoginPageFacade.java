@@ -25,6 +25,24 @@ public class LoginPageFacade {
 		AbstractUserDAO userDAO = f.createUserDAO();
 		userDAO.register(firstname, lastname, username, password);
 	}
+	
+	public void deleteAccount(int idUser) {
+
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractUserDAO userDAO = f.createUserDAO();
+		userDAO.deleteAccount(idUser);
+	}
+	
+	public void editAccount(User user) {
+
+		AbstractFactory f = MySQLFactory.getInstance();
+		AbstractUserDAO userDAO = f.createUserDAO();
+		userDAO.editAccount(user);
+		
+		User.getSession().setPassword(user.getPassword());
+		User.getSession().setFirstname(user.getFirstname());
+		User.getSession().setLastname(user.getLastname());
+	}
 
 	public boolean findUsername(String username) {
 

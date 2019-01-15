@@ -19,6 +19,8 @@ public class MySQLUserDAO extends AbstractUserDAO {
 	// sql
 	private static final String SQL_FIND_BY_USERNAME_AND_PASSWORD = "Select * FROM user WHERE username = ? AND password = ?";
 	private static final String SQL_CREATE_USER = "INSERT INTO user VALUES (NULL, ?,?,?,?,false)";
+	private static final String SQL_DELETE_USER = "DELETE FROM user WHERE id = ?";
+	private static final String SQL_EDIT_USER = "UPDATE user SET password = ?, firstname = ?, lastname = ? WHERE id = ?";
 	private static final String SQL_FIND_USERNAME = "Select * FROM user WHERE username = ?";
 	private static final String SQL_INSERT_NEW_FAVORITE_RECIPE = "INSERT INTO favoritelist VALUES (?,?)";
 	private static final String SQL_DELETE_A_FAVORITE_RECIPE = "DELETE FROM favoritelist WHERE iduser = ? and idrecipe = ?";
@@ -145,5 +147,40 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		}
 		
 		return usernameFound;
+	}
+
+	@Override
+	public void deleteAccount(int idUser) throws DAOException {
+		User user = null;
+
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_DELETE_USER);
+			st.setInt(1, idUser);
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}		
+		
+	}
+
+	@Override
+	public void editAccount(User user) throws DAOException {
+	
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_EDIT_USER);
+			st.setString(1, user.getPassword());
+			st.setString(2, user.getFirstname());
+			st.setString(3, user.getLastname());
+			st.setInt(4, user.getId());
+			st.executeUpdate();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}		
 	}
 }
