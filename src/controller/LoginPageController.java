@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 import businessLogic.User;
-import facade.LoginPageFacade;
+import facade.UserFacade;
 import javafx.event.Event;
 import javafx.scene.control.PasswordField;
 
@@ -32,7 +32,7 @@ public class LoginPageController {
 	@FXML
 	private Hyperlink register;
 
-	private LoginPageFacade facade = LoginPageFacade.getInstance();
+	private UserFacade facade = UserFacade.getInstance();
 
 	// Event Listener on TextField[#password].HeyPressed
 	@FXML

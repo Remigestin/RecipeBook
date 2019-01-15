@@ -6,10 +6,10 @@ import factory.AbstractFactory;
 import factory.MySQLFactory;
 import mySQLDAO.MySQLUserDAO;
 
-public class LoginPageFacade {
+public class UserFacade {
 
 	/* Private constructor */
-	private LoginPageFacade() {
+	private UserFacade() {
 	}
 
 	public User login(String username, String password) {
@@ -52,11 +52,11 @@ public class LoginPageFacade {
 	}
 
 	/* Singleton Holder */
-	private static class LoginPageFacadeHolder {
-		private final static LoginPageFacade LoginPageFacade = new LoginPageFacade();
+	private static class UserFacadeHolder {
+		private final static UserFacade UserFacade = new UserFacade();
 	}
 
-	public static LoginPageFacade getInstance() {
-		return LoginPageFacadeHolder.LoginPageFacade;
+	public static UserFacade getInstance() {
+		return UserFacadeHolder.UserFacade;
 	}
 }

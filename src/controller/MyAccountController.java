@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import businessLogic.User;
-import facade.LoginPageFacade;
+import facade.UserFacade;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.scene.control.PasswordField;
@@ -58,7 +58,7 @@ public class MyAccountController implements Initializable {
 		this.lastname.setText(lastname);
 	}
 
-	private LoginPageFacade facade = LoginPageFacade.getInstance();
+	private UserFacade facade = UserFacade.getInstance();
 
 	// Event Listener on Button[#delete].onAction
 	@FXML

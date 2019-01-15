@@ -18,7 +18,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import businessLogic.User;
-import facade.LoginPageFacade;
+import facade.UserFacade;
 import javafx.event.Event;
 import javafx.scene.control.PasswordField;
 
@@ -46,7 +46,7 @@ public class MyAccountEditFormController implements Initializable {
 		this.lastname.setText(lastname);
 	}
 
-	private LoginPageFacade facade = LoginPageFacade.getInstance();
+	private UserFacade facade = UserFacade.getInstance();
 
 	// Event Listener on Button[#submit].onAction
 	@FXML

@@ -13,7 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 
-import facade.LoginPageFacade;
+import facade.UserFacade;
 import javafx.event.Event;
 import javafx.scene.control.PasswordField;
 import javafx.scene.input.KeyCode;
@@ -37,7 +37,7 @@ public class RegisterPageController {
 	@FXML
 	private Hyperlink login;
 
-	private LoginPageFacade facade = LoginPageFacade.getInstance();
+	private UserFacade facade = UserFacade.getInstance();
 
 	// Event Listener on PasswordField[#passwordConfirmation].onKeyPressed
 	@FXML
