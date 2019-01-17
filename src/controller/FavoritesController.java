@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -13,13 +14,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 import javafx.scene.control.TableView;
 
 public class FavoritesController implements Initializable {
@@ -68,7 +74,7 @@ public class FavoritesController implements Initializable {
 	
 	/*attributes*/
 	private FavoritesFacade facade = FavoritesFacade.getInstance();
-	
+	private ObservableList<RecipeWithButton> recipes = FXCollections.observableArrayList();
 	
 	
 	/*methods*/
@@ -83,7 +89,7 @@ public class FavoritesController implements Initializable {
 
 	public ObservableList<RecipeWithButton> getRecipes() {
 
-		ObservableList<RecipeWithButton> recipes = FXCollections.observableArrayList();
+		recipes.clear();
 		for (Recipe r : favorites) {
 
 			recipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
@@ -118,6 +124,33 @@ public class FavoritesController implements Initializable {
 
 	}
 	
+    @FXML
+	void consultRecipe(Event event) {
+
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipePage.fxml"));
+
+			root = loader.load();
+
+			RecipeController controller = loader.getController();
+
+			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
+			controller.setIdRecipe(recipes.get(rowNumber).getIdRecipe());
+			controller.consultRecipe();
+
+			Scene scene = new Scene(root, 1920, 1080);
+
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 
 }

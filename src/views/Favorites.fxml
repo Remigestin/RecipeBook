@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -8,14 +12,14 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FavoritesController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FavoritesController">
    <children>
       <fx:include source="CommonTheme.fxml" />
       <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1000.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
          <children>
             <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Favorites" />
             <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-            <TableView fx:id="favoritesTab" layoutX="232.0" layoutY="227.0" prefHeight="477.0" prefWidth="983.0">
+            <TableView fx:id="favoritesTab" layoutX="232.0" layoutY="227.0" onMousePressed="#consultRecipe" prefHeight="477.0" prefWidth="983.0">
               <columns>
                 <TableColumn fx:id="recipeName" prefWidth="283.0" text="Recipe Name" />
                 <TableColumn fx:id="rating" minWidth="0.0" prefWidth="104.0" text="Rating" />
