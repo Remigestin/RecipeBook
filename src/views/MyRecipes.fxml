@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 
 <ScrollPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MyRecipesController">
    <content>
@@ -65,6 +66,7 @@
                   </ImageView>
                </children>
             </Pane>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff212140" height="97.0" layoutX="43.0" layoutY="420.0" opacity="0.73" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
          </children>
       </AnchorPane>
    </content>

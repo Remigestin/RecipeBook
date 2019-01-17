@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FavoritesController">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FavoritesController">
    <children>
       <fx:include source="CommonTheme.fxml" />
       <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1000.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
@@ -27,5 +27,6 @@
             </TableView>
          </children>
       </Pane>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff212140" height="97.0" layoutX="42.0" layoutY="517.0" opacity="0.73" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
    </children>
 </AnchorPane>
