@@ -232,6 +232,7 @@ public class RecipeController implements Initializable {
 		});
 		
 		this.setVisibleEditRecipeButton();
+		this.setVisibleFavoriteRecipeButton();
 
 		/* find main course and set it */
 		this.setCourseCategory(facade.findCourseCategoryName(recipe.getIdCourse()));
@@ -356,6 +357,18 @@ public class RecipeController implements Initializable {
 
 			this.buttonEditRecipe.setVisible(false);
 			this.frameEditButton.setVisible(false);
+		}
+	}
+	
+	/**
+	 * hide the button to add a recipe in the favorites if it's already in it.
+	 */
+	public void setVisibleFavoriteRecipeButton() {
+
+		if (facade.isFavorite(idRecipe,User.getSession().getId())) {
+
+			this.addToFavorite.setVisible(false);
+			//this.frameEditButton.setVisible(false);
 		}
 	}
 

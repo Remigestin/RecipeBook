@@ -88,6 +88,19 @@ public class RecipeFacade {
 
 	}
 	
+	/**
+	 * 
+	 * @param idRecipe id of the recipe
+	 * @param idUser id of the user
+	 * @return true if the recipe is a favorite recipe of the user
+	 */
+	
+	public boolean isFavorite (int idRecipe, int idUser) {
+		
+		return recipeDAO.isFavorite(idRecipe, idUser);
+	}
+
+	
 	public int findIdUserCreator (int idRecipe) {
 		
 		return recipeDAO.findIdUserCreator(idRecipe);

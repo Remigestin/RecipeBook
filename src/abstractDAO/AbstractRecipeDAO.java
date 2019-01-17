@@ -15,6 +15,8 @@ public abstract class AbstractRecipeDAO {
 
 	public abstract Recipe findRecipe(int idRecipe);
 	
+	public abstract boolean isFavorite(int idRecipe, int idUser);
+	
 	public abstract int findIdUserCreator(int idRecipe);
 	
 	public abstract ArrayList<Recipe> createRecipe(Recipe recipe);

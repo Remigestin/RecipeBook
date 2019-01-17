@@ -34,7 +34,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_FIND_RECIPES_BY_SEARCH = "Select * FROM recipe WHERE namerecipe LIKE ?";
 	private static final String SQL_DELETE_RATING = "DELETE FROM rating WHERE idrecipe = ? AND iduser = ? ";
 	private static final String SQL_UPDATE_RATING = "UPDATE rating SET mark = ? WHERE idrecipe = ? AND iduser = ? ";
-	
+	private static final String SQL_IS_FAVORITE = "Select * FROM favoritelist WHERE idrecipe = ? AND iduser = ?";
 
 	/* Private constructor */
 	private MySQLRecipeDAO() {
@@ -397,5 +397,26 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			throw new DAOException(e);
 		}
 		return idUser;
+	}
+
+	@Override
+	public boolean isFavorite(int idRecipe, int idUser) {
+		
+		boolean isFavorite=false;
+		
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_IS_FAVORITE);
+			st.setInt(1, idRecipe);
+			st.setInt(2, idUser);
+			ResultSet rs = st.executeQuery();
+			isFavorite = rs.next();
+
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		return isFavorite;
 	}
 }
