@@ -370,7 +370,7 @@ public class RecipeController implements Initializable {
 		if (facade.isFavorite(idRecipe,User.getSession().getId())) {
 
 			this.addToFavorite.setVisible(false);
-			//this.frameEditButton.setVisible(false);
+			this.frameAddFavoriteButton.setVisible(false);
 		}
 	}
 
