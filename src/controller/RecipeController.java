@@ -34,6 +34,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import mySQLDAO.MySQLRecipeDAO;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
@@ -209,7 +210,7 @@ public class RecipeController implements Initializable {
 		this.setNumberPeople(recipe.getNbPersRecipe());
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
 		this.setDifficulty(Integer.toString(recipe.getDifficulty()));
-		this.setRating(recipe.getRate());
+		this.setRating(MySQLRecipeDAO.findRating(recipe.getIdRecipe()));
 
 		if (facade.getRate(idRecipe) == -1) { // if there is no rate from the user
 			this.editRatingAdded.setOnMousePressed(e -> {
