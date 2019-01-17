@@ -10,6 +10,7 @@ public abstract class AbstractUserDAO {
 	public abstract void deleteAccount(int idUser) throws DAOException;
 	public abstract void editAccount(User user) throws DAOException;
 	public abstract boolean findUsername(String username) throws DAOException;
+	public abstract String findPassword(int idUser) throws DAOException;
 	public abstract void addFavoriteRecipe(int idUser, int idRecipe)throws DAOException;
 	public abstract void removeFavoriteRecipe(int idUser, int idRecipe)throws DAOException;
 

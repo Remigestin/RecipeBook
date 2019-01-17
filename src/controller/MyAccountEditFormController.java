@@ -52,24 +52,45 @@ public class MyAccountEditFormController implements Initializable {
 	@FXML
 	public void submit(Event event) {
 
-		if (this.checkOldPassword() && this.checkNewPasswordMatching()) {
+		// if password is not edited, we set the current one, else we check fields and
+		// set the new one
+		if (newpassword.getText().equals("") && this.checkIfNamesChanged()) {
 
-			User user = new User();
-			user.setPassword(newpassword.getText());
-			user.setFirstname(firstname.getText());
-			user.setLastname(lastname.getText());
+			this.edit(event, facade.findPassword(User.getSession().getId()));
+			
+		} else {
 
-			facade.editAccount(user);
+			if (this.checkOldPassword() && this.checkNewPasswordMatching()) {
+				this.edit(event, newpassword.getText());
+			}
 		}
+	}
+	
+	private void edit(Event event, String password) {
+		
+		User user = new User();
+		
+		user.setPassword(password);
+		user.setId(User.getSession().getId());
+		user.setFirstname(firstname.getText());
+		user.setLastname(lastname.getText());
+		
+		facade.editAccount(user);
+		this.displayConfirmation();
+		this.switchToNewPage(event, "/views/MyAccountPage.fxml");
 	}
 
 	// Event Listener on Button[#cancel].onAction
 	@FXML
 	public void cancel(Event event) {
+		this.switchToNewPage(event, "/views/MyAccountPage.fxml");
+	}
+
+	private void switchToNewPage(Event event, String newPage) {
 		Parent root;
 		try {
 
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/MyAccountPage.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource(newPage));
 			root = loader.load();
 			Scene scene = new Scene(root, 1920, 1080);
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -83,19 +104,33 @@ public class MyAccountEditFormController implements Initializable {
 
 	private boolean checkOldPassword() {
 
-		if (!oldpassword.getText().equals(User.getSession().getPassword())) {
+		String currentPwd = facade.findPassword(User.getSession().getId());
+
+		if (oldpassword.getText().equals(currentPwd)) {
+			return true;
+		} else {
 			this.displayOldPasswordWrong();
 			return false;
-		} else {
-			return true;
 		}
 	}
 
 	private boolean checkNewPasswordMatching() {
 
-		if (!newpassword.getText().equals(newpasswordconfirmation.getText())) {
+		if (newpassword.getText().equals(newpasswordconfirmation.getText())) {
+			return true;
+		} else {
 			this.displayNewPasswordsNotMatching();
 			return false;
+		}
+	}
+
+	private boolean checkIfNamesChanged() {
+
+		if (firstname.getText().equals(User.getSession().getFirstname())
+				&& lastname.getText().equals(User.getSession().getLastname())) {
+
+			return false;
+
 		} else {
 			return true;
 		}
@@ -114,6 +149,14 @@ public class MyAccountEditFormController implements Initializable {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Wait ! ");
 		alert.setHeaderText("New passwords not matching !");
+		alert.showAndWait();
+	}
+	
+	private void displayConfirmation() {
+
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Confirmation");
+		alert.setHeaderText("Information well edited !");
 		alert.showAndWait();
 	}
 

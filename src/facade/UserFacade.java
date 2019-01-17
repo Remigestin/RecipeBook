@@ -4,7 +4,6 @@ import abstractDAO.AbstractUserDAO;
 import businessLogic.User;
 import factory.AbstractFactory;
 import factory.MySQLFactory;
-import mySQLDAO.MySQLUserDAO;
 
 public class UserFacade {
 
@@ -12,43 +11,40 @@ public class UserFacade {
 	private UserFacade() {
 	}
 
+	AbstractFactory f = MySQLFactory.getInstance();
+	AbstractUserDAO userDAO = f.createUserDAO();
+
 	public User login(String username, String password) {
 
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractUserDAO userDAO = f.createUserDAO();
 		return userDAO.login(username, password);
 	}
 
 	public void register(String firstname, String lastname, String username, String password) {
 
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractUserDAO userDAO = f.createUserDAO();
 		userDAO.register(firstname, lastname, username, password);
 	}
-	
+
 	public void deleteAccount(int idUser) {
 
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractUserDAO userDAO = f.createUserDAO();
 		userDAO.deleteAccount(idUser);
 	}
-	
+
 	public void editAccount(User user) {
 
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractUserDAO userDAO = f.createUserDAO();
 		userDAO.editAccount(user);
-		
-		User.getSession().setPassword(user.getPassword());
+
 		User.getSession().setFirstname(user.getFirstname());
 		User.getSession().setLastname(user.getLastname());
 	}
 
 	public boolean findUsername(String username) {
 
-		AbstractFactory f = MySQLFactory.getInstance();
-		AbstractUserDAO userDAO = f.createUserDAO();
 		return userDAO.findUsername(username);
+	}
+	
+	public String findPassword(int idUser) {
+
+		return userDAO.findPassword(idUser);
 	}
 
 	/* Singleton Holder */

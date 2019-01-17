@@ -1,0 +1,12 @@
+.fields
+{
+	-fx-font-size: 21px;
+	-fx-font-weight: bold;
+}	
+
+.buttons
+{
+	-fx-font-size: 26px;
+	-fx-font-weight: bold;
+	-fx-text-fill: #cc0000;
+}
