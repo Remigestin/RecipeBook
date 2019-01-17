@@ -35,6 +35,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_DELETE_RATING = "DELETE FROM rating WHERE idrecipe = ? AND iduser = ? ";
 	private static final String SQL_UPDATE_RATING = "UPDATE rating SET mark = ? WHERE idrecipe = ? AND iduser = ? ";
 	private static final String SQL_IS_FAVORITE = "Select * FROM favoritelist WHERE idrecipe = ? AND iduser = ?";
+	private static final String SQL_FIND_TOP1 = "SELECT R.idrecipe from recipe R, rating RA where R.idrecipe = RA.idrecipe GROUP BY R.idrecipe HAVING AVG(mark) >= ALL(select avg(mark) from recipe R2, rating RA2 where R2.idrecipe = RA2.idrecipe group by R2.idrecipe)";
 
 	/* Private constructor */
 	private MySQLRecipeDAO() {
@@ -262,7 +263,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return courses;
 	}
 
-	private static float findRating(int idRecipe) {
+	public static float findRating(int idRecipe) {
 		float result = 0;
 
 		try {
@@ -418,5 +419,26 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		}
 
 		return isFavorite;
+	}
+	
+	@Override
+	public Recipe findTop1Recipe() {
+		
+		int idRecipe = 0;
+		
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_FIND_TOP1);
+			ResultSet rs = st.executeQuery();
+			if (rs.next()) {
+				
+				idRecipe = rs.getInt("idrecipe");
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+		
+		return this.findRecipe(idRecipe);
 	}
 }

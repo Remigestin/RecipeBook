@@ -158,5 +158,9 @@ public class RecipeFacade {
 				User.getSession().setRandomDessert(recipeDAO.findRecipe(User.getSession().getRandomDessert().getIdRecipe()));
 
 	}
+	
+	public Recipe findTop1Recipe() {
+		return recipeDAO.findTop1Recipe();
+	}
 
 }

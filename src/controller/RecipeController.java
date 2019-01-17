@@ -64,6 +64,8 @@ public class RecipeController implements Initializable {
 	@FXML
 	private ImageView addToFavorite;
 	@FXML
+	private Pane frameAddFavoriteButton;
+	@FXML
 	private ImageView addToCart;
 
 	@FXML

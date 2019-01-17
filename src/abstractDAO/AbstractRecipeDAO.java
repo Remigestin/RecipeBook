@@ -38,5 +38,7 @@ public abstract class AbstractRecipeDAO {
 	public abstract void deleteRating(int idRecipe,int idUser);
 	
 	public abstract HashMap<Integer, String> findAllCourseCategory();
+	
+	public abstract Recipe findTop1Recipe();
 
 }
