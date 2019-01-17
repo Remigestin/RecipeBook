@@ -97,6 +97,7 @@ public class RandomMenuController implements Initializable {
 		Image starterImg = new Image("file:../../asset/imageRecette/"+starter.getImage());
 		this.imageStarter.setImage(starterImg);
 		this.lvlStarter.setText(Integer.toString(starter.getDifficulty()) + "/5");
+		this.starterRating.setRating(starter.getRate());
 
 		Recipe main = session.getRandomMain();
 
@@ -106,6 +107,7 @@ public class RandomMenuController implements Initializable {
 		Image mainImg = new Image("file:../../asset/imageRecette/"+main.getImage());
 		this.imageMain.setImage(mainImg);
 		this.lvlMain.setText(Integer.toString(main.getDifficulty()) + "/5");
+		this.mainRating.setRating(main.getRate());
 
 		Recipe dessert = session.getRandomDessert();
 
@@ -115,6 +117,7 @@ public class RandomMenuController implements Initializable {
 		Image dessertImg = new Image("file:../../asset/imageRecette/"+dessert.getImage());
 		this.imageDessert.setImage(dessertImg);
 		this.lvlDessert.setText(Integer.toString(dessert.getDifficulty()) + "/5");
+		this.dessertRating.setRating(dessert.getRate());
 
 	}
 
