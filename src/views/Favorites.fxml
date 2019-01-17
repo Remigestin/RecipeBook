@@ -26,8 +26,8 @@
                 <TableColumn fx:id="rating" minWidth="0.0" prefWidth="98.0" text="Rating" />
                   <TableColumn fx:id="preparationTime" prefWidth="199.0" text="Preparation Time" />
                   <TableColumn fx:id="difficulty" prefWidth="123.0" text="Difficulty" />
-                  <TableColumn fx:id="course" prefWidth="88.0" text="Course" />
-                  <TableColumn fx:id="remove" prefWidth="181.0" text="remove from favorites" />
+                  <TableColumn fx:id="course" prefWidth="176.0" text="Course" />
+                  <TableColumn fx:id="remove" prefWidth="93.0" text="REMOVE" />
               </columns>
             </TableView>
             <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="500.0" layoutY="230.0" pickOnBounds="true" preserveRatio="true">

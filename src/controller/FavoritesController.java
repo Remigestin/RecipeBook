@@ -68,6 +68,8 @@ public class FavoritesController implements Initializable {
 		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
 		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
+		course.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("course"));
+		rating.setCellValueFactory(new PropertyValueFactory("rate"));
 		remove.setCellValueFactory(new PropertyValueFactory("editButton"));
 		favoritesTab.setItems(getRecipes());
 	}
@@ -93,11 +95,11 @@ public class FavoritesController implements Initializable {
 		for (Recipe r : favorites) {
 
 			recipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
-					r.getDifficulty(), "remove"));
+					r.getDifficulty(),r.getIdCourse(), "remove"));
+			
 
 		}
 		
-
 		return recipes;
 
 	}

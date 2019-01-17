@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+import facade.RecipeFacade;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 
@@ -19,25 +20,28 @@ public class RecipeWithButton {
 	private String nameRecipe;
 	private int preparationTime;
 	private int difficulty;
+	private String course;
+	private int rate;
 	private Button editButton;
 
+	
+
 	public RecipeWithButton(int idRecipe, String nameRecipe, Integer preparationTime, Integer difficulty, String buttonType) {
-		
+
 		this.idRecipe = idRecipe;
 		this.nameRecipe = nameRecipe;
 		this.preparationTime = preparationTime;
 		this.difficulty = difficulty;
-		
+
 		this.editButton = new Button(buttonType);
-		
-		
+
 		this.editButton.setOnAction(new EventHandler<ActionEvent>() {
-			
-				@Override public void handle(ActionEvent event) {
-					
-					if(buttonType.equals("edit")) {
-						
-					
+
+			@Override public void handle(ActionEvent event) {
+
+				if(buttonType.equals("edit")) {
+
+
 					Parent root;
 
 					try {
@@ -60,40 +64,115 @@ public class RecipeWithButton {
 					} catch (IOException e) {
 						e.printStackTrace();
 					}
-					
-					}else if(buttonType.equals("remove")){					
-						
 
-						Parent root;
+				}else if(buttonType.equals("remove")){					
 
-						try {
-							FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Favorites.fxml"));
 
-							root = loader.load();
+					Parent root;
 
-							FavoritesController controller = loader.getController();
+					try {
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Favorites.fxml"));
 
-							controller.setIdRecipe(idRecipe);
-							controller.deleteFavoriteRecipe((Event) event);
+						root = loader.load();
 
-							Scene scene = new Scene(root, 1920, 1080);
+						FavoritesController controller = loader.getController();
 
-							Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+						controller.setIdRecipe(idRecipe);
+						controller.deleteFavoriteRecipe((Event) event);
 
-							newStage.setScene(scene);
-							newStage.show();
+						Scene scene = new Scene(root, 1920, 1080);
 
-						} catch (IOException e) {
-							e.printStackTrace();
-						}
+						Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+						newStage.setScene(scene);
+						newStage.show();
+
+					} catch (IOException e) {
+						e.printStackTrace();
 					}
-
-					
 				}
-				});
-		
+
+
+			}
+		});
+
 	}
 
+	public RecipeWithButton(int idRecipe, String nameRecipe, Integer preparationTime, Integer difficulty, int idCourse, String buttonType) {
+
+		this.idRecipe = idRecipe;
+		this.nameRecipe = nameRecipe;
+		this.preparationTime = preparationTime;
+		this.difficulty = difficulty;
+
+		this.editButton = new Button(buttonType);
+
+		RecipeFacade facade = RecipeFacade.getInstance();
+		this.course=facade.findCourseCategoryName(idCourse);
+		this.rate=facade.getRate(idRecipe);
+
+		this.editButton.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override public void handle(ActionEvent event) {
+
+				if(buttonType.equals("edit")) {
+
+
+					Parent root;
+
+					try {
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipeEditingFormPage.fxml"));
+
+						root = loader.load();
+
+						RecipeEditingFormController controller = loader.getController();
+
+						controller.setIdRecipe(idRecipe);
+						controller.setAllRecipeInformation();
+
+						Scene scene = new Scene(root, 1920, 1080);
+
+						Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+						newStage.setScene(scene);
+						newStage.show();
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+
+				}else if(buttonType.equals("remove")){					
+
+
+					Parent root;
+
+					try {
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/Favorites.fxml"));
+
+						root = loader.load();
+
+						FavoritesController controller = loader.getController();
+
+						controller.setIdRecipe(idRecipe);
+						controller.deleteFavoriteRecipe((Event) event);
+
+						Scene scene = new Scene(root, 1920, 1080);
+
+						Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+						newStage.setScene(scene);
+						newStage.show();
+
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+
+			}
+		});
+
+	}
 	public int getIdRecipe() {
 		return idRecipe;
 	}
@@ -124,6 +203,22 @@ public class RecipeWithButton {
 
 	public void setDifficulty(int difficulty) {
 		this.difficulty = difficulty;
+	}
+
+	public String getCourse() {
+		return course;
+	}
+
+	public void setCourse(String course) {
+		this.course = course;
+	}
+
+	public int getRate() {
+		return rate;
+	}
+
+	public void setRate(int rate) {
+		this.rate = rate;
 	}
 
 	public Button getEditButton() {
