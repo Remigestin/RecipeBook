@@ -14,15 +14,17 @@ import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableView;
 
 public class FavoritesController implements Initializable {
 
-	//in order to test
+	
 	@FXML
 	ArrayList<Recipe> favorites = User.getSession().getFavoriteList();
 	
@@ -95,16 +97,27 @@ public class FavoritesController implements Initializable {
 	}
 	
 
-  //in order to test
     @FXML
     void deleteFavoriteRecipe(Event event) {
     	
+    	RecipeFacade recipe_facade = RecipeFacade.getInstance();
     	favorites = facade.removeFavoriteRecipe(User.getSession().getId(),idRecipe);
     	favoritesTab.setItems(getRecipes());	
     	favoritesTab.refresh();
+    	Recipe r = recipe_facade.findRecipe(idRecipe);
+    	displayDeleteConfirmation(r);
     	
     	
     }
+    
+    private void displayDeleteConfirmation(Recipe r) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Confirmation");
+		alert.setHeaderText("The recipe "+r.getNameRecipe()+" has been removed from your favorites ! ");
+		alert.showAndWait();
+
+	}
+	
 	
 
 }

@@ -52,24 +52,8 @@ public class FavoritesFacade {
 		//make the changes into the DB and remove the recipe in the user's favorites list
 		userDAO.removeFavoriteRecipe(idUser, idRecipe);
 		
-		//remove the recipe in the user's favorites list
-		
-		//ArrayList<Recipe> favoritesList = User.getSession().getFavoriteList();
-		//Recipe r = findRecipe(favoritesList,idRecipe);
-		//favoritesList.remove(r);
 		return User.getSession().getFavoriteList();
 		
 	}
 	
-	public Recipe findRecipe(ArrayList<Recipe> favorites, int idRecipe) {
-		
-		boolean found = false;
-		int i=0;
-		
-		while(!found) {
-			found = (favorites.get(i).getIdRecipe() == idRecipe);
-		}
-		
-		return favorites.get(i);
-	}
 }
