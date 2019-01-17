@@ -65,7 +65,7 @@ public class HomePageController implements Initializable {
 		setNbPeople(Integer.toString(top1.getNbPersRecipe()));
 		setPreparationTime(Integer.toString(top1.getPreparationTime()) + " min");
 		setRating(MySQLRecipeDAO.findRating(top1.getIdRecipe()));
-		setImage("file:../../asset/image/"+top1.getImage());
+		setImage("file:../../asset/imageRecette/"+top1.getImage());
 	}
 	
 	@Override
