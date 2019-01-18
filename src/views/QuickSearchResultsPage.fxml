@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -11,8 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="controller.QuickSearchController">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.QuickSearchController">
    <children>
       <fx:include source="CommonTheme.fxml" />
       <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
@@ -20,13 +18,13 @@
          <children>
             <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Quick Search" />
             <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-            <TableView fx:id="listRecipes" layoutX="259.0" layoutY="265.0" onMousePressed="#consultRecipe" prefHeight="477.0" prefWidth="983.0" style="-fx-cursor: hand;">
+            <TableView fx:id="listRecipes" layoutX="195.0" layoutY="265.0" onMousePressed="#consultRecipe" prefHeight="477.0" prefWidth="1137.0" style="-fx-cursor: hand;">
                <columns>
                   <TableColumn fx:id="recipeName" prefWidth="172.3333740234375" text="Recipe Name" />
+                  <TableColumn fx:id="courseCategory" prefWidth="75.0" text="Course Category" />
                   <TableColumn fx:id="rating" prefWidth="75.0" text="Rating" />
                   <TableColumn fx:id="preparationTime" prefWidth="187.6666259765625" text="Cookng Preparation Time" />
                   <TableColumn fx:id="difficulty" prefWidth="75.0" text="Difficulty" />
-                  <TableColumn fx:id="edit" prefWidth="75.0" text="Edit Recipe" />
                </columns>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -35,7 +33,6 @@
                   <Blend />
                </effect>
             </TableView>
-            <ComboBox fx:id="filter" layoutX="1134.0" layoutY="174.0" onAction="#filterRecipesByCourseCategory" prefHeight="25.0" prefWidth="179.0" promptText="filter by course category" style="-fx-border-color: #93c47d; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
             <Text layoutX="286.0" layoutY="201.0" strokeType="OUTSIDE" strokeWidth="0.0" text="results for your search :">
                <font>
                   <Font size="36.0" />

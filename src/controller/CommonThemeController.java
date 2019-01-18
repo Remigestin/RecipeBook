@@ -138,6 +138,14 @@ public class CommonThemeController implements Initializable {
 	void quickSearch(Event event) {
 
 		ArrayList<Recipe> results = facade.searchRecipes(quickSearch.getText());
+		ArrayList<RecipeWithButton> finalResults = new ArrayList<RecipeWithButton>();
+		
+		for (Recipe r : results) {
+			
+			finalResults.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(), r.getDifficulty(), r.getIdCourse(), ""));
+			
+		}
+		 
 		
 		// switch to quick search page with the results
 		Parent root;
@@ -148,7 +156,7 @@ public class CommonThemeController implements Initializable {
 			root = loader.load();
 			
 			QuickSearchController controller = loader.getController();
-			controller.setResults(results);
+			controller.setResults(finalResults);
 			controller.setResultsInTableView();
 			
 			Scene scene = new Scene(root, 1920, 1080);
