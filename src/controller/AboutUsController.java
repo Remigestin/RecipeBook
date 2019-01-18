@@ -2,6 +2,7 @@ package controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -9,15 +10,18 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
+import businessLogic.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 
-public class AboutUsController {
+public class AboutUsController implements Initializable {
 	@FXML
 	private Button login;
 	@FXML
-	private Button register;
+	private Button homePage;
 
 	// Event Listener on Button[#login].onAction
 	// Event Listener on Button[#login1].onAction
@@ -27,7 +31,7 @@ public class AboutUsController {
 		if (((Button) event.getSource()).getText().equals("Login")) {
 			this.switchToNewPage(event, "/views/LoginPage.fxml");
 		} else {
-			this.switchToNewPage(event, "/views/Register.fxml");
+			this.switchToNewPage(event, "/views/HomePage.fxml");
 		}
 	}
 
@@ -51,6 +55,22 @@ public class AboutUsController {
 			e.printStackTrace();
 		}
 
+	}
+	
+	private void setButton() {
+		
+		if (User.getSession() == null) {
+			homePage.setVisible(false);
+		} else {
+			login.setVisible(false);
+		}
+	}
+
+	@Override
+	public void initialize(URL location, ResourceBundle resources) {
+		
+		this.setButton();
+		
 	}
 
 }
