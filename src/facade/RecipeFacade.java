@@ -46,6 +46,11 @@ public class RecipeFacade {
 		return recipeDAO.findRecipe(idRecipe);
 	}
 
+	public ArrayList<Recipe> findAllRecipes() {
+		
+		return recipeDAO.findAllRecipes();
+	}
+
 	public ArrayList<Recipe> createRecipe(Recipe newRecipe, ArrayList<CookingStep> cookingSteps) {
 
 		// Add recipe in DB
@@ -69,7 +74,7 @@ public class RecipeFacade {
 
 		// Update cooking steps in DB
 		cookingStepDAO.editCookingStep(cookingStepsEdited);
-		
+
 		this.refreshSession();
 
 		return newCreateList;
@@ -87,28 +92,27 @@ public class RecipeFacade {
 		return recipeDAO.findAllCourseCategory();
 
 	}
-	
+
 	/**
 	 * 
 	 * @param idRecipe id of the recipe
-	 * @param idUser id of the user
+	 * @param idUser   id of the user
 	 * @return true if the recipe is a favorite recipe of the user
 	 */
-	
-	public boolean isFavorite (int idRecipe, int idUser) {
-		
+
+	public boolean isFavorite(int idRecipe, int idUser) {
+
 		return recipeDAO.isFavorite(idRecipe, idUser);
 	}
 
-	
-	public int findIdUserCreator (int idRecipe) {
-		
+	public int findIdUserCreator(int idRecipe) {
+
 		return recipeDAO.findIdUserCreator(idRecipe);
 	}
 
-	public void createComment(String text,Calendar cal,int idRecipe,  int idUser) {
+	public void createComment(String text, Calendar cal, int idRecipe, int idUser) {
 
-		commentDAO.createComment(text,cal,idRecipe,idUser);
+		commentDAO.createComment(text, cal, idRecipe, idUser);
 	}
 
 	public ArrayList<Commentary> showComment(int idRecipe) {
@@ -120,7 +124,7 @@ public class RecipeFacade {
 		return recipeDAO.searchRecipes(search);
 	}
 
-	//return -1 if there is no rate
+	// return -1 if there is no rate
 	public int getRate(int idRecipe) {
 		return recipeDAO.findRate(User.getSession().getId(), idRecipe);
 	}
@@ -132,7 +136,7 @@ public class RecipeFacade {
 		this.refreshSession();
 
 	}
-	
+
 	public void editRating(int idRecipe, double ratingValue) {
 		User session = User.getSession();
 		recipeDAO.editRating(idRecipe, session.getId(), ratingValue);
@@ -140,25 +144,25 @@ public class RecipeFacade {
 		this.refreshSession();
 
 	}
-	
+
 	public void deleteRating(int idRecipe) {
 		recipeDAO.deleteRating(idRecipe, User.getSession().getId());
 		this.refreshSession();
 	}
-	
-	private void refreshSession() {
-		
-				// Update the user list of created recipes and favorite recipes
-				User.getSession().setCreateList(recipeDAO.loadCreateRecipe(User.getSession().getId()));
-				User.getSession().setFavoriteList(recipeDAO.loadFavoriteRecipe(User.getSession().getId()));
 
-				// Update user random menu
-				User.getSession().setRandomStarter(recipeDAO.findRecipe(User.getSession().getRandomStarter().getIdRecipe()));
-				User.getSession().setRandomMain(recipeDAO.findRecipe(User.getSession().getRandomMain().getIdRecipe()));
-				User.getSession().setRandomDessert(recipeDAO.findRecipe(User.getSession().getRandomDessert().getIdRecipe()));
+	private void refreshSession() {
+
+		// Update the user list of created recipes and favorite recipes
+		User.getSession().setCreateList(recipeDAO.loadCreateRecipe(User.getSession().getId()));
+		User.getSession().setFavoriteList(recipeDAO.loadFavoriteRecipe(User.getSession().getId()));
+
+		// Update user random menu
+		User.getSession().setRandomStarter(recipeDAO.findRecipe(User.getSession().getRandomStarter().getIdRecipe()));
+		User.getSession().setRandomMain(recipeDAO.findRecipe(User.getSession().getRandomMain().getIdRecipe()));
+		User.getSession().setRandomDessert(recipeDAO.findRecipe(User.getSession().getRandomDessert().getIdRecipe()));
 
 	}
-	
+
 	public Recipe findTop1Recipe() {
 		return recipeDAO.findTop1Recipe();
 	}

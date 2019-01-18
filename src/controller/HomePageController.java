@@ -1,8 +1,13 @@
 package controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -10,67 +15,136 @@ import org.controlsfx.control.Rating;
 
 import businessLogic.Recipe;
 import facade.RecipeFacade;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import mySQLDAO.MySQLRecipeDAO;
 
 public class HomePageController implements Initializable {
 	@FXML
-	private Rating rating;
+	private Rating ratingTop1;
 	@FXML
-	private Label preparationTime;
+	private Label preparationTimeTop1;
 	@FXML
-	private Label difficulty;
+	private Label difficultyTop1;
 	@FXML
-	private Label nbPeople;
+	private Label nbPeopleTop1;
 	@FXML
-	private Label nameRecipe;
+	private Label nameRecipeTop1;
 	@FXML
-	private ImageView image;
+	private ImageView imageTop1;
 
+	@FXML
+	private TableView<RecipeWithButton> listRecipes;
+	@FXML
+	private TableColumn<RecipeWithButton, String> recipeName;
+	@FXML
+	private TableColumn<RecipeWithButton, String> courseCategory;
+	@FXML
+	private TableColumn<RecipeWithButton, String> rating;
+	@FXML
+	private TableColumn<RecipeWithButton, Integer> preparationTime;
+	@FXML
+	private TableColumn<RecipeWithButton, Integer> difficulty;
+	
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
-	public void setRating(float rating) {
-		this.rating.setRating(rating);
+	private ObservableList<RecipeWithButton> myRecipes = FXCollections.observableArrayList();
+	
+	public void setRatingTop1(float rating) {
+		this.ratingTop1.setRating(rating);
 	}
 
-	public void setPreparationTime(String preparationTime) {
-		this.preparationTime.setText(preparationTime);
+	public void setPreparationTimeTop1(String preparationTime) {
+		this.preparationTimeTop1.setText(preparationTime);
 	}
 
-	public void setDifficulty(String difficulty) {
-		this.difficulty.setText(difficulty);
+	public void setDifficultyTop1(String difficulty) {
+		this.difficultyTop1.setText(difficulty);
 	}
 
-	public void setNbPeople(String nbPeople) {
-		this.nbPeople.setText(nbPeople);
+	public void setNbPeopleTop1(String nbPeople) {
+		this.nbPeopleTop1.setText(nbPeople);
 	}
 
-	public void setNameRecipe(String nameRecipe) {
-		this.nameRecipe.setText(nameRecipe);
+	public void setNameRecipeTop1(String nameRecipe) {
+		this.nameRecipeTop1.setText(nameRecipe);
 	}
 
-	public void setImage(String image) {
-		this.image.setImage(new Image(image));
+	public void setImageTop1(String image) {
+		this.imageTop1.setImage(new Image(image));
 	}
-
 
 	private void setTop1() {
 		
 		Recipe top1 = facade.findTop1Recipe();
 		
-		setDifficulty(Integer.toString(top1.getDifficulty()) + " / 5");
-		setNameRecipe(top1.getNameRecipe());
-		setNbPeople(Integer.toString(top1.getNbPersRecipe()));
-		setPreparationTime(Integer.toString(top1.getPreparationTime()) + " min");
-		setRating(MySQLRecipeDAO.findRating(top1.getIdRecipe()));
-		setImage("file:../../asset/imageRecette/"+top1.getImage());
+		setDifficultyTop1(Integer.toString(top1.getDifficulty()) + " / 5");
+		setNameRecipeTop1(top1.getNameRecipe());
+		setNbPeopleTop1(Integer.toString(top1.getNbPersRecipe()));
+		setPreparationTimeTop1(Integer.toString(top1.getPreparationTime()) + " min");
+		setRatingTop1(MySQLRecipeDAO.findRating(top1.getIdRecipe()));
+		setImageTop1("file:../../asset/imageRecette/"+top1.getImage());
+	}
+
+	public ObservableList<RecipeWithButton> getAllRecipes() {
+
+		myRecipes.clear();
+		for (Recipe r : facade.findAllRecipes()) {
+
+			myRecipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
+					r.getDifficulty(), r.getIdCourse(), ""));
+		}
+		return myRecipes;
+	}
+	
+	@FXML
+	void consultRecipe(Event event) {
+
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipePage.fxml"));
+
+			root = loader.load();
+
+			RecipeController controller = loader.getController();
+
+			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
+			controller.setIdRecipe(myRecipes.get(rowNumber).getIdRecipe());
+			controller.consultRecipe();
+
+			Scene scene = new Scene(root, 1920, 1080);
+
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		this.setTop1();
+		
+		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
+		courseCategory.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("course"));
+		rating.setCellValueFactory(new PropertyValueFactory("rate"));
+		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
+		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
+		
+		listRecipes.setItems(getAllRecipes());
+
 	}
 }

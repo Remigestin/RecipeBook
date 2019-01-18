@@ -36,6 +36,9 @@ public class MyRecipesController implements Initializable {
 	private TableColumn<RecipeWithButton, String> recipeName;
 
 	@FXML
+	private TableColumn<RecipeWithButton, String> courseCategory;
+
+	@FXML
 	private TableColumn<RecipeWithButton, String> rating;
 
 	@FXML
@@ -88,8 +91,7 @@ public class MyRecipesController implements Initializable {
 		for (Recipe r : User.getSession().getCreateList()) {
 
 			myRecipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
-					r.getDifficulty(), "edit"));
-
+					r.getDifficulty(), r.getIdCourse(), "edit"));
 		}
 		return myRecipes;
 	}
@@ -102,7 +104,7 @@ public class MyRecipesController implements Initializable {
 			if (r.getIdCourse() == idCourseSelected)
 
 				myRecipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
-						r.getDifficulty(), "edit"));
+						r.getDifficulty(), r.getIdCourse(), "edit"));
 		}
 
 		return myRecipes;
@@ -171,11 +173,12 @@ public class MyRecipesController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 
 		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
-		// rating.setCellValueFactory(new PropertyValueFactory<Recipe, String>(""));
+		courseCategory.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("course"));
+		rating.setCellValueFactory(new PropertyValueFactory("rate"));
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
 		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
 		edit.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("editButton"));
-		
+
 		listRecipes.setItems(getAllRecipes());
 
 		setCourseCategoryFilter();

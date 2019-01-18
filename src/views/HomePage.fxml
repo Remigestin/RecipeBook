@@ -3,6 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,13 +17,13 @@
 <?import javafx.scene.text.Font?>
 <?import org.controlsfx.control.Rating?>
 
-<ScrollPane prefHeight="1080.0" prefWidth="1920.0" stylesheets="@recipePage.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
+<ScrollPane prefHeight="1704.0" prefWidth="1920.0" stylesheets="@recipePage.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.HomePageController">
    <content>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1692.0" prefWidth="1920.0">
          <children>
             <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
             <fx:include fx:id="commonTheme" source="CommonTheme.fxml" />
-            <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="800.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
+            <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="1444.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
                <children>
                   <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="Home Page" />
                   <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
@@ -37,7 +40,7 @@
                         </Label>
                         <VBox layoutX="62.0" layoutY="119.0" prefHeight="270.0" prefWidth="209.0" spacing="20.0" styleClass="mainInformation">
                            <children>
-                              <Rating fx:id="rating" disable="true" partialRating="true" rating="0.0">
+                              <Rating fx:id="ratingTop1" disable="true" partialRating="true" rating="0.0">
                                  <VBox.margin>
                                     <Insets top="15.0" />
                                  </VBox.margin>
@@ -49,7 +52,7 @@
                                           <Image url="@../../asset/image/clock.png" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="preparationTime" prefHeight="50.0" prefWidth="86.0" text="?">
+                                    <Label fx:id="preparationTimeTop1" prefHeight="50.0" prefWidth="86.0" text="?">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -63,7 +66,7 @@
                                           <Image url="@../../asset/image/biceps.png" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="difficulty" prefHeight="50.0" prefWidth="89.0" text="?">
+                                    <Label fx:id="difficultyTop1" prefHeight="50.0" prefWidth="89.0" text="?">
                                        <font>
                                           <Font size="20.0" />
                                        </font>
@@ -77,7 +80,7 @@
                                           <Image url="@../../asset/image/people.png" />
                                        </image>
                                     </ImageView>
-                                    <Label fx:id="nbPeople" text="&lt;number&gt;">
+                                    <Label fx:id="nbPeopleTop1" text="&lt;number&gt;">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -89,14 +92,41 @@
                               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                            </padding>
                         </VBox>
-                        <Label fx:id="nameRecipe" alignment="CENTER" layoutX="280.0" layoutY="34.0" prefHeight="48.0" prefWidth="340.0" text="&lt;nameRecette&gt;" textAlignment="CENTER" textFill="#eb0b0b">
+                        <Label fx:id="nameRecipeTop1" alignment="CENTER" layoutX="280.0" layoutY="34.0" prefHeight="48.0" prefWidth="340.0" text="&lt;nameRecette&gt;" textAlignment="CENTER" textFill="#eb0b0b">
                            <font>
                               <Font size="33.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="image" fitHeight="280.0" fitWidth="472.0" layoutX="368.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageTop1" fitHeight="280.0" fitWidth="472.0" layoutX="368.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </Pane>
+                  <TableView fx:id="listRecipes" layoutX="235.0" layoutY="881.0" onMousePressed="#consultRecipe" prefHeight="513.0" prefWidth="1070.0" style="-fx-cursor: hand;">
+                     <columns>
+                        <TableColumn fx:id="recipeName" prefWidth="366.0" style="fx-alignment: CENTER;" text="Recipe Name" />
+                        <TableColumn fx:id="courseCategory" prefWidth="183.0" text="Course Category" />
+                        <TableColumn fx:id="rating" minWidth="0.0" prefWidth="109.0" text="          Rating     " />
+                        <TableColumn fx:id="preparationTime" prefWidth="239.0" text="           Preparation Time      " />
+                        <TableColumn fx:id="difficulty" minWidth="0.0" prefWidth="172.0" text="       Difficulty   " />
+                     </columns>
+                     <effect>
+                        <Blend />
+                     </effect>
+                  </TableView>
+                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="1155.0" layoutY="883.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/biceps.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="796.0" layoutY="883.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/star.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="938.0" layoutY="884.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../asset/image/clock.png" />
+                     </image>
+                  </ImageView>
                </children>
             </Pane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff212140" height="97.0" layoutX="43.0" layoutY="192.0" opacity="0.73" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />

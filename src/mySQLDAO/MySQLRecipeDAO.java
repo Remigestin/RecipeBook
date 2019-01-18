@@ -24,6 +24,7 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 	private static final String SQL_FIND_ID_USER_BY_IDRECIPE = "Select idUser FROM recipe WHERE idRecipe = ?";
 	private static final String SQL_FIND_COURSE_CATEGORY_BY_IDCOURSE = "Select nameCourse FROM coursecategory WHERE idCourse = ?";
 	private static final String SQL_FIND_ALL_COURSE_CATEGORY = "Select * FROM coursecategory";
+	private static final String SQL_FIND_ALL_RECIPES = "Select * FROM recipe";
 	private static final String SQL_FIND_RANDOM_RECIPE_BY_CATEGORY = "Select * FROM recipe  WHERE idCourse = ? ORDER BY RAND() LIMIT 1";
 	private static final String SQL_FIND_RANDOM_RECIPE_BY_CATEGORY_AND_IDRECIPE_DIFFERENT = "Select * FROM recipe  WHERE idCourse = ? AND idrecipe != ? ORDER BY RAND() LIMIT 1";
 	private static final String SQL_FIND_RATING_BY_IDRECIPE = "SELECT AVG(mark) FROM recipe R, rating N WHERE R.idrecipe = N.idrecipe AND R.idrecipe = ?";
@@ -440,5 +441,27 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		}
 		
 		return this.findRecipe(idRecipe);
+	}
+
+	@Override
+	public ArrayList<Recipe> findAllRecipes() {
+		
+		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
+
+		try {
+			DatabaseConnection dc = DatabaseConnection.getInstance();
+			Connection c = dc.getConnection();
+			PreparedStatement st = c.prepareStatement(SQL_FIND_ALL_RECIPES);
+			ResultSet rs = st.executeQuery();
+			while (rs.next()) {
+				Recipe tmp = null;
+				tmp = map(rs);
+				recipeList.add(tmp);
+			}
+		} catch (SQLException e) {
+			throw new DAOException(e);
+		}
+
+		return recipeList;
 	}
 }

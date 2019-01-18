@@ -211,6 +211,7 @@ public class RecipeController implements Initializable {
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
 		this.setDifficulty(Integer.toString(recipe.getDifficulty()));
 		this.setRating(MySQLRecipeDAO.findRating(recipe.getIdRecipe()));
+		this.setImage("file:../../asset/imageRecette/"+recipe.getImage());
 
 		if (facade.getRate(idRecipe) == -1) { // if there is no rate from the user
 			this.editRatingAdded.setOnMousePressed(e -> {
