@@ -22,14 +22,14 @@
             <fx:include source="Footer.fxml" AnchorPane.bottomAnchor="0.0" />
             <Pane layoutX="358.0" layoutY="192.0" maxWidth="2084.0" prefHeight="800.0" prefWidth="1490.0" style="-fx-background-color: f5c92b;">
                <children>
-                  <TableView fx:id="listRecipes" layoutX="259.0" layoutY="265.0" onMousePressed="#consultRecipe" prefHeight="477.0" prefWidth="1050.0" style="-fx-cursor: hand;">
+                  <TableView fx:id="listRecipes" layoutX="195.0" layoutY="265.0" onMousePressed="#consultRecipe" prefHeight="477.0" prefWidth="1130.0" style="-fx-cursor: hand;">
                     <columns>
-                      <TableColumn fx:id="recipeName" prefWidth="254.0" style="fx-alignment: CENTER;" text="Recipe Name" />
-                        <TableColumn fx:id="courseCategory" prefWidth="275.0" text="Course Category" />
-                        <TableColumn fx:id="rating" minWidth="0.0" prefWidth="100.0" text="          Rating     " />
+                      <TableColumn fx:id="recipeName" prefWidth="280.0" style="fx-alignment: CENTER;" text="Recipe Name" />
+                        <TableColumn fx:id="courseCategory" prefWidth="197.0" text="Course Category" />
+                        <TableColumn fx:id="rating" minWidth="0.0" prefWidth="152.0" text="          Rating     " />
                       <TableColumn fx:id="preparationTime" prefWidth="159.0" text="           Preparation Time      " />
-                        <TableColumn fx:id="difficulty" minWidth="0.0" prefWidth="176.6666259765625" text="       Difficulty   " />
-                        <TableColumn fx:id="edit" prefWidth="96.3333740234375" sortable="false" text="Edit Recipe" />
+                        <TableColumn fx:id="difficulty" minWidth="0.0" prefWidth="169.0" text="       Difficulty   " />
+                        <TableColumn fx:id="edit" prefWidth="105.0" sortable="false" text="Edit Recipe" />
                     </columns>
                      <effect>
                         <Blend />
@@ -37,7 +37,7 @@
                   </TableView>
                   <Label layoutX="570.0" layoutY="19.0" styleClass="titlePage" stylesheets="@theme.css" text="My Recipes" />
                   <Line endX="576.0" layoutX="737.0" layoutY="117.0" startX="-540.0" />
-                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="1084.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="1019.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/biceps.png" />
                      </image>
@@ -54,13 +54,13 @@
                         <DropShadow />
                      </effect>
                   </Pane>
-                  <ComboBox fx:id="filter" layoutX="1134.0" layoutY="174.0" onAction="#filterRecipesByCourseCategory" prefHeight="25.0" prefWidth="179.0" promptText="filter by course category" style="-fx-border-color: #93c47d; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
-                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="800.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
+                  <ComboBox fx:id="filter" layoutX="1094.0" layoutY="174.0" onAction="#filterRecipesByCourseCategory" prefHeight="29.0" prefWidth="219.0" promptText="filter by course category" style="-fx-border-color: #93c47d; -fx-border-width: 2; -fx-background-radius: 10; -fx-border-radius: 10;" />
+                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="709.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/star.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="899.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="835.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/clock.png" />
                      </image>

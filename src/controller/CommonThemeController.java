@@ -110,6 +110,11 @@ public class CommonThemeController implements Initializable {
 
 			root = loader.load();
 
+			if (newPage.equals("/views/HomePage.fxml")) {
+				HomePageController controller = loader.getController();
+				controller.setIdTop1(facade.findTop1Recipe().getIdRecipe());
+			}
+			
 			Scene scene = new Scene(root, 1920, 1080);
 
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();

@@ -40,6 +40,8 @@ public class HomePageController implements Initializable {
 	private Label nameRecipeTop1;
 	@FXML
 	private ImageView imageTop1;
+	
+	private int idTop1;
 
 	@FXML
 	private TableView<RecipeWithButton> listRecipes;
@@ -80,6 +82,10 @@ public class HomePageController implements Initializable {
 
 	public void setImageTop1(String image) {
 		this.imageTop1.setImage(new Image(image));
+	}
+	
+	public void setIdTop1(int id) {
+		idTop1 = id;
 	}
 
 	private void setTop1() {
@@ -133,11 +139,38 @@ public class HomePageController implements Initializable {
 		}
 	}
 	
+	@FXML
+	void consultTop1(Event event) {
+
+		Parent root;
+
+		try {
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/RecipePage.fxml"));
+
+			root = loader.load();
+
+			RecipeController controller = loader.getController();
+
+			controller.setIdRecipe(idTop1);
+			controller.consultRecipe();
+
+			Scene scene = new Scene(root, 1920, 1080);
+
+			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+			newStage.setScene(scene);
+			newStage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 		this.setTop1();
-		
+	
 		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
 		courseCategory.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("course"));
 		rating.setCellValueFactory(new PropertyValueFactory("rate"));

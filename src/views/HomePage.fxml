@@ -97,36 +97,44 @@
                               <Font size="33.0" />
                            </font>
                         </Label>
-                        <ImageView fx:id="imageTop1" fitHeight="280.0" fitWidth="472.0" layoutX="368.0" layoutY="115.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="imageTop1" fitHeight="280.0" fitWidth="472.0" layoutX="368.0" layoutY="115.0" onMousePressed="#consultTop1" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </Pane>
-                  <TableView fx:id="listRecipes" layoutX="235.0" layoutY="881.0" onMousePressed="#consultRecipe" prefHeight="513.0" prefWidth="1070.0" style="-fx-cursor: hand;">
+                  <TableView fx:id="listRecipes" layoutX="143.0" layoutY="881.0" onMousePressed="#consultRecipe" prefHeight="513.0" prefWidth="1206.0" style="-fx-cursor: hand;">
                      <columns>
                         <TableColumn fx:id="recipeName" prefWidth="366.0" style="fx-alignment: CENTER;" text="Recipe Name" />
                         <TableColumn fx:id="courseCategory" prefWidth="183.0" text="Course Category" />
-                        <TableColumn fx:id="rating" minWidth="0.0" prefWidth="109.0" text="          Rating     " />
-                        <TableColumn fx:id="preparationTime" prefWidth="239.0" text="           Preparation Time      " />
-                        <TableColumn fx:id="difficulty" minWidth="0.0" prefWidth="172.0" text="       Difficulty   " />
+                        <TableColumn fx:id="rating" minWidth="0.0" prefWidth="219.0" text="          Rating     " />
+                        <TableColumn fx:id="preparationTime" prefWidth="211.0" text="           Preparation Time      " />
+                        <TableColumn fx:id="difficulty" minWidth="0.0" prefWidth="226.0" text="       Difficulty   " />
                      </columns>
                      <effect>
                         <Blend />
                      </effect>
                   </TableView>
-                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="1155.0" layoutY="883.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="1182.0" layoutY="883.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/biceps.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="796.0" layoutY="883.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="20.0" fitWidth="23.0" layoutX="759.0" layoutY="883.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/star.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="938.0" layoutY="884.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="945.0" layoutY="884.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../asset/image/clock.png" />
                      </image>
                   </ImageView>
+                  <Label layoutX="272.0" layoutY="782.0" style="-fx-background-color: white; -fx-font-weight: bold; -fx-border-radius: 20; -fx-background-radius: 20;" styleClass="h2" text="All Recipes">
+                     <font>
+                        <Font size="30.0" />
+                     </font>
+                     <padding>
+                        <Insets left="10.0" right="10.0" />
+                     </padding>
+                  </Label>
                </children>
             </Pane>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff212140" height="97.0" layoutX="43.0" layoutY="192.0" opacity="0.73" stroke="TRANSPARENT" strokeType="INSIDE" width="303.0" />
