@@ -315,6 +315,10 @@ public class RecipeController implements Initializable {
 	   
 	// Event Listener on Button[#buttonadd].onAction
 	@FXML
+	/**
+	 * crate a comment of a recipe on the action of a user
+	 * @param event
+	 */
 	public void addComment(ActionEvent event) {
 		Calendar cal = Calendar.getInstance();
 		facade.createComment(textaddcomment.getText(), cal, idRecipe, User.getSession().getId());
@@ -324,6 +328,10 @@ public class RecipeController implements Initializable {
 
 	}
 
+	/**
+	 * help to show the comment
+	 * @return a list of comments 
+	 */
 	private ObservableList<Commentary> getComment() {
 
 		ObservableList<Commentary> comments = FXCollections.observableArrayList();
@@ -342,7 +350,9 @@ public class RecipeController implements Initializable {
 		return comments;
 		*/
 	
-
+	/**
+	 * method that edit a commentary on the action of the user
+	 */
 	public void editComment(ArrayList<Commentary> listcomment) {
 
 //			for (Commentary c : listcomment) {
