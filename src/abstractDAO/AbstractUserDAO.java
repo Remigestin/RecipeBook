@@ -5,10 +5,18 @@ import exception.DAOException;
 /**
  * 
  * @author MISSOUM BENZIANE Ines
+ * @author Gestin Remi
  *
  */
 public abstract class AbstractUserDAO {
 
+	/**
+	 * 
+	 * @param username
+	 * @param password
+	 * @return the user who is logged with his favorite recipes, random recipes and his created recipes.
+	 * @throws DAOException
+	 */
 	public abstract User login(String username, String password) throws DAOException;
 	public abstract void register(String firstname, String lastname, String username, String password) throws DAOException;
 	public abstract void deleteAccount(int idUser) throws DAOException;
