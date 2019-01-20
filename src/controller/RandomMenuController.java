@@ -24,6 +24,11 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author gestin remi
+ *
+ */
 public class RandomMenuController implements Initializable {
 	@FXML
 	private Button changeStarter;
@@ -122,6 +127,10 @@ public class RandomMenuController implements Initializable {
 	}
 
 	@FXML
+	/**
+	 * change all the random recipes of the user in session
+	 * @param event
+	 */
 	public void changeAll(Event event) {
 		randomFacade.changeRandomStarter();
 		randomFacade.changeRandomMain();
@@ -130,24 +139,40 @@ public class RandomMenuController implements Initializable {
 	}
 
 	@FXML
+	/**
+	 * change the random starter of the user in session
+	 * @param event
+	 */
 	void changeRandomStarter(Event event) {
 		randomFacade.changeRandomStarter();
 		initialize(null, null);
 	}
 
 	@FXML
+	/**
+	 * change the random main course of the user in session
+	 * @param event
+	 */
 	void changeRandomMain(Event event) {
 		randomFacade.changeRandomMain();
 		initialize(null, null);
 	}
 
 	@FXML
+	/**
+	 * change the random dessert of the user in session
+	 * @param event
+	 */
 	void changeRandomDessert(Event event) {
 		randomFacade.changeRandomDessert();
 		initialize(null, null);
 	}
 
 	@FXML
+	/**
+	 * allows to consult in detail a recipe
+	 * @param event
+	 */
 	void consultRecipe(Event event) {
 
 		Parent root;
