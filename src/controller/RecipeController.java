@@ -96,6 +96,8 @@ public class RecipeController implements Initializable {
 	private TableColumn<Commentary, String> Date;
 	@FXML
 	private TableColumn<Commentary, String> Text;
+	@FXML
+	private TableColumn<RecipeWithButton, String> edit;
 
 	/* attributes */
 	private RecipeFacade facade = RecipeFacade.getInstance();
@@ -329,8 +331,19 @@ public class RecipeController implements Initializable {
 		return comments;
 
 	}
+	/*
+	public ObservableList<CommentWithButton> getComment() {
 
-	public void setComment(ArrayList<Commentary> listcomment) {
+	
+		for (Commentary c : User.getSession().getCreateList()) {
+
+			comments.add(new CommentWithButton(c.getUser(), c.getText(), "edit"));
+		}
+		return comments;
+		*/
+	
+
+	public void editComment(ArrayList<Commentary> listcomment) {
 
 //			for (Commentary c : listcomment) {
 		//
