@@ -9,9 +9,9 @@ public class DatabaseConnection {
 
     private static DatabaseConnection instance;
     private Connection connection;
-    private String url = "jdbc:mysql://localhost:3306/recipebook?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-    private String username = "root";
-    private String password = "admin";
+    private String url = "jdbc:mysql://db4free.net:3306/recipebook?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+    private String username = "adminrecipe";
+    private String password = "ooose2018";
 
     private DatabaseConnection() throws SQLException {
         try {
