@@ -362,11 +362,6 @@ public class RecipeController implements Initializable {
 //				numberStep++;
 	}
 
-	/*
-	 * public void showComment(Event e){
-	 * 
-	 * this.setComment(facade.showComment(1)); }
-	 */
 
 	public void setVisibleEditRecipeButton() {
 
