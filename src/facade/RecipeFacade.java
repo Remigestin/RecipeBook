@@ -110,11 +110,24 @@ public class RecipeFacade {
 		return recipeDAO.findIdUserCreator(idRecipe);
 	}
 
+	
+	/**
+	 * create a commentary for a recipe
+	 * @param text
+	 * @param cal
+	 * @param idRecipe
+	 * @param idUser
+	 */
 	public void createComment(String text, Calendar cal, int idRecipe, int idUser) {
 
 		commentDAO.createComment(text, cal, idRecipe, idUser);
 	}
 
+	/**
+	 * show all the comments from a recipe
+	 * @param idRecipe
+	 * @return a list of comments that correspond to the recipe in param
+	 */
 	public ArrayList<Commentary> showComment(int idRecipe) {
 
 		return commentDAO.showcomment(idRecipe);
