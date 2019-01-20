@@ -43,6 +43,7 @@ import org.controlsfx.control.Rating;
 /**
  * 
  * @author MISSOUM BENZIANE Ines
+ * @author gestin remi
  *
  */
 public class RecipeController implements Initializable {
@@ -202,7 +203,11 @@ public class RecipeController implements Initializable {
 		numberPeople.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
 	}
 
-	/* methods */
+	/**
+	 * display all the element of a recipe
+	 *
+	 *for the rate : display the button add only if there is no rate of the user, display an edit and a delete button if there is.
+	 */
 	public void consultRecipe() {
 
 		/* find and set cooking steps */
@@ -254,6 +259,10 @@ public class RecipeController implements Initializable {
 
 	}
 
+	/**
+	 * add a rate from the user on the recipe
+	 * @param event
+	 */
 	private void addRating(Event event) {
 
 		facade.rateARecipe(idRecipe, this.ratingAdded.getRating());
@@ -261,11 +270,19 @@ public class RecipeController implements Initializable {
 
 	}
 
+	/**
+	 * edit the rate of the user
+	 * @param event
+	 */
 	private void editeRating(Event event) {
 		facade.editRating(idRecipe, this.ratingAdded.getRating());
 		this.consultRecipe();
 	}
 
+	/**
+	 * delete the rate of the user
+	 * @param event
+	 */
 	private void deleteRating(Event event) {
 		facade.deleteRating(idRecipe);
 		this.ratingAdded.setRating(0);
