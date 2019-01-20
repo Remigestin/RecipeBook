@@ -8,7 +8,11 @@ import businessLogic.Recipe;
 import businessLogic.User;
 import factory.AbstractFactory;
 import factory.MySQLFactory;
-
+/**
+ * 
+ * @author MISSOUM BENZIANE Ines
+ *
+ */
 public class FavoritesFacade {
 	
 	/* Singleton Holder */
@@ -20,7 +24,12 @@ public class FavoritesFacade {
 		return FavoritesFacadeHolder.FavoritesFacade;
 	}
 	
-	
+	/**
+	 * adds a recipe to the favorites of the user ( also in the DB)
+	 * @param idUser id of the user
+	 * @param idRecipe id of the recipe to be added
+	 * @return the list of favorites recipe with the one added
+	 */
 	public ArrayList<Recipe> addFavoriteRecipe(int idUser, int idRecipe){
 		
 		//take the user DAO
@@ -43,6 +52,12 @@ public class FavoritesFacade {
 		
 	}
 	
+	/**
+	 * removes a recipe from the favorites of the user ( also in the DB)
+	 * @param idUser id of the user
+	 * @param idRecipe id of the recipe to be removed
+	 * @return the list of favorites recipe without the one removed
+	 */
 	public ArrayList<Recipe> removeFavoriteRecipe(int idUser, int idRecipe){
 		
 		//take the user DAO

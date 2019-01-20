@@ -14,7 +14,11 @@ import java.io.IOException;
 import facade.RecipeFacade;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-
+/**
+ * This class was built to be able to have a button next to each recipe when we print all the recipes in a TabView
+ * @author MISSOUM BENZIANE Ines
+ *
+ */
 public class RecipeWithButton {
 
 	private int idRecipe;
@@ -41,6 +45,7 @@ public class RecipeWithButton {
 
 		this.editButton.setOnAction(new EventHandler<ActionEvent>() {
 
+			// defines the action on the button of the recipe created
 			@Override
 			public void handle(ActionEvent event) {
 

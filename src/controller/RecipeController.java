@@ -40,7 +40,11 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.controlsfx.control.Rating;
-
+/**
+ * 
+ * @author MISSOUM BENZIANE Ines
+ *
+ */
 public class RecipeController implements Initializable {
 
 	/* FXML elements */
@@ -296,8 +300,13 @@ public class RecipeController implements Initializable {
 		}
 	}
 
-	//add the recipe to the fav list
+
 	@FXML
+	/**
+	 * When the user clicks on the button that allows him to add a recipe in his/her favorites, this method is called.
+	 * This method adds the recipe in the favorites list of the user, print a confirmation on the screen  
+	 * @param event
+	 */
 	void addFavoriteRecipe(Event event) {
 		
 		

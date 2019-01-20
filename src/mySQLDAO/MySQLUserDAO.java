@@ -9,7 +9,11 @@ import abstractDAO.AbstractUserDAO;
 import businessLogic.User;
 import connection.DatabaseConnection;
 import exception.DAOException;
-
+/**
+ * 
+ * @author MISSOUM BENZIANE Ines
+ *
+ */
 public class MySQLUserDAO extends AbstractUserDAO {
 
 	/* Private constructor */

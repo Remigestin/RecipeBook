@@ -4,7 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import businessLogic.Recipe;
-
+/**
+ * 
+ * @author MISSOUM BENZIANE Ines
+ *
+ */
 public abstract class AbstractRecipeDAO {
 
 	public abstract ArrayList<Recipe> loadFavoriteRecipe(int idUser);
@@ -16,7 +20,12 @@ public abstract class AbstractRecipeDAO {
 	public abstract ArrayList<Recipe> findAllRecipes();
 
 	public abstract Recipe findRecipe(int idRecipe);
-	
+	/**
+	 * 
+	 * @param idRecipe id of the recipe
+	 * @param idUser id of the user
+	 * @return true if the recipe is a favorite recipe of the user in the DB, otherwise return false
+	 */
 	public abstract boolean isFavorite(int idRecipe, int idUser);
 	
 	public abstract int findIdUserCreator(int idRecipe);

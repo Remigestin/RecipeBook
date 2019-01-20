@@ -14,7 +14,11 @@ import businessLogic.Recipe;
 import businessLogic.User;
 import connection.DatabaseConnection;
 import exception.DAOException;
-
+/**
+ * 
+ * @author MISSOUM BENZIANE Ines
+ *
+ */
 public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 	// sql

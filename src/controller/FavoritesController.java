@@ -27,22 +27,26 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import javafx.scene.control.TableView;
-
+/**
+ * 
+ * @author MISSOUM BENZIANE Ines
+ *
+ */
 public class FavoritesController implements Initializable {
 
-	
+
 	@FXML
 	ArrayList<Recipe> favorites = User.getSession().getFavoriteList();
-	
+
 	@FXML
 	int idRecipe;
-	
+
 	@FXML
 	private CommonThemeController commonThemeController = new CommonThemeController();
-	
+
 	@FXML
 	private TableView<RecipeWithButton> favoritesTab;
-	
+
 	@FXML
 	private TableColumn<RecipeWithButton, String> recipeName;
 
@@ -53,18 +57,18 @@ public class FavoritesController implements Initializable {
 	private TableColumn<RecipeWithButton, String> rating;
 
 	@FXML
-    private TableColumn<RecipeWithButton, String> preparationTime;
+	private TableColumn<RecipeWithButton, String> preparationTime;
 
 	@FXML
-    private TableColumn<RecipeWithButton, String> course;
-	
+	private TableColumn<RecipeWithButton, String> course;
+
 	@FXML
-    private TableColumn<RecipeWithButton, String> remove;
-	    
+	private TableColumn<RecipeWithButton, String> remove;
+
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		
+
 		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
 		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
@@ -73,14 +77,15 @@ public class FavoritesController implements Initializable {
 		remove.setCellValueFactory(new PropertyValueFactory("editButton"));
 		favoritesTab.setItems(getRecipes());
 	}
-	
+
 	/*attributes*/
+
 	private FavoritesFacade facade = FavoritesFacade.getInstance();
 	private ObservableList<RecipeWithButton> recipes = FXCollections.observableArrayList();
-	
-	
+
+
 	/*methods*/
-	
+
 	public int getIdRecipe() {
 		return idRecipe;
 	}
@@ -89,6 +94,10 @@ public class FavoritesController implements Initializable {
 		this.idRecipe = idRecipe;
 	}
 
+	/**
+	 * The TableView needs a ObservableList<RecipeWithButton> to print all the favorites. This methods changes the user's favorites list on an ObservableList<RecipeWithButton>
+	 * @return an ObservableList of RecipeWithButton so it can be printed 
+	 */
 	public ObservableList<RecipeWithButton> getRecipes() {
 
 		recipes.clear();
@@ -96,37 +105,52 @@ public class FavoritesController implements Initializable {
 
 			recipes.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
 					r.getDifficulty(),r.getIdCourse(), "remove"));
-			
+
 
 		}
-		
+
 		return recipes;
 
 	}
-	
 
-    @FXML
-    void deleteFavoriteRecipe(Event event) {
-    	
-    	RecipeFacade recipe_facade = RecipeFacade.getInstance();
-    	favorites = facade.removeFavoriteRecipe(User.getSession().getId(),idRecipe);
-    	favoritesTab.setItems(getRecipes());	
-    	favoritesTab.refresh();
-    	Recipe r = recipe_facade.findRecipe(idRecipe);
-    	displayDeleteConfirmation(r);
-    	
-    	
-    }
-    
-    private void displayDeleteConfirmation(Recipe r) {
+	/**
+	 * When the user clicks on the button that allows him to remove a recipe from his/her favorites, this method is called.
+	 * This method removes the recipe from the favorites list of the user, print the changes on the screen and a confirmation 
+	 * @param event
+	 */
+	@FXML
+	void deleteFavoriteRecipe(Event event) {
+
+		RecipeFacade recipe_facade = RecipeFacade.getInstance();
+		//removes the recipe from the favorites list of the user
+		favorites = facade.removeFavoriteRecipe(User.getSession().getId(),idRecipe);
+		//set the list changed to be printed
+		favoritesTab.setItems(getRecipes());	
+		favoritesTab.refresh();
+		Recipe r = recipe_facade.findRecipe(idRecipe);
+		//displays a confirmation
+		displayDeleteConfirmation(r);
+
+
+	}
+	/**
+	 * displays a message to confirm that the recipe is deleted from the favorites
+	 * @param r the Recipe deleted to the favorites of the user 
+	 */
+	private void displayDeleteConfirmation(Recipe r) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation");
 		alert.setHeaderText("The recipe "+r.getNameRecipe()+" has been removed from your favorites ! ");
 		alert.showAndWait();
 
 	}
-	
-    @FXML
+
+	/**
+	 * This method is called when the user clicks on a recipe in the tab. 
+	 * This method loads the view of the recipe, where I can have all the information of the recipe.
+	 * @param event
+	 */
+	@FXML
 	void consultRecipe(Event event) {
 
 		Parent root;
@@ -153,7 +177,7 @@ public class FavoritesController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 
 }
 
