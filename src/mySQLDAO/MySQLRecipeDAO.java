@@ -17,6 +17,7 @@ import exception.DAOException;
 /**
  * 
  * @author MISSOUM BENZIANE Ines
+ * @author gestin remi
  *
  */
 public class MySQLRecipeDAO extends AbstractRecipeDAO {

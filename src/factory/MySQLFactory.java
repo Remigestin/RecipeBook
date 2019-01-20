@@ -9,6 +9,11 @@ import mySQLDAO.MySQLCookingStepDAO;
 import mySQLDAO.MySQLRecipeDAO;
 import mySQLDAO.MySQLUserDAO;
 
+/**
+ * 
+ * @author gestin remi
+ *
+ */
 public class MySQLFactory extends AbstractFactory {
 
 	/* Private constructor */

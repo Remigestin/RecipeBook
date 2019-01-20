@@ -12,6 +12,7 @@ import exception.DAOException;
 /**
  * 
  * @author MISSOUM BENZIANE Ines
+ * @author gestin remi
  *
  */
 public class MySQLUserDAO extends AbstractUserDAO {
