@@ -70,6 +70,10 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 			PreparedStatement st2 = c.prepareStatement(SQL_GET_USER_NAME);
 			//st.setInt(1, idUser);
 			ResultSet rs2 = st.executeQuery();
+			while (rs2.next()) {
+				Commentary tmp = null;
+				//tmp.idUser=rs2.getString("username");
+			}
 		}
 		catch (SQLException e) {
 			throw new DAOException(e);
