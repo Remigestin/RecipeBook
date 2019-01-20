@@ -16,6 +16,11 @@ import factory.AbstractFactory;
 import factory.MySQLFactory;
 import mySQLDAO.MySQLRecipeDAO;
 
+/**
+ * 
+ * @author gestin remi
+ *
+ */
 public class RecipeFacade {
 
 	AbstractFactory f = MySQLFactory.getInstance();
@@ -41,11 +46,20 @@ public class RecipeFacade {
 		return cookingStepDAO.loadCookingStepsOfRecipe(idRecipe);
 	}
 
+	/**
+	 * 
+	 * @param idRecipe
+	 * @return the recipe given in param.
+	 */
 	public Recipe findRecipe(int idRecipe) {
 
 		return recipeDAO.findRecipe(idRecipe);
 	}
 
+	/**
+	 * 
+	 * @return all the recipes of the application.
+	 */
 	public ArrayList<Recipe> findAllRecipes() {
 		
 		return recipeDAO.findAllRecipes();
@@ -133,15 +147,29 @@ public class RecipeFacade {
 		return commentDAO.showcomment(idRecipe);
 	}
 
+	/**
+	 * 
+	 * @param search
+	 * @return the recipes which corresponds to the search.
+	 */
 	public ArrayList<Recipe> searchRecipes(String search) {
 		return recipeDAO.searchRecipes(search);
 	}
 
-	// return -1 if there is no rate
+	/**
+	 * 
+	 * @param idRecipe
+	 * @return the rate of the user in session on the recipe given in param. return -1 if there is no rate.
+	 */
 	public int getRate(int idRecipe) {
 		return recipeDAO.findRate(User.getSession().getId(), idRecipe);
 	}
 
+	/**
+	 * add a rate between the user in session and the recipe given in param.
+	 * @param idRecipe
+	 * @param ratingValue
+	 */
 	public void rateARecipe(int idRecipe, double ratingValue) {
 		User session = User.getSession();
 		recipeDAO.rateARecipe(idRecipe, session.getId(), ratingValue);
@@ -150,6 +178,11 @@ public class RecipeFacade {
 
 	}
 
+	/**
+	 * edit the rate of the user in session on the recipe given in param.
+	 * @param idRecipe
+	 * @param ratingValue
+	 */
 	public void editRating(int idRecipe, double ratingValue) {
 		User session = User.getSession();
 		recipeDAO.editRating(idRecipe, session.getId(), ratingValue);
@@ -158,11 +191,18 @@ public class RecipeFacade {
 
 	}
 
+	/**
+	 * delete the rate of the user in session on the recipe given in param.
+	 * @param idRecipe
+	 */
 	public void deleteRating(int idRecipe) {
 		recipeDAO.deleteRating(idRecipe, User.getSession().getId());
 		this.refreshSession();
 	}
 
+	/**
+	 * refresh all the lists of the user in session.
+	 */
 	private void refreshSession() {
 
 		// Update the user list of created recipes and favorite recipes

@@ -5,7 +5,11 @@ import businessLogic.Recipe;
 import businessLogic.User;
 import factory.AbstractFactory;
 import factory.MySQLFactory;
-
+/**
+ * 
+ * @author gestin remi
+ *
+ */
 public class RandomFacade {
 	
 	private AbstractFactory f = MySQLFactory.getInstance();
