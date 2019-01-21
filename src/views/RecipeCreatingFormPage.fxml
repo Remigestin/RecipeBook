@@ -120,7 +120,7 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </VBox>
-                  <TextField fx:id="nameRecipe" alignment="CENTER" layoutX="381.0" layoutY="19.0" prefHeight="78.0" prefWidth="819.0" promptText="&lt; Enter recipe name &gt;" styleClass="titlePage" />
+                  <TextField fx:id="nameRecipe" alignment="CENTER" layoutX="381.0" layoutY="19.0" prefHeight="78.0" prefWidth="819.0" promptText="&lt; Enter recipe name * &gt;" styleClass="titlePage" />
                   <Button fx:id="create" alignment="CENTER" contentDisplay="CENTER" layoutX="840.0" layoutY="799.0" mnemonicParsing="false" onAction="#submitForm" text="Submit" textFill="#cc0000">
                      <padding>
                         <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
@@ -147,7 +147,7 @@
                         <Font size="23.0" />
                      </font>
                   </Button>
-                  <ComboBox fx:id="courseCategory" layoutX="52.0" layoutY="40.0" prefHeight="35.0" prefWidth="198.0" promptText="choose course category" />
+                  <ComboBox fx:id="courseCategory" layoutX="52.0" layoutY="40.0" prefHeight="35.0" prefWidth="198.0" promptText="choose course category *" />
                </children>
             </Pane>
          </children>
