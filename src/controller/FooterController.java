@@ -1,7 +1,7 @@
 package controller;
 
 /**
- * This class is the controller of the Footer view
+ * This class is the controller of the Footer view which is included in every view
  * 
  * @author Chawaf Alia
  * @version 1.0

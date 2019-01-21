@@ -5,6 +5,8 @@ package controller;
  * CommonThem view represents the menu (on left) with all the tabs, 
  * the logo of the application, the quick search field, username icon and name, logout button 
  * 
+ * This view is included in every view
+ * 
  * @author Chawaf Alia
  * @version 1.0 
  */

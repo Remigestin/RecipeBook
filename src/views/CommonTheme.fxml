@@ -13,6 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.CommonThemeController">
    <children>
       <ImageView fitHeight="209.0" fitWidth="288.0" layoutX="57.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;">
