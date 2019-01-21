@@ -40,10 +40,12 @@ import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import org.controlsfx.control.Rating;
+
 /**
- * 
+ * @author Chawaf Alia
  * @author MISSOUM BENZIANE Ines
  * @author gestin remi
+ * @version 1.0
  *
  */
 public class RecipeController implements Initializable {
@@ -143,6 +145,12 @@ public class RecipeController implements Initializable {
 		this.numberPeople.getValueFactory().setValue(numberPeople);
 	}
 
+	/**
+	 * Set the cooking steps in the listView with a good preview
+	 * (Add numbering and do not display if step name or description is null)
+	 * 
+	 * @param cookingSteps
+	 */
 	public void setCookingSteps(ArrayList<CookingStep> cookingSteps) {
 
 		int numberStep = 1;
@@ -198,7 +206,9 @@ public class RecipeController implements Initializable {
 		Text = text;
 	}
 
-	/* initialize the spinner of numberPeople with integers */
+	/**
+	 * Initialize the spinner of numberPeople with integers
+	 */
 	private void initSpinner() {
 		numberPeople.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
 	}
@@ -206,7 +216,8 @@ public class RecipeController implements Initializable {
 	/**
 	 * display all the element of a recipe
 	 *
-	 *for the rate : display the button add only if there is no rate of the user, display an edit and a delete button if there is.
+	 * for the rate : display the button add only if there is no rate of the user,
+	 * display an edit and a delete button if there is.
 	 */
 	public void consultRecipe() {
 
@@ -222,7 +233,7 @@ public class RecipeController implements Initializable {
 		this.setPreparationTime(Integer.toString(recipe.getPreparationTime()));
 		this.setDifficulty(Integer.toString(recipe.getDifficulty()));
 		this.setRating(MySQLRecipeDAO.findRating(recipe.getIdRecipe()));
-		this.setImage("file:../../asset/imageRecette/"+recipe.getImage());
+		this.setImage("file:../../asset/imageRecette/" + recipe.getImage());
 
 		if (facade.getRate(idRecipe) == -1) { // if there is no rate from the user
 			this.editRatingAdded.setOnMousePressed(e -> {
@@ -245,7 +256,7 @@ public class RecipeController implements Initializable {
 		this.deleteRatingAdded.setOnMousePressed(e -> {
 			this.deleteRating(null);
 		});
-		
+
 		this.setVisibleEditRecipeButton();
 		this.setVisibleFavoriteRecipeButton();
 
@@ -261,18 +272,21 @@ public class RecipeController implements Initializable {
 
 	/**
 	 * add a rate from the user on the recipe
+	 * 
 	 * @param event
+	 * @see #consultRecipe()
 	 */
 	private void addRating(Event event) {
 
 		facade.rateARecipe(idRecipe, this.ratingAdded.getRating());
 		this.consultRecipe();
-
 	}
 
 	/**
 	 * edit the rate of the user
+	 * 
 	 * @param event
+	 * @see #consultRecipe()
 	 */
 	private void editeRating(Event event) {
 		facade.editRating(idRecipe, this.ratingAdded.getRating());
@@ -281,7 +295,9 @@ public class RecipeController implements Initializable {
 
 	/**
 	 * delete the rate of the user
+	 * 
 	 * @param event
+	 * @see #consultRecipe()
 	 */
 	private void deleteRating(Event event) {
 		facade.deleteRating(idRecipe);
@@ -289,7 +305,13 @@ public class RecipeController implements Initializable {
 		this.consultRecipe();
 	}
 
-	// Event Listener on Button[#buttonEdit].onAction
+	/**
+	 * Called when clicking on pencil button to edit the recipe Redirect to the
+	 * recipe edit form
+	 * 
+	 * @param event
+	 * @see RecipeEditingFormController
+	 */
 	@FXML
 	private void editRecipe(Event event) {
 
@@ -317,32 +339,30 @@ public class RecipeController implements Initializable {
 		}
 	}
 
-
 	@FXML
 	/**
-	 * When the user clicks on the button that allows him to add a recipe in his/her favorites, this method is called.
-	 * This method adds the recipe in the favorites list of the user, print a confirmation on the screen  
+	 * When the user clicks on the button that allows him to add a recipe in his/her
+	 * favorites, this method is called. This method adds the recipe in the
+	 * favorites list of the user, print a confirmation on the screen
+	 * 
 	 * @param event
 	 */
 	void addFavoriteRecipe(Event event) {
-		
-		
-		favoritesfacade.addFavoriteRecipe(User.getSession().getId(),idRecipe);
-		
+
+		favoritesfacade.addFavoriteRecipe(User.getSession().getId(), idRecipe);
+
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation");
 		alert.setHeaderText("Your recipe " + nameRecipe.getText() + " has been added to your favorites ! ");
 		alert.showAndWait();
 
-
-
 	}
 
-	   
 	// Event Listener on Button[#buttonadd].onAction
 	@FXML
 	/**
 	 * crate a comment of a recipe on the action of a user
+	 * 
 	 * @param event
 	 */
 	public void addComment(ActionEvent event) {
@@ -356,7 +376,8 @@ public class RecipeController implements Initializable {
 
 	/**
 	 * help to show the comment
-	 * @return a list of comments 
+	 * 
+	 * @return a list of comments
 	 */
 	private ObservableList<Commentary> getComment() {
 
@@ -366,16 +387,15 @@ public class RecipeController implements Initializable {
 
 	}
 	/*
-	public ObservableList<CommentWithButton> getComment() {
+	 * public ObservableList<CommentWithButton> getComment() {
+	 * 
+	 * 
+	 * for (Commentary c : User.getSession().getCreateList()) {
+	 * 
+	 * comments.add(new CommentWithButton(c.getUser(), c.getText(), "edit")); }
+	 * return comments;
+	 */
 
-	
-		for (Commentary c : User.getSession().getCreateList()) {
-
-			comments.add(new CommentWithButton(c.getUser(), c.getText(), "edit"));
-		}
-		return comments;
-		*/
-	
 	/**
 	 * method that edit a commentary on the action of the user
 	 */
@@ -398,7 +418,9 @@ public class RecipeController implements Initializable {
 //				numberStep++;
 	}
 
-
+	/**
+	 * Hide the edit button if the user id not the creator of the recipe
+	 */
 	public void setVisibleEditRecipeButton() {
 
 		if (User.getSession().getId() != facade.findIdUserCreator(idRecipe)) {
@@ -407,24 +429,28 @@ public class RecipeController implements Initializable {
 			this.frameEditButton.setVisible(false);
 		}
 	}
-	
+
 	/**
 	 * hide the button to add a recipe in the favorites if it's already in it.
 	 */
 	public void setVisibleFavoriteRecipeButton() {
 
-		if (facade.isFavorite(idRecipe,User.getSession().getId())) {
+		if (facade.isFavorite(idRecipe, User.getSession().getId())) {
 
 			this.addToFavorite.setVisible(false);
 			this.frameAddFavoriteButton.setVisible(false);
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see #initSpinner()
+	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 
 		initSpinner();
 
 	}
-
 }

@@ -1,5 +1,10 @@
 package mySQLDAO;
 
+/**
+ * @author Chawaf Alia
+ * @version 1.0
+ */
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,15 +23,24 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 	private static final String SQL_INSERT_NEW_COOKING_STEP = "INSERT INTO cookingstep VALUES (NULL,?,?,?)";
 	private static final String SQL_EDIT_COOKING_STEP = "UPDATE cookingstep SET nameStep = ? , description = ? WHERE idcookingstep = ?";
 
-	/* Private constructor */
+	/**
+	 * Private constructor
+	 */
 	private MySQLCookingStepDAO() {
 	}
 
-	/* Singleton Holder */
+	/**
+	 * Singleton Holder
+	 *
+	 */
 	private static class MySQLCookingStepDAOHolder {
 		private final static MySQLCookingStepDAO cookingStepDAO = new MySQLCookingStepDAO();
 	}
 
+	/**
+	 * Get the instance of the singleton
+	 * @return the Unique instance of CookingStepDAO
+	 */
 	public static MySQLCookingStepDAO getInstance() {
 		return MySQLCookingStepDAOHolder.cookingStepDAO;
 	}
@@ -41,6 +55,9 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 		return cookingStep;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<CookingStep> loadCookingStepsOfRecipe(int idRecipe) {
 
@@ -64,6 +81,9 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 		return cookingSteps;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void createCookingStep(ArrayList<CookingStep> newSteps, int idRecipe) {
 		
@@ -88,6 +108,9 @@ public class MySQLCookingStepDAO extends AbstractCookingStepDAO {
 		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void editCookingStep(ArrayList<CookingStep> editedSteps) {
 		

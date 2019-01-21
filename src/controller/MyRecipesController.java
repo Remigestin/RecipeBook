@@ -1,5 +1,13 @@
 package controller;
 
+/**
+ * This class is the controller of the MyRecipes view
+ * MyRecipes view displays the list of all the recipes created by the user logged in
+ * 
+ * @author Chawaf Alia
+ * @version 1.0 
+ */
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
@@ -55,8 +63,19 @@ public class MyRecipesController implements Initializable {
 
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
+	/**
+	 * List of all the recipes created to add in the table
+	 * 
+	 * @see RecipeWithButton
+	 */
 	private ObservableList<RecipeWithButton> myRecipes = FXCollections.observableArrayList();
 
+	/**
+	 * Set the choices of the filter (ComboBox) with all the course categories
+	 * existing in DB
+	 * 
+	 * @see ComboBox
+	 */
 	public void setCourseCategoryFilter() {
 
 		HashMap<Integer, String> courses = facade.findAllCourseCategory();
@@ -65,8 +84,11 @@ public class MyRecipesController implements Initializable {
 		filter.setItems(choices);
 	}
 
+	/**
+	 * 
+	 * @param event
+	 */
 	@FXML
-	// redirect the recipe creation form
 	void addRecipe(Event event) {
 
 		Parent root;
@@ -85,6 +107,15 @@ public class MyRecipesController implements Initializable {
 		}
 	}
 
+	/**
+	 * The TableView needs an ObservableList<RecipeWithButton> to print all the
+	 * favorites.
+	 * 
+	 * This method changes the user's created recipes list to an
+	 * ObservableList<RecipeWithButton>
+	 * 
+	 * @return the list of created recipes
+	 */
 	public ObservableList<RecipeWithButton> getAllRecipes() {
 
 		myRecipes.clear();
@@ -96,6 +127,16 @@ public class MyRecipesController implements Initializable {
 		return myRecipes;
 	}
 
+	/**
+	 * The TableView needs a ObservableList<RecipeWithButton> to print all the
+	 * favorites. This methods changes the user's recipes list to an
+	 * ObservableList<RecipeWithButton> depending on filter selection
+	 * 
+	 * @param idCourseSelected id of the course selected in the filter
+	 * @return the list of recipes created with a course category corresponding to
+	 *         the selection in the filter
+	 * @see RecipeWithButton
+	 */
 	public ObservableList<RecipeWithButton> getRecipesByFilterCourseSelected(int idCourseSelected) {
 
 		myRecipes.clear();
@@ -108,9 +149,15 @@ public class MyRecipesController implements Initializable {
 		}
 
 		return myRecipes;
-
 	}
 
+	/**
+	 * Method called when clicking on a recipe of the table. Redirect to a new page
+	 * displaying the recipe concerned with all its information
+	 * 
+	 * @param event
+	 * @see RecipeController
+	 */
 	@FXML
 	void consultRecipe(Event event) {
 
@@ -139,8 +186,13 @@ public class MyRecipesController implements Initializable {
 		}
 	}
 
+	/**
+	 * Display only the recipes with the course category selected in the filter
+	 * 
+	 * @param event
+	 */
 	@FXML
-	void filterRecipesByCourseCategory(Event event) {
+	private void filterRecipesByCourseCategory(Event event) {
 
 		if (filter.getValue().equals("all recipes")) {
 			listRecipes.setItems(getAllRecipes());
@@ -153,7 +205,11 @@ public class MyRecipesController implements Initializable {
 		listRecipes.refresh();
 	}
 
-	// get the id course from the course selected in the ComboBox
+	/**
+	 * 
+	 * @return the id of the course selected in the filter ComboBox
+	 * @see ComboBox
+	 */
 	private int getIdCourseByCourseNameSelected() {
 
 		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
@@ -169,6 +225,11 @@ public class MyRecipesController implements Initializable {
 		return idCourseSelected;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see #getAllRecipes()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 

@@ -1,5 +1,15 @@
 package controller;
 
+/**
+ * This class is the controller of the QuickSearchResults view
+ * 
+ * This view display all the results of a quick search
+ * 
+ * @author Chawaf Alia
+ * @version 1.0 
+ */
+
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +21,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import facade.RecipeFacade;
 import javafx.collections.FXCollections;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -41,23 +50,6 @@ public class QuickSearchController implements Initializable {
 	
 	private ArrayList<RecipeWithButton> results = new ArrayList<RecipeWithButton>();
 
-	private RecipeFacade facade = RecipeFacade.getInstance();
-	
-	public void setListRecipes(TableView listRecipes) {
-		this.listRecipes = listRecipes;
-	}
-	public void setRecipeName(TableColumn recipeName) {
-		this.recipeName = recipeName;
-	}
-	public void setRating(TableColumn rating) {
-		this.rating = rating;
-	}
-	public void setPreparationTime(TableColumn preparationTime) {
-		this.preparationTime = preparationTime;
-	}
-	public void setDifficulty(TableColumn difficulty) {
-		this.difficulty = difficulty;
-	}
 	public void setNbResult(String nbResult) {
 		this.nbResult.setText(nbResult);
 	}
@@ -65,12 +57,22 @@ public class QuickSearchController implements Initializable {
 		this.results = results;
 	}
 
+	/**
+	 * Set the list of recipes found with the search in the table
+	 * 
+	 */
 	public void setResultsInTableView() {
 		listRecipes.setItems(FXCollections.observableArrayList(results));
 		setNbResult(Integer.toString(listRecipes.getItems().size()));
 	}
 	
-	// Event Listener on TableView[#listRecipes].onMousePressed
+	/**
+	 * Method called when clicking on a recipe of the result table. 
+	 * Redirect to a new page displaying the recipe concerned with all its information
+	 * 
+	 * @param event
+	 * @see RecipeController
+	 */
 	@FXML
 	public void consultRecipe(MouseEvent event) {
 		Parent root;
@@ -98,6 +100,10 @@ public class QuickSearchController implements Initializable {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 

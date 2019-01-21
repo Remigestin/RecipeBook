@@ -190,8 +190,8 @@ public class CommonThemeController implements Initializable {
 	}
 
 	/**
-	 * Method called when clicking of the OK button of the quick search field Get
-	 * the quick search results and switch to a new page to display them
+	 * Method called when clicking of the OK button of the quick search field 
+	 * Get the quick search results to set them and then switch to a new page to display them
 	 * 
 	 * @param event
 	 */

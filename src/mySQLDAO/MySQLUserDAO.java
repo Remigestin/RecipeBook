@@ -9,15 +9,19 @@ import abstractDAO.AbstractUserDAO;
 import businessLogic.User;
 import connection.DatabaseConnection;
 import exception.DAOException;
+
 /**
  * 
  * @author MISSOUM BENZIANE Ines
  * @author gestin remi
- *
+ * @author Chawaf Alia
+ * @version 1.0
  */
 public class MySQLUserDAO extends AbstractUserDAO {
 
-	/* Private constructor */
+	/**
+	 * Private constructor
+	 */
 	private MySQLUserDAO() {
 	}
 
@@ -32,6 +36,43 @@ public class MySQLUserDAO extends AbstractUserDAO {
 	private static final String SQL_DELETE_A_FAVORITE_RECIPE = "DELETE FROM favoritelist WHERE iduser = ? and idrecipe = ?";
 
 	// actions
+
+	private static User map(ResultSet resultSet) throws SQLException {
+		User user = new User();
+		user.setId(resultSet.getInt("id"));
+		user.setUsername(resultSet.getString("username"));
+		user.setFirstname(resultSet.getString("firstname"));
+		user.setLastname(resultSet.getString("lastname"));
+		user.setFavoriteList(MySQLRecipeDAO.getInstance().loadFavoriteRecipe(resultSet.getInt("id")));
+		user.setCreateList(MySQLRecipeDAO.getInstance().loadCreateRecipe(resultSet.getInt("id")));
+		user.setRandomStarter(MySQLRecipeDAO.getInstance().findRandomRecipe(1));
+		user.setRandomMain(MySQLRecipeDAO.getInstance().findRandomRecipe(2));
+		user.setRandomDessert(MySQLRecipeDAO.getInstance().findRandomRecipe(3));
+		if (resultSet.getInt("isAdmin") == 1) {
+			user.setAdmin(true);
+		}
+		return user;
+	}
+
+	/**
+	 * SingletonHolder
+	 */
+	private static class MySQLUserDAOHolder {
+		private final static MySQLUserDAO userDAO = new MySQLUserDAO();
+	}
+
+	/**
+	 * 
+	 * @return the unique instance of UserDAO
+	 */
+	public static MySQLUserDAO getInstance() {
+		return MySQLUserDAOHolder.userDAO;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 
+	 */
 	@Override
 	public User login(String username, String password) throws DAOException {
 
@@ -54,27 +95,11 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		return user;
 	}
 
-	private static User map(ResultSet resultSet) throws SQLException {
-		User user = new User();
-		user.setId(resultSet.getInt("id"));
-		user.setUsername(resultSet.getString("username"));
-		user.setFirstname(resultSet.getString("firstname"));
-		user.setLastname(resultSet.getString("lastname"));
-		user.setFavoriteList(MySQLRecipeDAO.getInstance().loadFavoriteRecipe(resultSet.getInt("id")));
-		user.setCreateList(MySQLRecipeDAO.getInstance().loadCreateRecipe(resultSet.getInt("id")));
-		user.setRandomStarter(MySQLRecipeDAO.getInstance().findRandomRecipe(1));
-		user.setRandomMain(MySQLRecipeDAO.getInstance().findRandomRecipe(2));
-		user.setRandomDessert(MySQLRecipeDAO.getInstance().findRandomRecipe(3));
-		if (resultSet.getInt("isAdmin") == 1) {
-			user.setAdmin(true);
-		}
-		return user;
-	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void register(String firstname, String lastname, String username, String password) throws DAOException {
-
-		User user = null;
 
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
@@ -88,9 +113,12 @@ public class MySQLUserDAO extends AbstractUserDAO {
 
 		} catch (SQLException e) {
 			throw new DAOException(e);
-		}		
+		}
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void addFavoriteRecipe(int idUser, int idRecipe) throws DAOException {
 
@@ -108,6 +136,9 @@ public class MySQLUserDAO extends AbstractUserDAO {
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void removeFavoriteRecipe(int idUser, int idRecipe) throws DAOException {
 		try {
@@ -124,16 +155,10 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		}
 
 	}
-	
-	/* Singleton Holder */
-	private static class MySQLUserDAOHolder {
-		private final static MySQLUserDAO userDAO = new MySQLUserDAO();
-	}
 
-	public static MySQLUserDAO getInstance() {
-		return MySQLUserDAOHolder.userDAO;
-	}
-
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean findUsername(String username) throws DAOException {
 
@@ -151,15 +176,18 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
-		
+
 		return usernameFound;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String findPassword(int idUser) throws DAOException {
-		
+
 		String password = "";
-		
+
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
@@ -172,12 +200,15 @@ public class MySQLUserDAO extends AbstractUserDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
-		
+
 		return password;
 	}
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void deleteAccount(int idUser) throws DAOException {
-		User user = null;
 
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
@@ -188,17 +219,19 @@ public class MySQLUserDAO extends AbstractUserDAO {
 
 		} catch (SQLException e) {
 			throw new DAOException(e);
-		}		
-		
+		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void editAccount(User user) throws DAOException {
-	
+
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
-			PreparedStatement st = c.prepareStatement(SQL_EDIT_USER);		
+			PreparedStatement st = c.prepareStatement(SQL_EDIT_USER);
 			st.setString(1, user.getPassword());
 			st.setString(2, user.getFirstname());
 			st.setString(3, user.getLastname());
@@ -207,6 +240,6 @@ public class MySQLUserDAO extends AbstractUserDAO {
 
 		} catch (SQLException e) {
 			throw new DAOException(e);
-		}		
+		}
 	}
 }

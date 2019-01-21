@@ -1,5 +1,14 @@
 package controller;
 
+/**
+ * This class is the controller of the RecipeCreatingForm view
+ * 
+ * This view is a form to complete when creating a new recipe
+ * 
+ * @author Chawaf Alia
+ * @version 1.0 
+ */
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -52,26 +61,32 @@ public class RecipeCreatingFormController implements Initializable {
 	private Button create;
 
 	@FXML
-    private TextArea descStep1;
-    @FXML
-    private TextField nameStep1;
-    @FXML
-    private TextArea descStep2;
-    @FXML
-    private TextField nameStep2;
-    @FXML
-    private TextArea descStep3;
-    @FXML
-    private TextField nameStep3;
-    @FXML
-    private TextArea descStep4;
-    @FXML
-    private TextField nameStep4;
-    @FXML
-    private TextArea descStep5;
-    @FXML
-    private TextField nameStep5;
-    
+	private TextArea descStep1;
+	@FXML
+	private TextField nameStep1;
+	@FXML
+	private TextArea descStep2;
+	@FXML
+	private TextField nameStep2;
+	@FXML
+	private TextArea descStep3;
+	@FXML
+	private TextField nameStep3;
+	@FXML
+	private TextArea descStep4;
+	@FXML
+	private TextField nameStep4;
+	@FXML
+	private TextArea descStep5;
+	@FXML
+	private TextField nameStep5;
+
+	/**
+	 * Set the choices of the filter (ComboBox) with all the course categories
+	 * existing in DB
+	 * 
+	 * @see ComboBox
+	 */
 	public void setCourseCategory() {
 
 		HashMap<Integer, String> courses = facade.findAllCourseCategory();
@@ -81,12 +96,20 @@ public class RecipeCreatingFormController implements Initializable {
 
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
-	/* initialize the spinners with integers */
+	/**
+	 * Initialize the spinner of numberPeople and difficulty with integers
+	 */
 	private void initSpinner() {
 		numberPeople.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
 		difficulty.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5));
 	}
 
+	/**
+	 * Called when clicking on Cancel button
+	 * Redirect to MyRecipesPage
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void redirectToMyRecipes(Event event) {
 
@@ -109,6 +132,15 @@ public class RecipeCreatingFormController implements Initializable {
 		}
 	}
 
+	/**
+	 * Method called when clicking on Submit button
+	 * Check if recipe name and course category are input before creating the recipe
+	 * 
+	 * @param event
+	 * @see #displayErrorNameRecipeMissing(Event)
+	 * @see #displayErrorCourseCategoryMissing(Event)
+	 * @see #createRecipe(Event)
+	 */
 	@FXML
 	void submitForm(Event event) {
 
@@ -119,12 +151,17 @@ public class RecipeCreatingFormController implements Initializable {
 		else if (courseCategory.getValue() == null) {
 			displayErrorCourseCategoryMissing(event);
 		}
-		
+
 		else {
 			this.createRecipe(event);
 		}
 	}
 
+	/**
+	 * Create a recipe with all the information entered in the form
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void createRecipe(Event event) {
 
@@ -154,7 +191,11 @@ public class RecipeCreatingFormController implements Initializable {
 		this.displayConfirmationCreation(event);
 
 	}
-	
+
+	/**
+	 * 
+	 * @return the list of cooking steps entered
+	 */
 	private ArrayList<CookingStep> getListCookingStepEntered() {
 		ArrayList<CookingStep> listNewSteps = new ArrayList<CookingStep>();
 
@@ -170,16 +211,16 @@ public class RecipeCreatingFormController implements Initializable {
 		listNewSteps.add(newStep4);
 		listNewSteps.add(newStep5);
 
-//		for (int i = 0; i < listNewSteps.size(); i++) {
-//
-//			if (listNewSteps.get(i).getDescription().equals("") && listNewSteps.get(i).getDescription().equals("")) {
-//				listNewSteps.remove(i);
-//			}
-//		}
-//		
 		return listNewSteps;
 	}
 
+
+	/**
+	 * Display a pop-up confirmation when recipe creation succeeded
+	 * 
+	 * @param event
+	 * @see #redirectToMyRecipes(Event)
+	 */
 	private void displayConfirmationCreation(Event event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation");
@@ -189,7 +230,12 @@ public class RecipeCreatingFormController implements Initializable {
 		// Come back to myRecipes page with the new recipe created
 		this.redirectToMyRecipes(event);
 	}
-	
+
+	/**
+	 * Display a pop-up error when name recipe is not input
+	 * 
+	 * @param event
+	 */
 	private void displayErrorNameRecipeMissing(Event event) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Hey Stop there");
@@ -197,6 +243,11 @@ public class RecipeCreatingFormController implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Display a pop-up error when course category is not selected
+	 * 
+	 * @param event
+	 */
 	private void displayErrorCourseCategoryMissing(Event event) {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Hey Stop there");
@@ -204,6 +255,11 @@ public class RecipeCreatingFormController implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * 
+	 * @return the id of the course selected in the filter ComboBox
+	 * @see ComboBox
+	 */
 	private int getIdCourseByCourseNameSelected() {
 
 		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
@@ -219,6 +275,12 @@ public class RecipeCreatingFormController implements Initializable {
 		return idCourseSelected;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see #initSpinner()
+	 * @see #setCourseCategory()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initSpinner();

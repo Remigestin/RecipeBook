@@ -15,9 +15,11 @@ import facade.RecipeFacade;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 /**
- * This class was built to be able to have a button next to each recipe when we print all the recipes in a TabView
- * @author MISSOUM BENZIANE Ines
+ * This class was built to be able to have a button next to each recipe when we print all the recipes in a TableView
  *
+ * @author Chawaf Alia
+ * @author MISSOUM BENZIANE Ines
+ * @version 1.0
  */
 public class RecipeWithButton {
 
@@ -29,6 +31,18 @@ public class RecipeWithButton {
 	private float rate;
 	private Button editButton;
 
+	
+	/**
+	 * Constructor with all recipe information
+	 * Create a new button depending on buttonType parameter with an Event handler when clicking on it
+	 * 
+	 * @param idRecipe
+	 * @param nameRecipe
+	 * @param preparationTime
+	 * @param difficulty
+	 * @param idCourse
+	 * @param buttonType Text to add in the button
+	 */
 	public RecipeWithButton(int idRecipe, String nameRecipe, Integer preparationTime, Integer difficulty, int idCourse,
 			String buttonType) {
 

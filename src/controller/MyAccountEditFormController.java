@@ -1,5 +1,13 @@
 package controller;
 
+/**
+ * This class is the controller of the MyAccountEditForm view
+ * This view displays allows to edit password (require to write the old one), and/or edit first name and last name
+ *
+ * @author Chawaf Alia
+ * @version 1.0 
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -48,6 +56,13 @@ public class MyAccountEditFormController implements Initializable {
 
 	private UserFacade facade = UserFacade.getInstance();
 
+	/**
+	 * Method called when clicking on submit button
+	 * Do some password checks and then edit user information 
+	 * 
+	 * @param event
+	 * @see #edit(Event, String)
+	 */
 	// Event Listener on Button[#submit].onAction
 	@FXML
 	public void submit(Event event) {
@@ -57,7 +72,7 @@ public class MyAccountEditFormController implements Initializable {
 		if (newpassword.getText().equals("") && this.checkIfNamesChanged()) {
 
 			this.edit(event, facade.findPassword(User.getSession().getId()));
-			
+
 		} else {
 
 			if (this.checkOldPassword() && this.checkNewPasswordMatching()) {
@@ -65,27 +80,47 @@ public class MyAccountEditFormController implements Initializable {
 			}
 		}
 	}
-	
+
+	/**
+	 * Method called to edit user information
+	 * 
+	 * @param event
+	 * @param password the password(new or old) to set 
+	 * @see #displayConfirmation()
+	 * @see #switchToNewPage(Event, String)
+	 */
 	private void edit(Event event, String password) {
-		
+
 		User user = new User();
-		
+
 		user.setPassword(password);
 		user.setId(User.getSession().getId());
 		user.setFirstname(firstname.getText());
 		user.setLastname(lastname.getText());
-		
+
 		facade.editAccount(user);
 		this.displayConfirmation();
 		this.switchToNewPage(event, "/views/MyAccountPage.fxml");
 	}
 
-	// Event Listener on Button[#cancel].onAction
+	/**
+	 * Method called when clicking on Cancel button
+	 * Redirect to AccountPage
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
 	@FXML
 	public void cancel(Event event) {
 		this.switchToNewPage(event, "/views/MyAccountPage.fxml");
 	}
 
+	/**
+	 * Switch to another page
+	 * 
+	 * @param event   Event occurred
+	 * @param newPage path of the new page to display
+	 */
 	private void switchToNewPage(Event event, String newPage) {
 		Parent root;
 		try {
@@ -102,6 +137,13 @@ public class MyAccountEditFormController implements Initializable {
 		}
 	}
 
+	/**
+	 * Method called if a new password is input
+	 * Check if old password entered is correct
+	 * 
+	 * @return true if the old password correct, otherwise return false
+	 * @see #displayOldPasswordWrong()
+	 */
 	private boolean checkOldPassword() {
 
 		String currentPwd = facade.findPassword(User.getSession().getId());
@@ -114,6 +156,12 @@ public class MyAccountEditFormController implements Initializable {
 		}
 	}
 
+	/**
+	 * Method called if a new password is input
+	 * Check if new password confirmation entered matches  
+	 * 
+	 * @return true if both new password input matches, otherwise return false
+	 */
 	private boolean checkNewPasswordMatching() {
 
 		if (newpassword.getText().equals(newpasswordconfirmation.getText())) {
@@ -124,6 +172,11 @@ public class MyAccountEditFormController implements Initializable {
 		}
 	}
 
+	/**
+	 * Check if first name and/or last name has been edited
+	 * 
+	 * @return true if names changed, otherwise return false
+	 */
 	private boolean checkIfNamesChanged() {
 
 		if (firstname.getText().equals(User.getSession().getFirstname())
@@ -136,6 +189,9 @@ public class MyAccountEditFormController implements Initializable {
 		}
 	}
 
+	/**
+	 * Display an error pop-up to inform that old password entered is wrong
+	 */
 	private void displayOldPasswordWrong() {
 
 		Alert alert = new Alert(AlertType.ERROR);
@@ -144,6 +200,9 @@ public class MyAccountEditFormController implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Display an error pop-up to inform that new password confirmation is wrong
+	 */
 	private void displayNewPasswordsNotMatching() {
 
 		Alert alert = new Alert(AlertType.ERROR);
@@ -151,7 +210,10 @@ public class MyAccountEditFormController implements Initializable {
 		alert.setHeaderText("New passwords not matching !");
 		alert.showAndWait();
 	}
-	
+
+	/**
+	 * Display a confirmation pop-up when editing succeed
+	 */
 	private void displayConfirmation() {
 
 		Alert alert = new Alert(AlertType.INFORMATION);
@@ -160,6 +222,11 @@ public class MyAccountEditFormController implements Initializable {
 		alert.showAndWait();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see #setFirstname(String)
+	 * @see #setLastname(String)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		this.setFirstname(User.getSession().getFirstname());

@@ -1,5 +1,14 @@
 package controller;
 
+/**
+ * This class is the controller of the RecipeEditingForm view
+ * 
+ * This view is display all recipe information and allows the user to edit them
+ * 
+ * @author Chawaf Alia
+ * @version 1.0 
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -39,7 +48,15 @@ public class RegisterPageController {
 
 	private UserFacade facade = UserFacade.getInstance();
 
-	// Event Listener on PasswordField[#passwordConfirmation].onKeyPressed
+
+	/**
+	 * Method called when pressing a key (from keyboard) in the second password field
+	 * Check if the key pressed is "Enter" 
+	 * Register if yes, otherwise do nothing
+	 * 
+	 * @param event
+	 * @see #register(Event)
+	 */
 	@FXML
 	public void registerWithEnterKey(KeyEvent event) {
 		if (!username.getText().isEmpty() && event.getCode() == KeyCode.ENTER) {
@@ -47,7 +64,13 @@ public class RegisterPageController {
 		}
 	}
 
-	// Event Listener on Button[#register].onAction
+	/**
+	 * Called when clicking on Register button 
+	 * Check in username entered is not already used and if passwords are matching before registering
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
 	@FXML
 	public void register(Event event) {
 
@@ -59,6 +82,11 @@ public class RegisterPageController {
 		}
 	}
 
+	/**
+	 * Check password confirmation 
+	 * 
+	 * @return true if both password entered match, else return false
+	 */
 	private boolean checkPasswordMatching() {
 
 		if (!password.getText().equals(passwordConfirmation.getText())) {
@@ -69,6 +97,11 @@ public class RegisterPageController {
 		}
 	}
 
+	/**
+	 * Check if username already exists in DB
+	 * 
+	 * @return true if username is aready user, else false
+	 */
 	private boolean checkUsernameAlreadyUsed() {
 
 		if (facade.findUsername(username.getText())) {
@@ -79,6 +112,9 @@ public class RegisterPageController {
 		}
 	}
 
+	/**
+	 * Display a pop-up error when passwords are not matching
+	 */
 	private void displayPasswordsNotMatching() {
 
 		Alert alert = new Alert(AlertType.ERROR);
@@ -87,6 +123,9 @@ public class RegisterPageController {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Display a pop-up error when username is already used
+	 */
 	private void displayUsernameAlreadyUsed() {
 
 		Alert alert = new Alert(AlertType.ERROR);
@@ -95,12 +134,24 @@ public class RegisterPageController {
 		alert.showAndWait();
 	}
 
-	// Event Listener on Hyperlink[#login].onAction
+	/**
+	 * Called when clickin on Login text
+	 * Redirect to LoginPage
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
 	@FXML
 	public void login(Event event) {
 		this.switchToNewPage(event, "/views/LoginPage.fxml");
 	}
 
+	/**
+	 * Switch to another page
+	 * 
+	 * @param event   Event occurred
+	 * @param newPage path of the new page to display
+	 */
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -120,5 +171,4 @@ public class RegisterPageController {
 			e.printStackTrace();
 		}
 	}
-
 }

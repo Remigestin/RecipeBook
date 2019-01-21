@@ -8,9 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import abstractDAO.AbstractCommentDAO;
-import abstractDAO.AbstractUserDAO;
 import businessLogic.Commentary;
-import businessLogic.User;
 import connection.DatabaseConnection;
 import exception.DAOException;
 
@@ -19,10 +17,10 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 	private static final String SQL_CREATE_COMMENT = "INSERT INTO comment VALUES (null,null, ? ,?,?);";
 	private static final String SQL_SHOW_COMMENT = "SELECT * FROM comment	WHERE idRecipe = ?";
 	private static final String SQL_GET_USER_NAME = "SELECT * FROM user WHERE idUser=?";
-	@Override
-	public void createComment(String text, Calendar cal, int idRecipe,  int idUser) throws DAOException {
 
-		Commentary comment = new Commentary();
+	@Override
+	public void createComment(String text, Calendar cal, int idRecipe, int idUser) throws DAOException {
+
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
@@ -30,14 +28,12 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 			st.setString(1, text);
 			st.setInt(3, idUser);
 			st.setInt(2, idRecipe);
-			//st.setString(1, cal);
 			st.executeUpdate();
 		}
-	
-		catch(SQLException e) {
+
+		catch (SQLException e) {
 			throw new DAOException(e);
 		}
-
 
 	}
 
@@ -49,7 +45,6 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 	public static MySQLCommentDAO getInstance() {
 		return MySQLCommentDAOHolder.commentDAO;
 	}
-
 
 	public ArrayList<Commentary> showcomment(int idRecipe) throws DAOException {
 
@@ -65,19 +60,18 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 				Commentary tmp = null;
 				tmp = map(rs);
 				commentlist.add(tmp);
-				
+
 			}
 			PreparedStatement st2 = c.prepareStatement(SQL_GET_USER_NAME);
-			//st.setInt(1, idUser);
+			// st.setInt(1, idUser);
 			ResultSet rs2 = st.executeQuery();
 			while (rs2.next()) {
 				Commentary tmp = null;
-				//tmp.idUser=rs2.getString("username");
+				// tmp.idUser=rs2.getString("username");
 			}
-		}
-		catch (SQLException e) {
+		} catch (SQLException e) {
 			throw new DAOException(e);
-}
+		}
 
 		return commentlist;
 	}
@@ -87,10 +81,10 @@ public class MySQLCommentDAO extends AbstractCommentDAO {
 
 		comment.setIdComment(resultSet.getInt("idcomment"));
 		comment.setText(resultSet.getString("text"));
-		
+
 		comment.setIdUser(resultSet.getInt("idUser"));
 
 		return comment;
-}
+	}
 
 }

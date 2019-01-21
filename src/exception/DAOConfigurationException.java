@@ -1,5 +1,10 @@
 package exception;
 
+/**
+ * @author gestin remi
+ * @version 1.0
+ */
+
 public class DAOConfigurationException extends RuntimeException {
 	 /**
      * Constructs a DAOConfigurationException with the given detail message.

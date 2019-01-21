@@ -6,19 +6,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import abstractDAO.AbstractRecipeDAO;
-import businessLogic.CookingStep;
 import businessLogic.Recipe;
 import businessLogic.User;
 import connection.DatabaseConnection;
 import exception.DAOException;
+
 /**
  * 
  * @author MISSOUM BENZIANE Ines
  * @author gestin remi
- *
+ * @author Chawaf Alia
+ * @version 1.0
  */
 public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
@@ -56,6 +56,12 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return MySQLRecipeDAOHolder.recipeDAO;
 	}
 
+	/**
+	 * 
+	 * @param resultSet
+	 * @return a recipe
+	 * @throws SQLException
+	 */
 	private static Recipe map(ResultSet resultSet) throws SQLException {
 		Recipe recipe = new Recipe();
 		recipe.setIdRecipe(resultSet.getInt("idRecipe"));
@@ -70,6 +76,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return recipe;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Recipe> loadFavoriteRecipe(int idUser) {
 		ArrayList<Recipe> favoriteList = new ArrayList<Recipe>();
@@ -92,6 +101,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return favoriteList;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Recipe> loadCreateRecipe(int idUser) {
 		ArrayList<Recipe> createList = new ArrayList<Recipe>();
@@ -114,6 +126,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return createList;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Recipe findRecipe(int idRecipe) {
 
@@ -136,6 +151,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return recipe;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public String findCourseCategory(int idCourse) {
 
@@ -159,6 +177,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return nameCourse;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Recipe findRandomRecipe(int idCourse) {
 		Recipe recipe = new Recipe();
@@ -180,6 +201,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return recipe;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Recipe findRandomRecipe(int idCourse, int idRecipe) {
 		Recipe recipe = new Recipe();
@@ -202,6 +226,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return recipe;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Recipe> createRecipe(Recipe recipe) {
 
@@ -225,6 +252,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return this.loadCreateRecipe(User.getSession().getId());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Recipe> editRecipe(Recipe recipe) {
 
@@ -248,6 +278,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return this.loadCreateRecipe(User.getSession().getId());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public HashMap<Integer, String> findAllCourseCategory() {
 
@@ -258,7 +291,6 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			Connection c = dc.getConnection();
 			PreparedStatement st = c.prepareStatement(SQL_FIND_ALL_COURSE_CATEGORY);
 			ResultSet rs = st.executeQuery();
-			String course = null;
 			while (rs.next()) {
 				courses.put(rs.getInt("idCourse"), rs.getString("namecourse"));
 			}
@@ -268,7 +300,12 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 		return courses;
 	}
-
+	
+	/**
+	 * Get the average rating of a recipe
+	 * @param idRecipe
+	 * @return the average rating of the recipe with the id in parameter
+	 */
 	public static float findRating(int idRecipe) {
 		float result = 0;
 
@@ -289,7 +326,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return result;
 	}
 
-	// return -1 if there is no rate
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int findRate(int idUser, int idRecipe) {
 		int result = -1;
@@ -312,6 +351,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return result;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Recipe> searchRecipes(String search) {
 		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
@@ -334,6 +376,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return recipeList;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void rateARecipe(int idRecipe, int idUser, double ratingValue) {
 		try {
@@ -351,6 +396,9 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void deleteRating(int idRecipe, int idUser) {
 		try {
@@ -365,9 +413,11 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 			throw new DAOException(e);
 		}
 
-		
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public void editRating(int idRecipe, int idUser, double ratingValue) {
 		try {
@@ -382,12 +432,15 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
-		
+
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public int findIdUserCreator(int idRecipe) {
-		
+
 		int idUser = 0;
 
 		try {
@@ -406,11 +459,14 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 		return idUser;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public boolean isFavorite(int idRecipe, int idUser) {
-		
-		boolean isFavorite=false;
-		
+
+		boolean isFavorite = false;
+
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
@@ -426,31 +482,37 @@ public class MySQLRecipeDAO extends AbstractRecipeDAO {
 
 		return isFavorite;
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Recipe findTop1Recipe() {
-		
+
 		int idRecipe = 0;
-		
+
 		try {
 			DatabaseConnection dc = DatabaseConnection.getInstance();
 			Connection c = dc.getConnection();
 			PreparedStatement st = c.prepareStatement(SQL_FIND_TOP1);
 			ResultSet rs = st.executeQuery();
 			if (rs.next()) {
-				
+
 				idRecipe = rs.getInt("idrecipe");
 			}
 		} catch (SQLException e) {
 			throw new DAOException(e);
 		}
-		
+
 		return this.findRecipe(idRecipe);
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public ArrayList<Recipe> findAllRecipes() {
-		
+
 		ArrayList<Recipe> recipeList = new ArrayList<Recipe>();
 
 		try {
