@@ -5,7 +5,7 @@ import abstractDAO.*;
 /**
  * 
  * @author gestin remi
- *
+ * @version 1.0
  */
 public abstract class AbstractFactory {
 

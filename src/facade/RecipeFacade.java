@@ -7,19 +7,19 @@ import java.util.HashMap;
 import abstractDAO.AbstractCommentDAO;
 import abstractDAO.AbstractCookingStepDAO;
 import abstractDAO.AbstractRecipeDAO;
-import abstractDAO.AbstractUserDAO;
 import businessLogic.Commentary;
 import businessLogic.CookingStep;
 import businessLogic.Recipe;
 import businessLogic.User;
 import factory.AbstractFactory;
 import factory.MySQLFactory;
-import mySQLDAO.MySQLRecipeDAO;
 
 /**
  * 
  * @author gestin remi
- *
+ * @author Chawaf Alia
+ * @author Gardeisen Marine
+ * @version 1.0
  */
 public class RecipeFacade {
 
@@ -41,6 +41,11 @@ public class RecipeFacade {
 		return RecipeFacadeHolder.RecipeFacade;
 	}
 
+	/**
+	 * Get cooking steps of a recipe
+	 * @param idRecipe
+	 * @return the list of cooking steps of the recipe with the id in parameter
+	 */
 	public ArrayList<CookingStep> findCookingSteps(int idRecipe) {
 
 		return cookingStepDAO.loadCookingStepsOfRecipe(idRecipe);
@@ -65,6 +70,14 @@ public class RecipeFacade {
 		return recipeDAO.findAllRecipes();
 	}
 
+	/**
+	 * Add a new recipe
+	 * 
+	 * @param newRecipe
+	 * @param cookingSteps
+	 * @return the updated list of recipes created (with the new one) of the user
+	 *         logged in
+	 */
 	public ArrayList<Recipe> createRecipe(Recipe newRecipe, ArrayList<CookingStep> cookingSteps) {
 
 		// Add recipe in DB
@@ -81,6 +94,14 @@ public class RecipeFacade {
 
 	}
 
+	/**
+	 * Edit a recipe
+	 * 
+	 * @param recipeEdited
+	 * @param cookingStepsEdited
+	 * @return the updated list of recipes created (with the edit one) of the user
+	 *         logged in
+	 */
 	public ArrayList<Recipe> editRecipe(Recipe recipeEdited, ArrayList<CookingStep> cookingStepsEdited) {
 
 		// Update recipe in DB
@@ -95,16 +116,24 @@ public class RecipeFacade {
 
 	}
 
+	/**
+	 * 
+	 * @param idCourse
+	 * @return the name of the course category with the id in parameter
+	 */
 	public String findCourseCategoryName(int idCourse) {
 
 		return recipeDAO.findCourseCategory(idCourse);
 
 	}
 
+	/**
+	 * Get all the course categories
+	 * @return a list of all the couples (id of a course category, name of the course category corresponding)
+	 */
 	public HashMap<Integer, String> findAllCourseCategory() {
 
 		return recipeDAO.findAllCourseCategory();
-
 	}
 
 	/**
@@ -113,12 +142,17 @@ public class RecipeFacade {
 	 * @param idUser   id of the user
 	 * @return true if the recipe is a favorite recipe of the user
 	 */
-
 	public boolean isFavorite(int idRecipe, int idUser) {
 
 		return recipeDAO.isFavorite(idRecipe, idUser);
 	}
 
+	/**
+	 * 
+	 * @param idRecipe
+	 * @return the id of the user who has created the recipe with the id in
+	 *         parameter
+	 */
 	public int findIdUserCreator(int idRecipe) {
 
 		return recipeDAO.findIdUserCreator(idRecipe);
@@ -216,8 +250,11 @@ public class RecipeFacade {
 
 	}
 
+	/**
+	 * 
+	 * @return the recipe with the higher rating average
+	 */
 	public Recipe findTop1Recipe() {
 		return recipeDAO.findTop1Recipe();
 	}
-
 }

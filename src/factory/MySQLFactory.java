@@ -12,7 +12,7 @@ import mySQLDAO.MySQLUserDAO;
 /**
  * 
  * @author gestin remi
- *
+ * @version 1.0
  */
 public class MySQLFactory extends AbstractFactory {
 
@@ -29,20 +29,33 @@ public class MySQLFactory extends AbstractFactory {
 		return MySQLFactoryHolder.factory;
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public AbstractUserDAO createUserDAO() {
 		return MySQLUserDAO.getInstance();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public AbstractRecipeDAO createRecipeDAO() {
 		return MySQLRecipeDAO.getInstance();
 	}
 
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public AbstractCookingStepDAO createCookingStepDAO() {
 		return MySQLCookingStepDAO.getInstance();
 	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public AbstractCommentDAO createCommentDAO() {
 		return MySQLCommentDAO.getInstance();

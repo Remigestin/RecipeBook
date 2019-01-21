@@ -85,6 +85,8 @@ public class MyRecipesController implements Initializable {
 	}
 
 	/**
+	 * Called when clicking on Add button
+	 * Redirect to RecipeCreatingFormPage
 	 * 
 	 * @param event
 	 */

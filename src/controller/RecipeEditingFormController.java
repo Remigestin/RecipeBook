@@ -1,5 +1,10 @@
 package controller;
 
+/**
+ * @author Chawaf Alia
+ * @version 1.0
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -84,6 +89,12 @@ public class RecipeEditingFormController implements Initializable {
 
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
+	/**
+	 * Set the choices of the filter (ComboBox) with all the course categories
+	 * existing in DB
+	 * 
+	 * @see ComboBox
+	 */
 	public void setCourseCategory() {
 
 		HashMap<Integer, String> courses = facade.findAllCourseCategory();
@@ -163,6 +174,9 @@ public class RecipeEditingFormController implements Initializable {
 		this.courseCategory.setValue(courseCategory);
 	}
 
+	/**
+	 * 
+	 */
 	public void setAllRecipeInformation() {
 
 		Recipe newRecipe = facade.findRecipe(idRecipe);
@@ -200,13 +214,20 @@ public class RecipeEditingFormController implements Initializable {
 		this.setCourseCategory(facade.findCourseCategoryName(newRecipe.getIdCourse()));
 	}
 
-	/* initialize the spinners with integers */
+	/**
+	 *  initialize the spinners with integers 
+	 */
 	private void initSpinner() {
 		numberPeople.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(0, 100));
 		difficulty.setValueFactory(new SpinnerValueFactory.IntegerSpinnerValueFactory(1, 5));
 	}
 
-	// Event Listener on Button[#create].onAction
+	/**
+	 * Called when clicking on submit button
+	 * 
+	 * @param event
+	 * @see #displayConfirmationEdit(Event)
+	 */
 	@FXML
 	public void submitEdits(ActionEvent event) {
 
@@ -245,6 +266,11 @@ public class RecipeEditingFormController implements Initializable {
 		this.displayConfirmationEdit(event);
 	}
 
+	/**
+	 * 
+	 * @return the id of the course selected in the filter ComboBox
+	 * @see ComboBox
+	 */
 	private int getIdCourseByCourseNameSelected() {
 
 		HashMap<Integer, String> allCourses = facade.findAllCourseCategory();
@@ -260,6 +286,13 @@ public class RecipeEditingFormController implements Initializable {
 		return idCourseSelected;
 	}
 
+	/**
+	 * Display confirmation pup-up when editing succeeded
+	 * Then redirect to MyRecipesPage
+	 * 
+	 * @param event
+	 * @see #redirectToMyRecipes(Event)
+	 */
 	private void displayConfirmationEdit(Event event) {
 		Alert alert = new Alert(AlertType.INFORMATION);
 		alert.setTitle("Confirmation");
@@ -270,7 +303,10 @@ public class RecipeEditingFormController implements Initializable {
 		this.redirectToMyRecipes(event);
 	}
 
-	// Event Listener on Button[#cancel].onAction
+	/**
+	 * Redirect to MyRecipes Page when clicking on Cancel Button
+	 * @param event
+	 */
 	@FXML
 	public void redirectToMyRecipes(Event event) {
 		Parent root;
@@ -288,6 +324,11 @@ public class RecipeEditingFormController implements Initializable {
 		}
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see #initSpinner()
+	 * @see #setCourseCategory()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
