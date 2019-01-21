@@ -40,7 +40,7 @@ As the project is only runnable locally, RecipeBook can be improved by making it
 ## Autors
 
  **CHAWAF Alia**  _  **GARDEISEN Marine**  _  **GESTIN Rémi**  _  **MISSOUM-BENZIANE Inès** , 
- <br/>Polytech' Montpellier, 3rd year Computer Science and Management
+ <br/>Polytech' Montpellier, 4th year Computer Science and Management
 
 ###### *For any question or remark, do not hesitate to contact us by mail to the address recipebook@gmail.com .*
 
