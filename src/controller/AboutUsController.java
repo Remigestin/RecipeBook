@@ -1,5 +1,11 @@
 package controller;
 
+/**
+ * This class is the controller of the AboutUs view
+ * @author Chawaf Alia
+ * @version 1.0
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -23,8 +29,13 @@ public class AboutUsController implements Initializable {
 	@FXML
 	private Button homePage;
 
-	// Event Listener on Button[#login].onAction
-	// Event Listener on Button[#login1].onAction
+	/**
+	 * Method called when clicking on Login button or HomePage button Redirect to
+	 * the right page depending on the button clicked
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
 	@FXML
 	public void redirectToNewPage(ActionEvent event) {
 
@@ -35,6 +46,12 @@ public class AboutUsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Switch to another page
+	 * 
+	 * @param event   Event occurred
+	 * @param newPage path of the new page to display
+	 */
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -56,9 +73,13 @@ public class AboutUsController implements Initializable {
 		}
 
 	}
-	
+
+	/**
+	 * Hide the Login button if the user is logged, otherwise hide the HomePage
+	 * button
+	 */
 	private void setButton() {
-		
+
 		if (User.getSession() == null) {
 			homePage.setVisible(false);
 		} else {
@@ -66,11 +87,14 @@ public class AboutUsController implements Initializable {
 		}
 	}
 
+	/**
+	 * Set the right button when the class is loaded {@inheritDoc}
+	 * 
+	 * @see #setButton()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
-		this.setButton();
-		
-	}
 
+		this.setButton();
+	}
 }

@@ -1,5 +1,14 @@
 package controller;
 
+/**
+ * This class is the controller of the CommonTheme view
+ * CommonThem view represents the menu (on left) with all the tabs, 
+ * the logo of the application, the quick search field, username icon and name, logout button 
+ * 
+ * @author Chawaf Alia
+ * @version 1.0 
+ */
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -27,6 +36,9 @@ import javafx.scene.input.MouseEvent;
 
 public class CommonThemeController implements Initializable {
 
+	/**
+	 * FXML elements of the CommonTheme view
+	 */
 	@FXML
 	private TextField quickSearch;
 	@FXML
@@ -47,9 +59,23 @@ public class CommonThemeController implements Initializable {
 	private HBox randomMenu;
 	@FXML
 	private HBox shoppingList;
-	
+
+	/**
+	 * Facade associated
+	 */
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
+	public void setUsername(String username) {
+		this.username.setText(username);
+	}
+
+	/**
+	 * Method called when clicking on a tab of the menu Call switchToNewPage with
+	 * the right path of the new Page depending on the tab clicked
+	 * 
+	 * @see #switchToNewPage(Event, String)
+	 * @param event
+	 */
 	// Event Listener on HBox[#home].onMousePressed
 	// Event Listener on HBox[#advancedSearch].onMousePressed
 	// Event Listener on HBox[#myRecipes].onMousePressed
@@ -90,17 +116,25 @@ public class CommonThemeController implements Initializable {
 
 		this.switchToNewPage(event, newPage);
 	}
-	
+
+	/**
+	 * Method called when clicking on username icon or username name Redirect to
+	 * account page with the user information
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
 	@FXML
 	public void redirectToMyAccount(Event event) {
 		this.switchToNewPage(event, "/views/MyAccountPage.fxml");
 	}
 
-	public void setUsername(String username) {
-
-		this.username.setText(username);
-	}
-
+	/**
+	 * Method used to switch to another page
+	 * 
+	 * @param event
+	 * @param newPage path of the new page to display
+	 */
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -114,7 +148,7 @@ public class CommonThemeController implements Initializable {
 				HomePageController controller = loader.getController();
 				controller.setIdTop1(facade.findTop1Recipe().getIdRecipe());
 			}
-			
+
 			Scene scene = new Scene(root, 1920, 1080);
 
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -127,6 +161,27 @@ public class CommonThemeController implements Initializable {
 		}
 	}
 
+	/**
+	 * Method called when clicking on logout button Logout the user and then
+	 * redirect to the LoginPage
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
+	@FXML
+	void logout(Event event) {
+		User.setSession(null);
+		this.switchToNewPage(event, "/views/LoginPage.fxml");
+	}
+
+	/**
+	 * Method called when pressing a key (from keyboard) in the quick search field
+	 * Check if the key pressed is "Enter" Do the quick search if yes, otherwise do
+	 * nothing
+	 * 
+	 * @param event
+	 * @see #quickSearch
+	 */
 	@FXML
 	void quickSearchWithKeyEnter(KeyEvent event) {
 		if (!username.getText().isEmpty() && event.getCode() == KeyCode.ENTER) {
@@ -134,19 +189,25 @@ public class CommonThemeController implements Initializable {
 		}
 	}
 
+	/**
+	 * Method called when clicking of the OK button of the quick search field Get
+	 * the quick search results and switch to a new page to display them
+	 * 
+	 * @param event
+	 */
 	@FXML
 	void quickSearch(Event event) {
 
 		ArrayList<Recipe> results = facade.searchRecipes(quickSearch.getText());
 		ArrayList<RecipeWithButton> finalResults = new ArrayList<RecipeWithButton>();
-		
+
 		for (Recipe r : results) {
-			
-			finalResults.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(), r.getDifficulty(), r.getIdCourse(), ""));
-			
+
+			finalResults.add(new RecipeWithButton(r.getIdRecipe(), r.getNameRecipe(), r.getPreparationTime(),
+					r.getDifficulty(), r.getIdCourse(), ""));
+
 		}
-		 
-		
+
 		// switch to quick search page with the results
 		Parent root;
 
@@ -154,11 +215,11 @@ public class CommonThemeController implements Initializable {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/views/QuickSearchResultsPage.fxml"));
 
 			root = loader.load();
-			
+
 			QuickSearchController controller = loader.getController();
 			controller.setResults(finalResults);
 			controller.setResultsInTableView();
-			
+
 			Scene scene = new Scene(root, 1920, 1080);
 			Stage newStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
 			newStage.setScene(scene);
@@ -167,19 +228,17 @@ public class CommonThemeController implements Initializable {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see #setUsername(String)
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
 		this.setUsername(User.getSession().getUsername());
-	}
-
-	@FXML
-	void logout(Event event) {
-		User.setSession(null);
-		this.switchToNewPage(event, "/views/LoginPage.fxml");
-
 	}
 }

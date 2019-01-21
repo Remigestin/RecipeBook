@@ -1,5 +1,10 @@
 package application;
 	
+/**
+ * The class to launch the application (with the main method)
+ * 
+ * @version 1.0
+ */
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;

@@ -1,5 +1,12 @@
 package controller;
 
+/**
+ * This class is the controller of the LoginPage view
+ *  
+ * @author Chawaf Alia
+ * @version 1.0
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -32,8 +39,19 @@ public class LoginPageController {
 	@FXML
 	private Hyperlink register;
 
+	/**
+	 * Facade associated
+	 */
 	private UserFacade facade = UserFacade.getInstance();
 
+	/**
+	 * Method called when pressing a key (from keyboard) in the password field
+	 * Check if the key pressed is "Enter" 
+	 * Login if yes, otherwise do nothing
+	 * 
+	 * @param event
+	 * @see #login(Event)
+	 */
 	// Event Listener on TextField[#password].HeyPressed
 	@FXML
 	void loginWithEnterKey(KeyEvent event) {
@@ -43,6 +61,15 @@ public class LoginPageController {
 		}
 	}
 
+	/**
+	 * Method called when clicking on Login button
+	 * Try to login
+	 * Redirect to HomePage if login succeed, otherwise display an error
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 * @see #displayError()
+	 */
 	// Event Listener on Button[#login].onAction
 	@FXML
 	public void login(Event event) {
@@ -59,6 +86,10 @@ public class LoginPageController {
 		}
 	}
 
+	/**
+	 * Display an error when login failed
+	 * 
+	 */
 	private void displayError() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Error alert");
@@ -66,13 +97,25 @@ public class LoginPageController {
 		alert.showAndWait();
 	}
 
+	/**
+	 * Method called when clicking on Register text
+	 * Redirect to the RegisterPage
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
 	@FXML
 	void register(Event event) {
 
 		this.switchToNewPage(event, "/views/RegisterPage.fxml");
-
 	}
 
+	/**
+	 * Switch to another page
+	 * 
+	 * @param event   Event occurred
+	 * @param newPage path of the new page to display
+	 */
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;

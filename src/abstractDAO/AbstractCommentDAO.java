@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import businessLogic.Commentary;
-import businessLogic.User;
 import exception.DAOException;
 
 public abstract class AbstractCommentDAO {

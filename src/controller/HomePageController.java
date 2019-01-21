@@ -27,7 +27,19 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import mySQLDAO.MySQLRecipeDAO;
 
+/**
+ * This class is the controller of the HomePage view This view displays the top1
+ * recipe and the list of all the recipes of the application.
+ * 
+ * @author Chawaf Alia
+ * @version 1.0
+ */
+
 public class HomePageController implements Initializable {
+
+	/*
+	 * elements of the top1 recipe
+	 */
 	@FXML
 	private Rating ratingTop1;
 	@FXML
@@ -40,9 +52,12 @@ public class HomePageController implements Initializable {
 	private Label nameRecipeTop1;
 	@FXML
 	private ImageView imageTop1;
-	
+
 	private int idTop1;
 
+	/*
+	 * Elements of all the recipes of the app
+	 */
 	@FXML
 	private TableView<RecipeWithButton> listRecipes;
 	@FXML
@@ -55,11 +70,20 @@ public class HomePageController implements Initializable {
 	private TableColumn<RecipeWithButton, Integer> preparationTime;
 	@FXML
 	private TableColumn<RecipeWithButton, Integer> difficulty;
-	
+
+	/**
+	 * Facade associated
+	 */
 	private RecipeFacade facade = RecipeFacade.getInstance();
 
+	/**
+	 * List of all the recipes to add in the table
+	 */
 	private ObservableList<RecipeWithButton> myRecipes = FXCollections.observableArrayList();
-	
+
+	/*
+	 * Setters
+	 */
 	public void setRatingTop1(float rating) {
 		this.ratingTop1.setRating(rating);
 	}
@@ -83,23 +107,31 @@ public class HomePageController implements Initializable {
 	public void setImageTop1(String image) {
 		this.imageTop1.setImage(new Image(image));
 	}
-	
+
 	public void setIdTop1(int id) {
 		idTop1 = id;
 	}
 
+	/**
+	 * Method used to set all the information of the top1 recipe
+	 */
 	private void setTop1() {
-		
+
 		Recipe top1 = facade.findTop1Recipe();
-		
+
 		setDifficultyTop1(Integer.toString(top1.getDifficulty()) + " / 5");
 		setNameRecipeTop1(top1.getNameRecipe());
 		setNbPeopleTop1(Integer.toString(top1.getNbPersRecipe()));
 		setPreparationTimeTop1(Integer.toString(top1.getPreparationTime()) + " min");
 		setRatingTop1(MySQLRecipeDAO.findRating(top1.getIdRecipe()));
-		setImageTop1("file:../../asset/imageRecette/"+top1.getImage());
+		setImageTop1("file:../../asset/imageRecette/" + top1.getImage());
 	}
 
+	/**
+	 * Recover all recipes
+	 * 
+	 * @return the list of all the recipes of the application to add in the table
+	 */
 	public ObservableList<RecipeWithButton> getAllRecipes() {
 
 		myRecipes.clear();
@@ -110,7 +142,14 @@ public class HomePageController implements Initializable {
 		}
 		return myRecipes;
 	}
-	
+
+	/**
+	 * Method called when clicking on a recipe of the table. Redirect to a new page
+	 * displaying the recipe concerned with all its information
+	 * 
+	 * @param event
+	 * @see RecipeController
+	 */
 	@FXML
 	void consultRecipe(Event event) {
 
@@ -124,6 +163,8 @@ public class HomePageController implements Initializable {
 			RecipeController controller = loader.getController();
 
 			int rowNumber = ((TableView) event.getSource()).getSelectionModel().selectedIndexProperty().get();
+
+			// get the id of the recipe clicked from the row number of table clicked on
 			controller.setIdRecipe(myRecipes.get(rowNumber).getIdRecipe());
 			controller.consultRecipe();
 
@@ -138,7 +179,14 @@ public class HomePageController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Method called when clicking on a the top1 recipe Redirect to a new page
+	 * displaying the top1 recipe with all its information
+	 * 
+	 * @param event
+	 * @see RecipeController
+	 */
 	@FXML
 	void consultTop1(Event event) {
 
@@ -165,19 +213,24 @@ public class HomePageController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * {@inheritDoc}
+	 * 
+	 * @see #setTop1()
+	 * @see #getAllRecipes()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+
 		this.setTop1();
-	
+
 		recipeName.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("nameRecipe"));
 		courseCategory.setCellValueFactory(new PropertyValueFactory<RecipeWithButton, String>("course"));
 		rating.setCellValueFactory(new PropertyValueFactory("rate"));
 		preparationTime.setCellValueFactory(new PropertyValueFactory("preparationTime"));
 		difficulty.setCellValueFactory(new PropertyValueFactory("difficulty"));
-		
-		listRecipes.setItems(getAllRecipes());
 
+		listRecipes.setItems(getAllRecipes());
 	}
 }

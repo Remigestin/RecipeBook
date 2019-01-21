@@ -16,7 +16,7 @@ public abstract class AbstractUserDAO {
 	 * @param username
 	 * @param password
 	 * @return the user who is logged with his favorite recipes, random recipes and
-	 *         his created recipes.
+	 *         his created recipes, otherwise return null if login has failed
 	 * @throws DAOException
 	 */
 	public abstract User login(String username, String password) throws DAOException;

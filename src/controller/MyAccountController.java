@@ -1,5 +1,13 @@
 package controller;
 
+/**
+ * This class is the controller of the MyAccount view
+ * This view displays all the information of the user logged in
+ *
+ * @author Chawaf Alia
+ * @version 1.0 
+ */
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -60,18 +68,38 @@ public class MyAccountController implements Initializable {
 
 	private UserFacade facade = UserFacade.getInstance();
 
-	// Event Listener on Button[#delete].onAction
+	/**
+	 * Method called when clicking on Delete button Display a popup to ask for a
+	 * confirmation
+	 * 
+	 * @param event
+	 * @see #displayDeleteConfirmation(Event)
+	 */
 	@FXML
 	public void delete(ActionEvent event) {
 		this.displayDeleteConfirmation(event);
 	}
 
+	/**
+	 * Method called when clicking on the Pencil button to edit account Redirect to
+	 * editing form of the account
+	 * 
+	 * @param event
+	 * @see #switchToNewPage(Event, String)
+	 */
 	@FXML
 	void editAccount(Event event) {
 
 		this.switchToNewPage(event, "/views/MyAccountEditForm.fxml");
 	}
 
+	/**
+	 * Display a popup to ask for a confirmation before deleting account Delete
+	 * account and redirect to LoginPage if clicking on OK, otherwise do nothing if
+	 * clicking on Cancel button
+	 * 
+	 * @param event
+	 */
 	private void displayDeleteConfirmation(Event event) {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Hey wait there ! ");
@@ -84,6 +112,12 @@ public class MyAccountController implements Initializable {
 		}
 	}
 
+	/**
+	 * Switch to another page
+	 * 
+	 * @param event   Event occurred
+	 * @param newPage path of the new page to display
+	 */
 	public void switchToNewPage(Event event, String newPage) {
 
 		Parent root;
@@ -102,6 +136,9 @@ public class MyAccountController implements Initializable {
 		}
 	}
 
+	/**
+	 * Method used to set all the information of the used logged in
+	 */
 	public void setAllUserInfo() {
 
 		User user = User.getSession();
@@ -112,6 +149,10 @@ public class MyAccountController implements Initializable {
 		this.setLastname(user.getLastname());
 	}
 
+	/**
+	 * {@inheritDoc}
+	 * @see #setAllUserInfo()
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 
