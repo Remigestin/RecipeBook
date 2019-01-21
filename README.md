@@ -19,10 +19,13 @@ This project was conducted as part of the module Object Oriented Software Engine
 
 <br/>
 
-### Start up
+### Start up and launch RecipeBook
 
 Make sure JRE (Java Runtime Environment) is installed on your device to be able to run the application.
-Then just execute Main file (package application).
+Clone the project and import it in Eclipse.
+Then just execute the **Main** file (package application) and there we go.
+
+(PS : you can just download and lauch RecipeBook.jar file in application package, but you will not be able to see any image on the application)
 
 <br/>
 
